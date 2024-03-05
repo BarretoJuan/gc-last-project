@@ -49,8 +49,8 @@ public class TextPrompt extends JLabel
 		setText( text );
 		setFont( component.getFont() );
 		setForeground( component.getForeground() );
-		setBorder( new EmptyBorder(component.getInsets()) );
-		setHorizontalAlignment(JLabel.LEADING);
+		setBorder( new EmptyBorder(0,0,0,0));
+		setHorizontalAlignment(JLabel.LEFT);
 
 		component.addFocusListener( this );
 		document.addDocumentListener( this );
