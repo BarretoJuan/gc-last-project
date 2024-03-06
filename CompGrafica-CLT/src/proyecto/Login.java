@@ -49,29 +49,42 @@ public class Login extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("INICIAR SESION");
+        loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
         loginButton.setPreferredSize(new java.awt.Dimension(135, 36));
-        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, -1, -1));
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
 
-        registerButton.setBackground(Colors.darkBlue);
+        registerButton.setBackground(Colors.creamWhite);
+        registerButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        registerButton.setForeground(Colors.darkBlue);
+        registerButton.setText("¡Regístrate Aquí!");
         registerButton.setBorder(new RoundedLineBorderVoid(Colors.darkBlue, 1, 25, true));
-        registerButton.setContentAreaFilled(false);
-        registerButton.setPreferredSize(new java.awt.Dimension(33, 15));
+        registerButton.setFocusable(false);
+        registerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        registerButton.setIconTextGap(1);
+        registerButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        registerButton.setPreferredSize(new java.awt.Dimension(33, 28));
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 100, 30));
+        registerButton.setSize(50,28);
+        getContentPane().add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 100, 28));
 
-        registerLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        registerLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         registerLabel.setForeground(Colors.darkBlue);
         registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        registerLabel.setText("¿No tienes cuenta? ¡Regístrate aquí!");
+        registerLabel.setText("¿No tienes cuenta?");
         registerLabel.setToolTipText("");
         registerLabel.setPreferredSize(new java.awt.Dimension(151, 28));
-        getContentPane().add(registerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 400, -1));
+        getContentPane().add(registerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 460, 400, -1));
 
         passwordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         passwordIcon.setMinimumSize(new java.awt.Dimension(34, 36));
@@ -151,6 +164,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(waveBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 92, 400, 508));
 
         panelFondoAzul.setBackground(Colors.darkBlue);
+        panelFondoAzul.setPreferredSize(new java.awt.Dimension(200, 300));
 
         javax.swing.GroupLayout panelFondoAzulLayout = new javax.swing.GroupLayout(panelFondoAzul);
         panelFondoAzul.setLayout(panelFondoAzulLayout);
@@ -163,7 +177,7 @@ public class Login extends javax.swing.JFrame {
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelFondoAzul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(panelFondoAzul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -180,6 +194,10 @@ public class Login extends javax.swing.JFrame {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         System.out.println("hehe");        // TODO add your handling code here:
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginButtonActionPerformed
 
   
 
