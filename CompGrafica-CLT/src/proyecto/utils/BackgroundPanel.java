@@ -1,4 +1,4 @@
-package proyecto;
+package proyecto.utils;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;

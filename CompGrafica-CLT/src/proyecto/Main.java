@@ -5,6 +5,8 @@
  */
 package proyecto;
 
+import proyecto.views.Login;
+
 /**
  *
  * @author juan

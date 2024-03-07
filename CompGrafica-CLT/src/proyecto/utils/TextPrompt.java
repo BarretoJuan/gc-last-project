@@ -1,7 +1,7 @@
 //TextPrompt Class by Robert Cammick 
 //https://tips4java.wordpress.com/2009/11/29/text-prompt/
 
-package proyecto;
+package proyecto.utils;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

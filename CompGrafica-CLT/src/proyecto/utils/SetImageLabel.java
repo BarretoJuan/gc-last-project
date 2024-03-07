@@ -1,4 +1,4 @@
-package proyecto;
+package proyecto.utils;
 
 import java.awt.Image;
 import java.net.URL;

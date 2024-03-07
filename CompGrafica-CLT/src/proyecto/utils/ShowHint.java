@@ -1,4 +1,4 @@
-package proyecto;
+package proyecto.utils;
 import java.awt.Color;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;

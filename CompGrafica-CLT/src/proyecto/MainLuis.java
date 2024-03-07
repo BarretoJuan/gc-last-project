@@ -1,5 +1,7 @@
 package proyecto;
 
+import proyecto.db.Connect;
+
 public class MainLuis {
 
 	public static void main(String[] args) {
