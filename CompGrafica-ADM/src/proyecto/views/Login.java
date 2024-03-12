@@ -1,6 +1,5 @@
 package proyecto.views;
 
-import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -36,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         panelFondoAzul = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cliente - Login");
+        setTitle("Admin - Login");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
         setResizable(false);
         setSize(new java.awt.Dimension(400, 600));
@@ -143,7 +142,7 @@ public class Login extends javax.swing.JFrame {
         inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         inicioClienteLabel.setForeground(Colors.darkBlue);
         inicioClienteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        inicioClienteLabel.setText("Inicio de Cliente");
+        inicioClienteLabel.setText("Inicio de Administrador");
         inicioClienteLabel.setToolTipText("");
         inicioClienteLabel.setPreferredSize(new java.awt.Dimension(151, 28));
         getContentPane().add(inicioClienteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 400, -1));
