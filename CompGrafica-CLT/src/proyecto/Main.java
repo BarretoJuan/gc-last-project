@@ -6,6 +6,7 @@
 package proyecto;
 
 import proyecto.views.Login;
+import proyecto.views.*;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Main {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new EditProfile().setVisible(true);
             }
         });
     }
