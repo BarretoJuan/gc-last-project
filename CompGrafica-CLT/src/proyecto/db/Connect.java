@@ -1,11 +1,13 @@
 package proyecto.db;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.mysql.cj.xdevapi.Statement;
+import java.sql.Statement;
+import java.sql.Types;
 
 public class Connect {
 	Connection handler;
@@ -31,10 +33,45 @@ public class Connect {
 			   System.exit(1);
 		}
 	}
-	public void testQuery() throws SQLException {
-		PreparedStatement statement;
-		statement = handler.prepareStatement("Select * from testTable");
-	}
+	
+	public boolean insertUser(String query) throws SQLException {
+		CallableStatement statement;
+		try {
+			 statement = handler.prepareCall(query);
+			 statement.setInt(2, 0);
+			 statement.registerOutParameter(1, Types.INTEGER);
+			 
+		}
+		catch (SQLException e) { 
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			return false;
+		}
+		
+		
+		try {
+			statement.execute();
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
+			return false;
+		}
+		
+		int response = 0;
+		try {
+			response = statement.getInt(1);
+		} catch (SQLException e) {
+			System.err.print("ERROR OBTENIENDO EL VALOR DE RETORNO");
+			return false;
+		}
+		
+		if (response != 0) {
+			System.err.print("el resultado no es cero");
+			return false;
+		}
+		
+		statement.close();
+		return true;
+		}
 	
 	public void closeConnection() throws SQLException {
 		handler.close();
