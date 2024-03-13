@@ -8,7 +8,7 @@ import java.sql.Types;
 
 public class Connect {
 	Connection handler;
-	String DB = "testing";
+	String DB = "cargomara";
 	String URL = "jdbc:mysql://localhost/" + DB;
 	String USER = "root";
 	String PASSWORD = "";
@@ -31,15 +31,21 @@ public class Connect {
 		}
 	}
 	
-	public int insertUser(String query) throws SQLException {
+	public int insertUser(
+			String query, String name, String ci, String passwordHash, String username, String email
+			) throws SQLException {
 		CallableStatement statement;
 		try {
 			 statement = handler.prepareCall(query);
 			 // prepares the return value, specifying that it'll be an int
 			 statement.registerOutParameter(1, Types.INTEGER);
 			// prepares the first parameter, specifying that it will be an int and gives 0 as its value
-			 statement.setInt(2, 0); 
-		}
+			 statement.setString(2, name);
+			 statement.setString(3, ci);
+			 statement.setString(4, passwordHash);
+			 statement.setString(5, username);
+			 statement.setString(6, email);
+		} 
 		catch (SQLException e) { 
 			System.err.print("ERROR PREPARANDO LA SENTENCIA");
 			return -1;
@@ -47,7 +53,7 @@ public class Connect {
 		
 		try {
 			statement.execute();
-		}
+		} 
 		catch (SQLException e) {
 			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
 			return -1;
@@ -57,7 +63,8 @@ public class Connect {
 		try {
 			// retrieves the return value
 			response = statement.getInt(1);
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			System.err.print("ERROR OBTENIENDO EL VALOR DE RETORNO");
 			return -1;
 		}

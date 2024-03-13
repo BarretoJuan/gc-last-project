@@ -10,8 +10,8 @@ public class Caller {
 		this.connection = new Connect();
 	}
 	
-	public Message InsertClient() throws SQLException {
-		int response = connection.insertUser("{ ? = CALL testSP(?) }");
+	public Message InsertClient(String name, String ci, String passwordHash, String username, String email) throws SQLException {
+		int response = connection.insertUser("{ ? = CALL insert_user(?, ?, ?, ?, ?) }", name, ci, passwordHash, username, email);
 		
 		if (response == -1) {
 			return new Message(false, "ERROR INTERNO");
@@ -25,8 +25,8 @@ public class Caller {
 		else if (response == 3) {
 			return new Message(false, "Ese nombre de usuario ya esta en uso");
 		}
-		
-		System.out.print("Exito en la transaccion");
+		System.out.print("\n" + response);
+		System.out.print("\nExito en la transaccion");
 		return new Message(true, "El usuario ha sido registrado exitosamente");
 	}
 	
