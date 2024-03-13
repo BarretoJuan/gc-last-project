@@ -1,6 +1,5 @@
 package proyecto.db;
 
-import proyecto.utils.Message;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,52 +31,39 @@ public class Connect {
 		}
 	}
 	
-	public Message insertUser(String query) throws SQLException {
+	public int insertUser(String query) throws SQLException {
 		CallableStatement statement;
 		try {
 			 statement = handler.prepareCall(query);
-			 // prepara el valor de retorno, expecificando que sera de tipo entero
+			 // prepares the return value, specifying that it'll be an int
 			 statement.registerOutParameter(1, Types.INTEGER);
-			// prepara el primer parametro, especificando que sera de tipo entero y dandole el valor 0
-			 statement.setInt(2, 0);
-			 
-			 
+			// prepares the first parameter, specifying that it will be an int and gives 0 as its value
+			 statement.setInt(2, 0); 
 		}
 		catch (SQLException e) { 
 			System.err.print("ERROR PREPARANDO LA SENTENCIA");
-			return new Message(false, "ERROR INTERNO");
+			return -1;
 		}
-		
 		
 		try {
 			statement.execute();
 		}
 		catch (SQLException e) {
 			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
-			return new Message(false, "ERROR INTERNO");
+			return -1;
 		}
 		
 		int response = 0;
 		try {
-			// retira el valor de retorno, al solo haber uno se accede a la primera posicion
+			// retrieves the return value
 			response = statement.getInt(1);
 		} catch (SQLException e) {
 			System.err.print("ERROR OBTENIENDO EL VALOR DE RETORNO");
-			return new Message(false, "ERROR INTERNO");
-		}
-		
-		if (response == 1) {
-			return new Message(false, "Otro usuario tiene esa misma cedula");
-		}
-		else if (response == 2) {
-			return new Message(false, "Otro usuario tiene ese mismo correo");
-		}
-		else if (response == 3) {
-			return new Message(false, "Ese nombre de usuario ya esta en uso");
+			return -1;
 		}
 		
 		statement.close();
-		return new Message(true, "El usuario ha sido registrado exitosamente");
+		return response;
 	}
 	
 	public void closeConnection() throws SQLException {
