@@ -1,12 +1,10 @@
 package proyecto.db;
 
+import proyecto.utils.Message;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Types;
 
 public class Connect {
@@ -34,17 +32,20 @@ public class Connect {
 		}
 	}
 	
-	public boolean insertUser(String query) throws SQLException {
+	public Message insertUser(String query) throws SQLException {
 		CallableStatement statement;
 		try {
 			 statement = handler.prepareCall(query);
-			 statement.setInt(2, 0);
+			 // prepara el valor de retorno, expecificando que sera de tipo entero
 			 statement.registerOutParameter(1, Types.INTEGER);
+			// prepara el primer parametro, especificando que sera de tipo entero y dandole el valor 0
+			 statement.setInt(2, 0);
+			 
 			 
 		}
 		catch (SQLException e) { 
 			System.err.print("ERROR PREPARANDO LA SENTENCIA");
-			return false;
+			return new Message(false, "ERROR INTERNO");
 		}
 		
 		
@@ -53,25 +54,31 @@ public class Connect {
 		}
 		catch (SQLException e) {
 			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
-			return false;
+			return new Message(false, "ERROR INTERNO");
 		}
 		
 		int response = 0;
 		try {
+			// retira el valor de retorno, al solo haber uno se accede a la primera posicion
 			response = statement.getInt(1);
 		} catch (SQLException e) {
 			System.err.print("ERROR OBTENIENDO EL VALOR DE RETORNO");
-			return false;
+			return new Message(false, "ERROR INTERNO");
 		}
 		
-		if (response != 0) {
-			System.err.print("el resultado no es cero");
-			return false;
+		if (response == 1) {
+			return new Message(false, "Otro usuario tiene esa misma cedula");
+		}
+		else if (response == 2) {
+			return new Message(false, "Otro usuario tiene ese mismo correo");
+		}
+		else if (response == 3) {
+			return new Message(false, "Ese nombre de usuario ya esta en uso");
 		}
 		
 		statement.close();
-		return true;
-		}
+		return new Message(true, "El usuario ha sido registrado exitosamente");
+	}
 	
 	public void closeConnection() throws SQLException {
 		handler.close();
