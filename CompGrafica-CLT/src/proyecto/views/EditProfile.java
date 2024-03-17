@@ -21,6 +21,7 @@ public class EditProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         nameIcon = new javax.swing.JLabel();
         nameField = new javax.swing.JFormattedTextField();
@@ -51,10 +52,21 @@ public class EditProfile extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(400, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 51));
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
+        jButton1.setOpaque(false);
+        jButton1.setPreferredSize(new java.awt.Dimension(397, 132));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         loginButton.setBackground(Colors.darkBlue);
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("CONFIRMAR CAMBIOS");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -276,7 +288,7 @@ public class EditProfile extends javax.swing.JFrame {
         panelFondoAzulLayout.setHorizontalGroup(
             panelFondoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoAzulLayout.createSequentialGroup()
-                .addComponent(logoPic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelFondoAzulLayout.setVerticalGroup(
@@ -341,6 +353,7 @@ public class EditProfile extends javax.swing.JFrame {
     private javax.swing.JLabel creamContainer;
     private javax.swing.JFormattedTextField emailField;
     private javax.swing.JLabel emailIcon;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;

@@ -55,6 +55,7 @@ public class Register extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("REGISTRAR");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -71,6 +72,7 @@ public class Register extends javax.swing.JFrame {
         registerButton.setForeground(Colors.darkBlue);
         registerButton.setText("¡Inicia sesión aquí!");
         registerButton.setBorder(new RoundedLineBorderVoid(Colors.darkBlue, 1, 25, true));
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerButton.setFocusable(false);
         registerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerButton.setIconTextGap(1);

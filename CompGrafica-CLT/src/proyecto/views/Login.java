@@ -22,7 +22,6 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         logoPic = new javax.swing.JLabel();
-        loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         registerLabel = new javax.swing.JLabel();
         passwordIcon = new javax.swing.JLabel();
@@ -50,26 +49,12 @@ public class Login extends javax.swing.JFrame {
         logoPic.setSize(249,167);
         new SetImageLabel().SetImage(logoPic, "/resources/Logo1.png");
 
-        loginButton.setBackground(Colors.darkBlue);
-        loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        loginButton.setForeground(Colors.creamWhiteText);
-        loginButton.setText("INICIAR SESION");
-        loginButton.setFocusable(false);
-        loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
-        loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
-        loginButton.setPreferredSize(new java.awt.Dimension(135, 36));
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
-
         registerButton.setBackground(Colors.creamWhite);
         registerButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         registerButton.setForeground(Colors.darkBlue);
         registerButton.setText("¡Regístrate Aquí!");
         registerButton.setBorder(new RoundedLineBorderVoid(Colors.darkBlue, 1, 25, true));
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerButton.setFocusable(false);
         registerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerButton.setIconTextGap(1);
@@ -203,10 +188,6 @@ public class Login extends javax.swing.JFrame {
         r1.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_registerButtonActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginButtonActionPerformed
-
   
 
 
@@ -214,7 +195,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JLabel creamContainer;
     private javax.swing.JLabel inicioClienteLabel;
-    private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;
     private javax.swing.JPanel panelFondoAzul;
     private javax.swing.JPasswordField passwordField;

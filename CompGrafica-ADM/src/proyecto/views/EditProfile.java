@@ -21,6 +21,7 @@ public class EditProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logoPicButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         nameIcon = new javax.swing.JLabel();
         nameField = new javax.swing.JFormattedTextField();
@@ -51,10 +52,24 @@ public class EditProfile extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(400, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        logoPicButton.setBorderPainted(false);
+        logoPicButton.setContentAreaFilled(false);
+        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoPicButton.setFocusPainted(false);
+        logoPicButton.setFocusable(false);
+        logoPicButton.setPreferredSize(new java.awt.Dimension(397, 132));
+        logoPicButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoPicButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(logoPicButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         loginButton.setBackground(Colors.darkBlue);
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("CONFIRMAR CAMBIOS");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -304,7 +319,7 @@ public class EditProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        System.out.println("editProfileButtonActionPerformed");        // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
@@ -331,6 +346,10 @@ public class EditProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_newPasswordFieldActionPerformed
 
+    private void logoPicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
+        System.out.println("LogoPicButton Action");
+    }//GEN-LAST:event_logoPicButtonActionPerformed
+
   
 
 
@@ -344,6 +363,7 @@ public class EditProfile extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;
+    private javax.swing.JButton logoPicButton;
     private javax.swing.JFormattedTextField nameField;
     private javax.swing.JLabel nameIcon;
     private javax.swing.JPasswordField newPasswordField;
