@@ -176,6 +176,28 @@ public class Connect {
 		return response;
 	}
 	
+	public int modifyUser(String query, String name, String passwordHash, String username, String email) throws SQLException {
+		CallableStatement statement;
+		try {
+			 statement = handler.prepareCall(query);
+			 // prepares the return value, specifying that it'll be an int
+			 statement.registerOutParameter(1, Types.INTEGER);
+			// prepares the first parameter, specifying that it will be an int and gives 0 as its value
+			 statement.setString(2, name);
+			 statement.setString(3, username);
+			 statement.setString(4, email);
+		} 
+		catch (SQLException e) { 
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			return -1;
+		}
+		
+		int response = executeCallableStatement(statement);
+		
+		statement.close();
+		return response;
+	}
+	
 	public void closeConnection() throws SQLException {
 		handler.close();
 	}

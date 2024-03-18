@@ -10,8 +10,16 @@ public class Caller {
 		this.connection = new Connect();
 	}
 	
-	public Message loginUser(String username, String passwordHash) throws SQLException {
-		int response = connection.loginUser("{ ? = CALL login_user(?, ?) }", username, passwordHash);
+	public Message loginUser(String username, String passwordHash, boolean admin) throws SQLException {
+		int response = 0;
+		
+		if (admin) {
+			response = connection.loginUser("{ ? = CALL login_admin(?, ?) }", username, passwordHash);
+		}
+		else {
+			response = connection.loginUser("{ ? = CALL login_user(?, ?) }", username, passwordHash);
+		}
+		
 		
 		System.out.print("\n" + response);
 		if (response == -1) {
@@ -91,7 +99,32 @@ public class Caller {
 		}
 		
 		System.out.print("\nExito en la transaccion");
-		return new Message(true, "El reporte ha sido respondido satisfactoriamente");
+		return new Message(true, "El reporte ha sido borrado satisfactoriamente");
+	}
+	
+	public Message modifyUser(String name, String passwordHash, String username, String email, boolean admin) throws SQLException {
+		int response = 0;
+		
+		if (admin) {
+			response = connection.modifyUser("{ ? = CALL modify_admin(?, ?, ?) }", name, passwordHash, username, email);
+		}
+		else {
+			response = connection.modifyUser("{ ? = CALL modify_user(?, ?, ?) }", name, passwordHash, username, email);
+		}
+		
+		System.out.print("\n" + response);
+		if (response == -1) {
+			return new Message(false, "ERROR INTERNO");
+		}
+		else if (response == 1) {
+			return new Message(false, "Otro usuario tiene ese mismo correo");
+		}
+		else if (response == 2) {
+			return new Message(false, "Ese nombre de usuario ya esta en uso");
+		}
+		
+		System.out.print("\nExito en la transaccion");
+		return new Message(true, "El usuario ha sido modificado satisfactoriamente");
 	}
 	
 	public void endConnection() throws SQLException {
