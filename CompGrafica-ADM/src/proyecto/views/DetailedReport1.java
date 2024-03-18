@@ -17,12 +17,12 @@ import proyecto.utils.SetImageLabel;
  *
  * @author juan
  */
-public class DetailedReport extends javax.swing.JFrame {
+public class DetailedReport1 extends javax.swing.JFrame {
 
     /**
      * Creates new form ReportGeneration
      */
-    public DetailedReport() {
+    public DetailedReport1() {
         initComponents();
     }
 
@@ -35,15 +35,19 @@ public class DetailedReport extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        reportBodyLabel = new javax.swing.JLabel();
+        generateReportLabel1 = new javax.swing.JLabel();
+        reporterInfo = new javax.swing.JLabel();
+        reporterReference = new javax.swing.JLabel();
+        dateInfo = new javax.swing.JLabel();
+        reportTitleInfo = new javax.swing.JLabel();
         uploadReportButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        reportTitleTextfield = new javax.swing.JTextField();
-        telephoneField = new javax.swing.JTextField();
         telephoneLabel = new javax.swing.JLabel();
-        reportTypeCombo = new javax.swing.JComboBox<>();
-        reportTitleLabel = new javax.swing.JLabel();
+        telephoneInfo = new javax.swing.JLabel();
+        reportTypeInfo = new javax.swing.JLabel();
         reportTypeLabel = new javax.swing.JLabel();
         generateReportLabel = new javax.swing.JLabel();
         logOutIconButton = new javax.swing.JButton();
@@ -52,26 +56,51 @@ public class DetailedReport extends javax.swing.JFrame {
         profileIcon = new javax.swing.JLabel();
         logoPicButton = new javax.swing.JButton();
         logoPic = new javax.swing.JLabel();
+        creamContainer2 = new javax.swing.JLabel();
         creamContainer = new javax.swing.JLabel();
         waveBg = new javax.swing.JLabel();
         BlueBackGround = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Generar Reporte");
+        setTitle("Vista Detallada Reporte");
         setResizable(false);
         setSize(new java.awt.Dimension(961, 540));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        reportBodyLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        reportBodyLabel.setForeground(Colors.darkBlue);
-        reportBodyLabel.setText("Cuerpo del reporte");
-        reportBodyLabel.setPreferredSize(new java.awt.Dimension(136, 23));
-        getContentPane().add(reportBodyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        generateReportLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        generateReportLabel1.setForeground(Colors.darkBlue);
+        generateReportLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        generateReportLabel1.setText("Respuesta del Reporte");
+        getContentPane().add(generateReportLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 155, -1, -1));
+
+        reporterInfo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        reporterInfo.setForeground(Colors.darkBlue);
+        reporterInfo.setText("REPORTER_INFO");
+        reporterInfo.setPreferredSize(new java.awt.Dimension(500, 23));
+        getContentPane().add(reporterInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 270, -1));
+
+        reporterReference.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        reporterReference.setForeground(Colors.darkBlue);
+        reporterReference.setText("De:");
+        reporterReference.setPreferredSize(new java.awt.Dimension(500, 23));
+        getContentPane().add(reporterReference, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 30, -1));
+
+        dateInfo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        dateInfo.setForeground(Colors.darkBlue);
+        dateInfo.setText("DATE_INFO");
+        dateInfo.setPreferredSize(new java.awt.Dimension(500, 23));
+        getContentPane().add(dateInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 210, -1));
+
+        reportTitleInfo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        reportTitleInfo.setForeground(Colors.darkBlue);
+        reportTitleInfo.setText("REPORT_TITLE");
+        reportTitleInfo.setPreferredSize(new java.awt.Dimension(500, 23));
+        getContentPane().add(reportTitleInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 350, -1));
 
         uploadReportButton.setBackground(Colors.darkBlue);
         uploadReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         uploadReportButton.setForeground(Colors.creamWhiteText);
-        uploadReportButton.setText("SUBIR REPORTE");
+        uploadReportButton.setText("RESPONDER REPORTE");
         uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadReportButton.setFocusable(false);
         uploadReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
@@ -82,76 +111,75 @@ public class DetailedReport extends javax.swing.JFrame {
                 uploadReportButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
+        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, 170, -1));
 
-        jScrollPane2.setBackground(new java.awt.Color(153, 51, 0, 0));
+        jScrollPane3.setBackground(Colors.creamWhiteText);
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(Colors.darkBlue));
+        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(749, 105));
+
+        jTextArea3.setBackground(Colors.creamWhiteText);
+        jTextArea3.setColumns(20);
+        jTextArea3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jTextArea3.setForeground(Colors.darkBlue);
+        jTextArea3.setRows(5);
+        jTextArea3.setWrapStyleWord(true);
+        jTextArea3.setCaretPosition(0);
+        jTextArea3.setDisabledTextColor(Colors.darkBlue);
+        jTextArea3.setMargin(new java.awt.Insets(2, 10, 2, 2));
+        jScrollPane3.setViewportView(jTextArea3);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 200, 220, 190));
+
+        jScrollPane2.setBackground(Colors.creamWhiteText);
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(Colors.darkBlue));
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setFocusable(false);
         jScrollPane2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jScrollPane2.setOpaque(false);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(749, 105));
 
-        jTextArea2.setBackground(Colors.creamWhite);
+        jTextArea2.setBackground(Colors.creamWhiteText);
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jTextArea2.setForeground(Colors.darkBlue);
         jTextArea2.setRows(5);
+        jTextArea2.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in nisl non dolor laoreet rhoncus nec a lacus. Curabitur facilisis faucibus odio. Phasellus ut magna sit amet nulla venenatis pretium. Nunc efficitur neque nec consequat convallis. Vivamus id congue sem. Donec euismod lectus ac ligula mattis convallis. Nam aliquet scelerisque enim, sed pulvinar urna facilisis vel. Ut eget justo tempor, volutpat arcu a, sollicitudin mi. Ut et volutpat augue. Quisque gravida odio sit amet mauris cursus aliquet. Nunc dolor turpis, suscipit a suscipit vitae, interdum sit amet enim. Vivamus eu odio non augue tempor laoreet vitae non tellus. Curabitur rhoncus dolor ante, eu fringilla libero hendrerit ac. In massa ante, maximus vel tincidunt bibendum, dignissim sed turpis.\n\nVivamus eleifend egestas lorem vel placerat. Mauris sagittis nunc sit amet nunc mattis venenatis. Donec dictum laoreet dolor sed condimentum. Pellentesque vel gravida massa, congue dignissim tellus. Praesent arcu arcu, imperdiet vitae nisi in, accumsan ultrices lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra, elit sit amet feugiat consectetur, est justo ornare justo, eu finibus augue sem non neque. Aliquam ac massa commodo, semper justo vitae, tincidunt dolor. Morbi pellentesque enim nisi, vitae facilisis sem convallis viverra. Mauris condimentum porta ex a tincidunt. Sed nec felis urna. Praesent mollis ante mi, at interdum sem mattis id. Duis at nunc suscipit, facilisis elit vitae, suscipit justo.\n\nEtiam facilisis nulla ut posuere vulputate. Quisque congue mollis tellus, vel dignissim nulla maximus sed. Pellentesque in rutrum diam. Proin gravida in libero cursus euismod. Nam sit amet sapien pellentesque, rhoncus orci rutrum, gravida augue. Nunc nec lorem fermentum sapien viverra interdum. Integer ultricies porta enim, eget sollicitudin neque lacinia vitae. Duis et ultrices lorem. Morbi auctor, nunc porta blandit lacinia, justo nulla placerat urna, cursus vulputate ipsum odio eu diam. Donec risus sapien, venenatis ut mi vel, finibus congue lorem. Etiam commodo nisi ac tempus sagittis.\n\nAliquam rhoncus nec dui et ultricies. Aliquam pulvinar blandit lacinia. Etiam in faucibus tortor, et bibendum tellus. Vivamus aliquam lorem dictum eros viverra, vel tristique mi dignissim. Ut viverra dui vel turpis suscipit eleifend at non ipsum. Sed venenatis rhoncus auctor. Integer facilisis cursus massa sed imperdiet. Phasellus sagittis quam in eleifend viverra. Sed id magna at nunc vestibulum imperdiet nec interdum ligula. Donec congue iaculis nulla sed sagittis. Cras et congue diam.\n\nDuis euismod neque et imperdiet imperdiet. Nunc rutrum ipsum dui. Nullam porta purus dapibus, tristique risus sit amet, hendrerit tellus. Duis rhoncus magna gravida, pulvinar arcu nec, dapibus urna. Sed pharetra justo eget ex vulputate consequat. Quisque congue neque quis ante rutrum viverra. Ut diam mi, ultrices id massa vitae, auctor maximus ex. Nunc congue, libero bibendum mattis maximus, metus magna sagittis dui, ut lacinia tellus sapien placerat nisl. Aenean eleifend velit id blandit feugiat. Morbi elementum ex ex, vitae sodales risus imperdiet vel. Ut lorem enim, ultricies id nulla nec, malesuada tempor odio. Sed elit lorem, dignissim eu posuere vitae, laoreet ut ligula. ");
+        jTextArea2.setCaretPosition(0);
+        jTextArea2.setDisabledTextColor(Colors.darkBlue);
+        jTextArea2.setEnabled(false);
         jTextArea2.setMargin(new java.awt.Insets(2, 10, 2, 2));
         jScrollPane2.setViewportView(jTextArea2);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
-
-        Border line = javax.swing.BorderFactory.createLineBorder(Colors.darkBlue);
-        Border empty = new EmptyBorder(2, 5, 2, 2);
-        CompoundBorder border = new CompoundBorder(line, empty);
-        reportTitleTextfield.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        reportTitleTextfield.setForeground(Colors.darkBlue);
-        reportTitleTextfield.setBorder(border);
-        reportTitleTextfield.setOpaque(false);
-        reportTitleTextfield.setPreferredSize(new java.awt.Dimension(169, 23));
-        reportTitleTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reportTitleTextfieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(reportTitleTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 235, -1, -1));
-
-        telephoneField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        telephoneField.setForeground(Colors.darkBlue);
-        telephoneField.setBorder(border);
-        telephoneField.setOpaque(false);
-        telephoneField.setPreferredSize(new java.awt.Dimension(250, 23));
-        getContentPane().add(telephoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 235, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 580, 140));
 
         telephoneLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         telephoneLabel.setForeground(Colors.darkBlue);
-        telephoneLabel.setText("Número de teléfono de contacto");
-        getContentPane().add(telephoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
+        telephoneLabel.setText("Número de teléfono de contacto:");
+        getContentPane().add(telephoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
-        reportTypeCombo.setBackground(Colors.creamWhite);
-        reportTypeCombo.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        reportTypeCombo.setForeground(Colors.darkBlue);
-        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo de reporte" }));
-        reportTypeCombo.setFocusable(false);
-        reportTypeCombo.setOpaque(false);
-        reportTypeCombo.setPreferredSize(new java.awt.Dimension(169, 23));
-        getContentPane().add(reportTypeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 235, -1, -1));
+        telephoneInfo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        telephoneInfo.setForeground(Colors.darkBlue);
+        telephoneInfo.setText("TELEPHONE_INFO");
+        telephoneInfo.setPreferredSize(new java.awt.Dimension(250, 17));
+        getContentPane().add(telephoneInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
-        reportTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        reportTitleLabel.setForeground(Colors.darkBlue);
-        reportTitleLabel.setText("Título de reporte:");
-        getContentPane().add(reportTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
+        reportTypeInfo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        reportTypeInfo.setForeground(Colors.darkBlue);
+        reportTypeInfo.setText("REPORT_TYPE");
+        reportTypeInfo.setPreferredSize(new java.awt.Dimension(250, 17));
+        getContentPane().add(reportTypeInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         reportTypeLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         reportTypeLabel.setForeground(Colors.darkBlue);
         reportTypeLabel.setText("Tipo de reporte:");
-        getContentPane().add(reportTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
+        getContentPane().add(reportTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         generateReportLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         generateReportLabel.setForeground(Colors.darkBlue);
-        generateReportLabel.setText("Generación de Reportes");
-        getContentPane().add(generateReportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 150, -1, -1));
+        generateReportLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        generateReportLabel.setText("Reporte");
+        getContentPane().add(generateReportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
 
         logOutIconButton.setBorderPainted(false);
         logOutIconButton.setContentAreaFilled(false);
@@ -205,9 +233,16 @@ public class DetailedReport extends javax.swing.JFrame {
         new SetImageLabel().SetImage(logoPic, "/resources/Logo3.png");
         getContentPane().add(logoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
 
+        creamContainer2.setBackground(Colors.creamWhite);
+        creamContainer2.setBorder(new RoundedLineBorder(Colors.creamWhite, 1, 50, true));
+        creamContainer2.setPreferredSize(new java.awt.Dimension(249, 346));
+        creamContainer2.setRequestFocusEnabled(false);
+        getContentPane().add(creamContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 135, -1, -1));
+
         creamContainer.setBackground(Colors.creamWhite);
         creamContainer.setBorder(new RoundedLineBorder(Colors.creamWhite, 1, 50, true));
-        creamContainer.setPreferredSize(new java.awt.Dimension(884, 346));
+        creamContainer.setPreferredSize(new java.awt.Dimension(625, 346));
+        creamContainer.setRequestFocusEnabled(false);
         getContentPane().add(creamContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 135, -1, -1));
 
         waveBg.setPreferredSize(new java.awt.Dimension(961, 540));
@@ -247,10 +282,6 @@ public class DetailedReport extends javax.swing.JFrame {
         System.out.println("Log Out Button");        // TODO add your handling code here:
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
-    private void reportTitleTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportTitleTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_reportTitleTextfieldActionPerformed
-
     private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
         System.out.println("");        // TODO add your handling code here:
     }//GEN-LAST:event_uploadReportButtonActionPerformed
@@ -259,40 +290,12 @@ public class DetailedReport extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DetailedReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DetailedReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DetailedReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DetailedReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+ 
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetailedReport().setVisible(true);
+                new DetailedReport1().setVisible(true);
             }
         });
     }
@@ -300,21 +303,26 @@ public class DetailedReport extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BlueBackGround;
     private javax.swing.JLabel creamContainer;
+    private javax.swing.JLabel creamContainer2;
+    private javax.swing.JLabel dateInfo;
     private javax.swing.JLabel generateReportLabel;
+    private javax.swing.JLabel generateReportLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel logOutIcon;
     private javax.swing.JButton logOutIconButton;
     private javax.swing.JLabel logoPic;
     private javax.swing.JButton logoPicButton;
     private javax.swing.JLabel profileIcon;
     private javax.swing.JButton profileIconButton;
-    private javax.swing.JLabel reportBodyLabel;
-    private javax.swing.JLabel reportTitleLabel;
-    private javax.swing.JTextField reportTitleTextfield;
-    private javax.swing.JComboBox<String> reportTypeCombo;
+    private javax.swing.JLabel reportTitleInfo;
+    private javax.swing.JLabel reportTypeInfo;
     private javax.swing.JLabel reportTypeLabel;
-    private javax.swing.JTextField telephoneField;
+    private javax.swing.JLabel reporterInfo;
+    private javax.swing.JLabel reporterReference;
+    private javax.swing.JLabel telephoneInfo;
     private javax.swing.JLabel telephoneLabel;
     private javax.swing.JButton uploadReportButton;
     private javax.swing.JLabel waveBg;

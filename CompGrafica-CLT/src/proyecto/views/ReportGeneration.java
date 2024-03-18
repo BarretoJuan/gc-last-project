@@ -118,19 +118,19 @@ public class ReportGeneration extends javax.swing.JFrame {
                 reportTitleTextfieldActionPerformed(evt);
             }
         });
-        getContentPane().add(reportTitleTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 235, -1, -1));
+        getContentPane().add(reportTitleTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 235, 390, -1));
 
         telephoneField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         telephoneField.setForeground(Colors.darkBlue);
         telephoneField.setBorder(border);
         telephoneField.setOpaque(false);
         telephoneField.setPreferredSize(new java.awt.Dimension(250, 23));
-        getContentPane().add(telephoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 235, -1, -1));
+        getContentPane().add(telephoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 235, 160, -1));
 
         telephoneLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         telephoneLabel.setForeground(Colors.darkBlue);
-        telephoneLabel.setText("Número de teléfono de contacto");
-        getContentPane().add(telephoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
+        telephoneLabel.setText("Teléfono de contacto:");
+        getContentPane().add(telephoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, -1, -1));
 
         reportTypeCombo.setBackground(Colors.creamWhite);
         reportTypeCombo.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
