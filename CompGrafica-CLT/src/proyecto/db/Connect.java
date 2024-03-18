@@ -31,6 +31,55 @@ public class Connect {
 		}
 	}
 	
+	public int executeCallableStatement(CallableStatement statement) {
+		try {
+			statement.execute();
+		} 
+		catch (SQLException e) {
+			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
+			return -1;
+		}
+		
+		int response = 0;
+		try {
+			// retrieves the return value
+			response = statement.getInt(1);
+		} 
+		catch (SQLException e) {
+			System.err.print("ERROR OBTENIENDO EL VALOR DE RETORNO");
+			return -1;
+		}
+		
+		try {
+			statement.close();
+		} 
+		catch (SQLException e) {
+			System.err.print("ERROR CERRANDO EL PROCEDIMIENTO");
+		}
+		return response;
+	}
+
+	public int loginUser(String query, String username, String passwordHash) throws SQLException {
+		CallableStatement statement;
+		try {
+			 statement = handler.prepareCall(query);
+			 // prepares the return value, specifying that it'll be an int
+			 statement.registerOutParameter(1, Types.INTEGER);
+			// prepares the first parameter, specifying that it will be an int and gives 0 as its value
+			 statement.setString(2, username);
+			 statement.setString(3, passwordHash);
+		} 
+		catch (SQLException e) { 
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			return -1;
+		}
+		
+		int response = executeCallableStatement(statement);
+		
+		statement.close();
+		return response;
+	}
+	
 	public int insertUser(
 		String query, String name, String ci, String passwordHash, String username, String email
 	) 
@@ -52,23 +101,7 @@ public class Connect {
 			return -1;
 		}
 		
-		try {
-			statement.execute();
-		} 
-		catch (SQLException e) {
-			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
-			return -1;
-		}
-		
-		int response = 0;
-		try {
-			// retrieves the return value
-			response = statement.getInt(1);
-		} 
-		catch (SQLException e) {
-			System.err.print("ERROR OBTENIENDO EL VALOR DE RETORNO");
-			return -1;
-		}
+		int response = executeCallableStatement(statement);
 		
 		statement.close();
 		return response;
@@ -83,7 +116,7 @@ public class Connect {
 			 statement = handler.prepareCall(query);
 			 // prepares the return value, specifying that it'll be an int
 			 statement.registerOutParameter(1, Types.INTEGER);
-			// prepares the first parameter, specifying that it will be an int and gives 0 as its value
+			// prepares the parameters
 			 statement.setInt(2, type);
 			 statement.setString(3, title);
 			 statement.setString(4, body);
@@ -95,25 +128,51 @@ public class Connect {
 			return -1;
 		}
 		
-		try {
-			statement.execute();
-		} 
-		catch (SQLException e) {
-			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
-			return -1;
-		}
-		
-		int response = 0;
-		try {
-			// retrieves the return value
-			response = statement.getInt(1);
-		} 
-		catch (SQLException e) {
-			System.err.print("ERROR OBTENIENDO EL VALOR DE RETORNO");
-			return -1;
-		}
+		int response = executeCallableStatement(statement);
 		
 		statement.close();
+		return response;
+	}
+	
+	public int insertAnswer(String query, String body, int adminId, int userId) throws SQLException {
+		CallableStatement statement;
+		try {
+			 statement = handler.prepareCall(query);
+			 // prepares the return value, specifying that it'll be an int
+			 statement.registerOutParameter(1, Types.INTEGER);
+			// prepares the parameters
+			 statement.setString(2, body);
+			 statement.setInt(3, adminId);
+			 statement.setInt(4, userId);
+		} 
+		catch (SQLException e) { 
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			return -1;
+		}
+		
+		int response = executeCallableStatement(statement);
+		statement.close();
+		
+		return response;
+	}
+	
+	public int deleteReport(String query, int reportId) throws SQLException {
+		CallableStatement statement;
+		try {
+			 statement = handler.prepareCall(query);
+			 // prepares the return value, specifying that it'll be an int
+			 statement.registerOutParameter(1, Types.INTEGER);
+			// prepares the parameters
+			 statement.setInt(2, reportId);
+		} 
+		catch (SQLException e) { 
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			return -1;
+		}
+		
+		int response = executeCallableStatement(statement);
+		statement.close();
+		
 		return response;
 	}
 	

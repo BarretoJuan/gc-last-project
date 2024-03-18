@@ -7,7 +7,7 @@ public class MainLuis {
 	public static void main(String[] args) throws SQLException {
 		// AMO JAVA
 		Caller caller = new Caller();
-		caller.insertReport(0, "titulo 2", "", "04246246432", 1);
+		caller.insertClient("Luis Garrillo", "10448405", "hola", "lgg", "email@gmail.com");
 		caller.endConnection();
 	}
 	
