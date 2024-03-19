@@ -18,12 +18,12 @@ import proyecto.utils.SetImageLabel;
  *
  * @author juan
  */
-public class ReportList extends javax.swing.JFrame {
+public class ReportList1 extends javax.swing.JFrame {
 
     /**
      * Creates new form ReportGeneration
      */
-    public ReportList() {
+    public ReportList1() {
         initComponents();
     }
 
@@ -38,7 +38,6 @@ public class ReportList extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        uploadReportButton = new javax.swing.JButton();
         generateReportLabel = new javax.swing.JLabel();
         generateReportLabel2 = new javax.swing.JLabel();
         logOutIconButton = new javax.swing.JButton();
@@ -88,22 +87,6 @@ public class ReportList extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, 170));
 
-        uploadReportButton.setBackground(Colors.darkBlue);
-        uploadReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        uploadReportButton.setForeground(Colors.creamWhiteText);
-        uploadReportButton.setText("SUBIR REPORTE");
-        uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        uploadReportButton.setFocusable(false);
-        uploadReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
-        uploadReportButton.setMinimumSize(new java.awt.Dimension(135, 36));
-        uploadReportButton.setPreferredSize(new java.awt.Dimension(135, 36));
-        uploadReportButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uploadReportButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
-
         generateReportLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         generateReportLabel.setForeground(Colors.darkBlue);
         generateReportLabel.setText("Seleccione un reporte para ver sus detalles");
@@ -111,8 +94,8 @@ public class ReportList extends javax.swing.JFrame {
 
         generateReportLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         generateReportLabel2.setForeground(Colors.darkBlue);
-        generateReportLabel2.setText("Tus Reportes");
-        getContentPane().add(generateReportLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 149, -1, 20));
+        generateReportLabel2.setText("Reportes Recibidos");
+        getContentPane().add(generateReportLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, 20));
 
         logOutIconButton.setBorderPainted(false);
         logOutIconButton.setContentAreaFilled(false);
@@ -213,10 +196,6 @@ public class ReportList extends javax.swing.JFrame {
         System.out.println("Log Out Button");        // TODO add your handling code here:
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
-    private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
-        System.out.println("");        // TODO add your handling code here:
-    }//GEN-LAST:event_uploadReportButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -226,7 +205,7 @@ public class ReportList extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReportList().setVisible(true);
+                new ReportList1().setVisible(true);
             }
         });
     }
@@ -244,7 +223,6 @@ public class ReportList extends javax.swing.JFrame {
     private javax.swing.JButton logoPicButton;
     private javax.swing.JLabel profileIcon;
     private javax.swing.JButton profileIconButton;
-    private javax.swing.JButton uploadReportButton;
     private javax.swing.JLabel waveBg;
     // End of variables declaration//GEN-END:variables
 }
