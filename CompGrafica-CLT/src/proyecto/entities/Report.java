@@ -8,8 +8,9 @@ public class Report {
 	private String body;
 	private String contactPhone;
 	private int status;
+	private int userID;
 	
-	public Report( int id, String timestamp, int type, String title, String body, String contactPhone, int status) {
+	public Report( int id, String timestamp, int type, String title, String body, String contactPhone, int status, int userId) {
 		this.id = id;
 		this.timestamp = timestamp;
 		this.type = type;
@@ -17,6 +18,7 @@ public class Report {
 		this.body = body;
 		this.contactPhone = contactPhone;
 		this.status = status;
+		this.userID = userId;	
 	}
 
 	public int getId() {

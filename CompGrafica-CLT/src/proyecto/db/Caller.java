@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import proyecto.utils.Message;
 
-import proyecto.entities.Report;
+import proyecto.entities.*;
 import java.util.ArrayList;
 
 public class Caller {
@@ -144,7 +144,8 @@ public class Caller {
 					result.getString(4), 
 					result.getString(5),
 					result.getString(6),
-					result.getInt(7) 
+					result.getInt(7),
+					result.getInt(8)
 				));
 			}
 		}
@@ -154,6 +155,31 @@ public class Caller {
 		}
 		
 		return reports;
+	}
+	
+	public User getUser(String username, boolean admin) throws SQLException {
+		User user = null;
+		ResultSet result = connection.getUser(username, admin);
+		
+		try {
+			while (result.next()) {
+				user = new User(
+						result.getInt(1), 
+						result.getString(2), 
+						result.getString(3), 
+						result.getString(4), 
+						result.getString(5),
+						result.getString(6)
+				);
+			}
+		}
+		catch(SQLException e) {
+			System.err.print("ERROR RECUPERANDO LA INFORMACION");
+			e.printStackTrace();
+		}
+		
+		System.out.print(user.getUsername());
+		return user;
 	}
 	
 	public void endConnection() throws SQLException {

@@ -225,6 +225,34 @@ public class Connect {
 		}
 	}
 	
+	public ResultSet getUser(String username, boolean admin) throws SQLException {
+		PreparedStatement statement;
+		ResultSet result = null;
+		try {
+			if (admin) {
+				statement = handler.prepareStatement("select * from admins where username = ?");
+			}
+			else {
+				statement = handler.prepareStatement("select * from users where username = ?");
+			}
+			statement.setString(1, username);
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			e.printStackTrace();
+			return result;
+		}
+		
+		try {
+			result = statement.executeQuery();
+			return result;
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR EJECUTANDO LA SENTENCIA");
+			return result;
+		}
+	}
+	
 	public void closeConnection() throws SQLException {
 		handler.close();
 	}
