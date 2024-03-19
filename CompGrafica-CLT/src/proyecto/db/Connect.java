@@ -3,8 +3,12 @@ package proyecto.db;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+
+
 
 public class Connect {
 	Connection handler;
@@ -196,6 +200,29 @@ public class Connect {
 		
 		statement.close();
 		return response;
+	}
+	
+	public ResultSet getUserReports(int userId) throws SQLException{
+		PreparedStatement statement;
+		ResultSet result = null;
+		try {
+			statement = handler.prepareStatement("select * from reports where user_id = ?");
+			statement.setInt(1, userId);
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			e.printStackTrace();
+			return result;
+		}
+		
+		try {
+			result = statement.executeQuery();
+			return result;
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR EJECUTANDO LA SENTENCIA");
+			return result;
+		}
 	}
 	
 	public void closeConnection() throws SQLException {

@@ -1,7 +1,11 @@
 package proyecto.db;
 
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import proyecto.utils.Message;
+
+import proyecto.entities.Report;
+import java.util.ArrayList;
 
 public class Caller {
 	private Connect connection;
@@ -125,6 +129,31 @@ public class Caller {
 		
 		System.out.print("\nExito en la transaccion");
 		return new Message(true, "El usuario ha sido modificado satisfactoriamente");
+	}
+	
+	public ArrayList<Report> getUserReports(int userId) throws SQLException {
+		ArrayList<Report> reports = new ArrayList<Report>();
+		ResultSet result = connection.getUserReports(userId);
+		
+		try {
+			while (result.next()) {
+				reports.add(new Report(
+					result.getInt(1), 
+					result.getString(2), 
+					result.getInt(3), 
+					result.getString(4), 
+					result.getString(5),
+					result.getString(6),
+					result.getInt(7) 
+				));
+			}
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR RECUPERANDO LA INFORMACION");
+			e.printStackTrace();
+		}
+		
+		return reports;
 	}
 	
 	public void endConnection() throws SQLException {
