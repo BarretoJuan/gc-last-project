@@ -266,7 +266,12 @@ public class ReportList extends javax.swing.JFrame {
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
     private void jTable1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        System.out.println(jTable1.getValueAt(jTable1.getSelectedRow(),0));
+        Object id = jTable1.getValueAt(jTable1.getSelectedRow(),0);
+        String idStr = id.toString();
+        int intId = Integer.parseInt(idStr);
+        dispose();
+        new DetailedReport2(intId).setVisible(true);
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

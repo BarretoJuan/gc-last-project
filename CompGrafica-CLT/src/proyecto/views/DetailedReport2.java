@@ -9,6 +9,8 @@ import java.awt.Dimension;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.db.Caller;
+import proyecto.entities.DetailedReport;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
@@ -17,13 +19,31 @@ import proyecto.utils.SetImageLabel;
  *
  * @author juan
  */
-public class DetailedReport extends javax.swing.JFrame {
-
+public class DetailedReport2 extends javax.swing.JFrame {
+    private int id;
     /**
      * Creates new form ReportGeneration
      */
-    public DetailedReport() {
+    public DetailedReport2(int id) {
+        this.id = id;
+        DetailedReport report = new Caller().getDetailedReport(id);
         initComponents();
+        telephoneInfo.setText(report.getContact_phone());
+        
+        //beware
+        int type = report.getReportType();
+        String typeStr = String.valueOf(type);
+        
+        reportTypeInfo.setText(typeStr);
+        reportTitleInfo.setText(report.getReportTitle());
+        dateInfo.setText(report.getReportTimestamp());
+        jTextArea2.setText(report.getReportBodyText());
+        jTextArea3.setText(report.getAnswerBodyText());
+        answerInfo.setText(report.getAdminName());
+        dateInfo2.setText(report.getAnswerTimestamp());
+        reporterInfo.setText(report.getReportAuthor());
+        
+        
     }
 
     /**
@@ -311,19 +331,7 @@ public class DetailedReport extends javax.swing.JFrame {
         System.out.println("");        // TODO add your handling code here:
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
- 
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DetailedReport().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BlueBackGround;
