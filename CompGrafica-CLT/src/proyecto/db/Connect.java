@@ -70,8 +70,8 @@ public class Connect {
 			 // prepares the return value, specifying that it'll be an int
 			 statement.registerOutParameter(1, Types.INTEGER);
 			// prepares the first parameter, specifying that it will be an int and gives 0 as its value
-			 statement.setString(2, username);
-			 statement.setString(3, passwordHash);
+			 statement.setString(2, passwordHash);
+			 statement.setString(3, username);
 		} 
 		catch (SQLException e) { 
 			System.err.print("ERROR PREPARANDO LA SENTENCIA");
