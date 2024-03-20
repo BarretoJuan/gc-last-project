@@ -1,6 +1,9 @@
 package proyecto.views;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -9,6 +12,10 @@ import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
+import proyecto.db.*;
+import proyecto.db.Hasher;
+import static proyecto.db.Hasher.hash;
+import proyecto.utils.Message;
 
 
 public class Login extends javax.swing.JFrame {
@@ -22,6 +29,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         logoPic = new javax.swing.JLabel();
+        loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         registerLabel = new javax.swing.JLabel();
         passwordIcon = new javax.swing.JLabel();
@@ -48,6 +56,24 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(logoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
         logoPic.setSize(249,167);
         new SetImageLabel().SetImage(logoPic, "/resources/Logo1.png");
+
+        loginButton.setBackground(Colors.darkBlue);
+        loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        loginButton.setForeground(Colors.creamWhiteText);
+        loginButton.setText("Iniciar Sesión");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setFocusable(false);
+        loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        loginButton.setIconTextGap(1);
+        loginButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        loginButton.setPreferredSize(new java.awt.Dimension(33, 28));
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        registerButton.setSize(50,28);
+        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 100, 28));
 
         registerButton.setBackground(Colors.creamWhite);
         registerButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -160,11 +186,11 @@ public class Login extends javax.swing.JFrame {
         panelFondoAzul.setLayout(panelFondoAzulLayout);
         panelFondoAzulLayout.setHorizontalGroup(
             panelFondoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelFondoAzulLayout.setVerticalGroup(
             panelFondoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         getContentPane().add(panelFondoAzul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 600));
@@ -188,6 +214,29 @@ public class Login extends javax.swing.JFrame {
         r1.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_registerButtonActionPerformed
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        char[] passwordArray = passwordField.getPassword();
+        String password = String.valueOf(passwordArray);
+        String hashedPassword = hash(password);
+        String username = usernameField.getText();
+        
+        System.out.println(username);
+        System.out.println(hashedPassword);
+        Message response = null;
+        try {
+            response = new Caller().loginUser(username, hashedPassword, false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (response.getStatus() == true) {
+            dispose();
+            // Implement session
+            ReportList r1 = new ReportList();
+            r1.setVisible(true);
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
   
 
 
@@ -195,6 +244,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JLabel creamContainer;
     private javax.swing.JLabel inicioClienteLabel;
+    private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;
     private javax.swing.JPanel panelFondoAzul;
     private javax.swing.JPasswordField passwordField;
