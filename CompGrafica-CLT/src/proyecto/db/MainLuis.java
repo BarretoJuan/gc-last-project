@@ -7,7 +7,7 @@ public class MainLuis {
 	public static void main(String[] args) throws SQLException {
 		// AMO JAVA
 		Caller caller = new Caller();
-		caller.deleteReport(3);
+		caller.insertAnswer("malisimo", 2, 2);
 		caller.endConnection();
 	}
 	

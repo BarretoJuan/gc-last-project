@@ -29,11 +29,8 @@ public class Caller {
 		if (response == -1) {
 			return new Message(false, "ERROR INTERNO");
 		}
-		else if (response == 1) {
-			return new Message(false, "El nombre de usuario ingresado no corresponde a ninguna cuenta");
-		}
-		else if (response == 2) {
-			return new Message(false, "Contraseña incorrecta");
+		else if (response == 1 || response == 2) {
+			return new Message(false, "El nombre de usuario o la contrasena son incorrectos");
 		}
 		
 		System.out.print("\nExito en la transaccion");
