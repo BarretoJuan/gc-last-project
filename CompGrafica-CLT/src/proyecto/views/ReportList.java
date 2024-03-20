@@ -5,26 +5,50 @@
  */
 package proyecto.views;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import proyecto.entities.Report;
+import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
-
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.WindowConstants;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
+import proyecto.db.Caller;
 /**
  *
  * @author juan
  */
 public class ReportList extends javax.swing.JFrame {
-
+    private User user;
     /**
      * Creates new form ReportGeneration
      */
-    public ReportList() {
+    public ReportList(User user) throws SQLException {
+        this.user = user;
         initComponents();
+
     }
 
     /**
@@ -36,215 +60,234 @@ public class ReportList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        uploadReportButton = new javax.swing.JButton();
-        generateReportLabel = new javax.swing.JLabel();
-        generateReportLabel2 = new javax.swing.JLabel();
-        logOutIconButton = new javax.swing.JButton();
-        logOutIcon = new javax.swing.JLabel();
-        profileIconButton = new javax.swing.JButton();
-        profileIcon = new javax.swing.JLabel();
-        logoPicButton = new javax.swing.JButton();
-        logoPic = new javax.swing.JLabel();
-        creamContainer = new javax.swing.JLabel();
-        BlueBackGround = new javax.swing.JPanel();
-        waveBg = new javax.swing.JLabel();
+        jScrollPane1 = new JScrollPane();
+        jTable1 = new JTable();
+        uploadReportButton = new JButton();
+        generateReportLabel = new JLabel();
+        generateReportLabel2 = new JLabel();
+        logOutIconButton = new JButton();
+        logOutIcon = new JLabel();
+        profileIconButton = new JButton();
+        profileIcon = new JLabel();
+        logoPicButton = new JButton();
+        logoPic = new JLabel();
+        creamContainer = new JLabel();
+        BlueBackGround = new JPanel();
+        waveBg = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generar Reporte");
         setResizable(false);
-        setSize(new java.awt.Dimension(961, 540));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setSize(new Dimension(961, 540));
+        getContentPane().setLayout(new AbsoluteLayout());
 
         jScrollPane1.setBackground(Colors.creamWhiteText);
-        jScrollPane1.setBorder(null);
         jScrollPane1.setForeground(Colors.darkBlue);
 
         jTable1.setBackground(Colors.creamWhiteText);
         jTable1.setForeground(Colors.darkBlue);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel()
+        jTable1.setModel(new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }}
         );
-        DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.addColumn("ID");
         model.addColumn("Fecha de envío");
         model.addColumn("Tipo de reporte");
         model.addColumn("Título del reporte");
         model.addColumn("Estado");
-        model.addRow(new Object[] {"TEST1","TEST1","TEST1","AAAA"});
-        model.addRow(new Object[] {"TEST1","TEST1","TEST1","AABAA"});
-        model.addRow(new Object[] {"TEST1","TEST1","TEST1","AABAA"});
-        model.addRow(new Object[] {"TEST1","TEST1","TEST1","AAAA"});
-        model.addRow(new Object[] {"TEST1","TEST1","TEST1","AACAA"});
-        model.addRow(new Object[] {"TEST1","TEST1","TEST1","AADAA"});
-        model.addRow(new Object[] {"TEST1","TEST1","TEST1","AAADA"});
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setWidth(0);
+
+        ArrayList<Report> reports = new Caller().getUserReports(user.getId());
+        System.out.println(user.getId()+"jojo");
+        for (Report report : reports) {
+            String statusStr = null;
+            System.out.println("JAJA"+report);
+            System.out.println("JUJU"+model);
+            if (report.getStatus() == 1 || report.getStatus() == 0) {
+
+                if(report.getStatus() == 1) {
+                    statusStr = "Respondido";
+                }
+                else if (report.getStatus() == 0 ){
+                    statusStr = "No Respondido";
+                }
+                model.addRow(new Object[] {report.getId(),report.getTimestamp(), report.getType(), report.getTitle(), statusStr});
+            }
+
+        }
         jTable1.setGridColor(Colors.darkBlue);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.getTableHeader().setForeground(Colors.darkBlue);
         jTable1.getTableHeader().setBackground(Colors.creamWhiteText);
+        jTable1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jScrollPane1.getViewport().setBackground(Colors.creamWhiteText);
         jScrollPane1.getViewport().setOpaque(true);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, 170));
+        getContentPane().add(jScrollPane1, new AbsoluteConstraints(260, 230, -1, 170));
 
         uploadReportButton.setBackground(Colors.darkBlue);
-        uploadReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        uploadReportButton.setFont(new Font("Arial", 1, 12)); // NOI18N
         uploadReportButton.setForeground(Colors.creamWhiteText);
         uploadReportButton.setText("SUBIR REPORTE");
-        uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uploadReportButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         uploadReportButton.setFocusable(false);
-        uploadReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
-        uploadReportButton.setMinimumSize(new java.awt.Dimension(135, 36));
-        uploadReportButton.setPreferredSize(new java.awt.Dimension(135, 36));
-        uploadReportButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        uploadReportButton.setMaximumSize(new Dimension(135, 36));
+        uploadReportButton.setMinimumSize(new Dimension(135, 36));
+        uploadReportButton.setPreferredSize(new Dimension(135, 36));
+        uploadReportButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 uploadReportButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
+        getContentPane().add(uploadReportButton, new AbsoluteConstraints(410, 430, -1, -1));
 
-        generateReportLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        generateReportLabel.setFont(new Font("Arial", 1, 24)); // NOI18N
         generateReportLabel.setForeground(Colors.darkBlue);
         generateReportLabel.setText("Seleccione un reporte para ver sus detalles");
-        getContentPane().add(generateReportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
+        getContentPane().add(generateReportLabel, new AbsoluteConstraints(230, 180, -1, -1));
 
-        generateReportLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        generateReportLabel2.setFont(new Font("Arial", 1, 24)); // NOI18N
         generateReportLabel2.setForeground(Colors.darkBlue);
         generateReportLabel2.setText("Tus Reportes");
-        getContentPane().add(generateReportLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 149, -1, 20));
+        getContentPane().add(generateReportLabel2, new AbsoluteConstraints(400, 149, -1, 20));
 
         logOutIconButton.setBorderPainted(false);
         logOutIconButton.setContentAreaFilled(false);
-        logOutIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logOutIconButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         logOutIconButton.setFocusable(false);
-        logOutIconButton.setPreferredSize(new java.awt.Dimension(70, 84));
-        logOutIconButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        logOutIconButton.setPreferredSize(new Dimension(70, 84));
+        logOutIconButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 logOutIconButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(logOutIconButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, -1, -1));
+        getContentPane().add(logOutIconButton, new AbsoluteConstraints(830, 20, -1, -1));
 
-        logOutIcon.setPreferredSize(new java.awt.Dimension(70, 84));
+        logOutIcon.setPreferredSize(new Dimension(70, 84));
         logOutIcon.setSize(70,84);
         new SetImageLabel().SetImage(logOutIcon, "/resources/LogOut.png");
-        getContentPane().add(logOutIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, -1, -1));
+        getContentPane().add(logOutIcon, new AbsoluteConstraints(830, 20, -1, -1));
 
         profileIconButton.setBorderPainted(false);
         profileIconButton.setContentAreaFilled(false);
-        profileIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        profileIconButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         profileIconButton.setFocusable(false);
-        profileIconButton.setPreferredSize(new java.awt.Dimension(70, 84));
-        profileIconButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        profileIconButton.setPreferredSize(new Dimension(70, 84));
+        profileIconButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 profileIconButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(profileIconButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        getContentPane().add(profileIconButton, new AbsoluteConstraints(730, 20, -1, -1));
 
-        profileIcon.setPreferredSize(new java.awt.Dimension(70, 84));
+        profileIcon.setPreferredSize(new Dimension(70, 84));
         profileIcon.setSize(70,84);
         new SetImageLabel().SetImage(profileIcon, "/resources/EditProfile.png");
-        getContentPane().add(profileIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        getContentPane().add(profileIcon, new AbsoluteConstraints(730, 20, -1, -1));
 
-        logoPicButton.setBackground(new java.awt.Color(255, 153, 0, 0));
+        logoPicButton.setBackground(new Color(255, 153, 0, 0));
         logoPicButton.setBorderPainted(false);
         logoPicButton.setContentAreaFilled(false);
-        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoPicButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         logoPicButton.setFocusable(false);
-        logoPicButton.setPreferredSize(new java.awt.Dimension(375, 130));
-        logoPicButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        logoPicButton.setPreferredSize(new Dimension(375, 130));
+        logoPicButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 logoPicButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(logoPicButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
+        getContentPane().add(logoPicButton, new AbsoluteConstraints(40, 0, -1, -1));
 
-        logoPic.setPreferredSize(new java.awt.Dimension(375, 130));
+        logoPic.setPreferredSize(new Dimension(375, 130));
         logoPic.setSize(375, 130);
         new SetImageLabel().SetImage(logoPic, "/resources/Logo3.png");
-        getContentPane().add(logoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
+        getContentPane().add(logoPic, new AbsoluteConstraints(40, 0, -1, -1));
 
         creamContainer.setBackground(Colors.creamWhite);
         creamContainer.setBorder(new RoundedLineBorder(Colors.creamWhite, 1, 50, true));
-        creamContainer.setPreferredSize(new java.awt.Dimension(884, 346));
-        getContentPane().add(creamContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 135, -1, -1));
+        creamContainer.setPreferredSize(new Dimension(884, 346));
+        getContentPane().add(creamContainer, new AbsoluteConstraints(37, 135, -1, -1));
 
         BlueBackGround.setBackground(Colors.darkBlue);
-        BlueBackGround.setPreferredSize(new java.awt.Dimension(961, 540));
+        BlueBackGround.setPreferredSize(new Dimension(961, 540));
 
-        waveBg.setPreferredSize(new java.awt.Dimension(961, 540));
+        waveBg.setPreferredSize(new Dimension(961, 540));
         waveBg.setSize(new Dimension(961,540));
         new SetImageLabel().SetImage(waveBg, "/resources/BgBig.png");
 
-        javax.swing.GroupLayout BlueBackGroundLayout = new javax.swing.GroupLayout(BlueBackGround);
+        GroupLayout BlueBackGroundLayout = new GroupLayout(BlueBackGround);
         BlueBackGround.setLayout(BlueBackGroundLayout);
-        BlueBackGroundLayout.setHorizontalGroup(
-            BlueBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        BlueBackGroundLayout.setHorizontalGroup(BlueBackGroundLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(BlueBackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(waveBg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(waveBg, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        BlueBackGroundLayout.setVerticalGroup(
-            BlueBackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        BlueBackGroundLayout.setVerticalGroup(BlueBackGroundLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(BlueBackGroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(waveBg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(waveBg, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(BlueBackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(BlueBackGround, new AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logoPicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
+    private void logoPicButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
         System.out.println("Main menu button");
     }//GEN-LAST:event_logoPicButtonActionPerformed
 
-    private void profileIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileIconButtonActionPerformed
+    private void profileIconButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_profileIconButtonActionPerformed
         System.out.println("Edit profile button action");
     }//GEN-LAST:event_profileIconButtonActionPerformed
 
-    private void logOutIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutIconButtonActionPerformed
+    private void logOutIconButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_logOutIconButtonActionPerformed
         System.out.println("Log Out Button");        // TODO add your handling code here:
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
-    private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
+    private void uploadReportButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
         System.out.println("");        // TODO add your handling code here:
     }//GEN-LAST:event_uploadReportButtonActionPerformed
+
+    private void jTable1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        System.out.println(jTable1.getValueAt(jTable1.getSelectedRow(),0));
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-       
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ReportList().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BlueBackGround;
-    private javax.swing.JLabel creamContainer;
-    private javax.swing.JLabel generateReportLabel;
-    private javax.swing.JLabel generateReportLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel logOutIcon;
-    private javax.swing.JButton logOutIconButton;
-    private javax.swing.JLabel logoPic;
-    private javax.swing.JButton logoPicButton;
-    private javax.swing.JLabel profileIcon;
-    private javax.swing.JButton profileIconButton;
-    private javax.swing.JButton uploadReportButton;
-    private javax.swing.JLabel waveBg;
+    public JPanel BlueBackGround;
+    public JLabel creamContainer;
+    public JLabel generateReportLabel;
+    public JLabel generateReportLabel2;
+    public JScrollPane jScrollPane1;
+    public JTable jTable1;
+    public JLabel logOutIcon;
+    public JButton logOutIconButton;
+    public JLabel logoPic;
+    public JButton logoPicButton;
+    public JLabel profileIcon;
+    public JButton profileIconButton;
+    public JButton uploadReportButton;
+    public JLabel waveBg;
     // End of variables declaration//GEN-END:variables
 }
