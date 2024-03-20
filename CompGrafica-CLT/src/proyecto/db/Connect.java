@@ -254,6 +254,31 @@ public class Connect {
 		}
 	}
 	
+	public ResultSet getDetailedReport(int reportId) {
+		PreparedStatement statement;
+		ResultSet result = null;
+		try {
+			statement = handler.prepareStatement(
+				"select * from reports r inner join answers a on r.id = a.report_id inner join admin ad on ad.id = a.admin_id where r.id = ?"
+			);
+			statement.setInt(1, reportId);
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			e.printStackTrace();
+			return result;
+		}
+		
+		try {
+			result = statement.executeQuery();
+			return result;
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR EJECUTANDO LA SENTENCIA");
+			return result;
+		}
+	}
+	
 	public void closeConnection() throws SQLException {
 		handler.close();
 	}

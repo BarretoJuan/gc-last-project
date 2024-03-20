@@ -128,9 +128,15 @@ public class Caller {
 		return new Message(true, "El usuario ha sido modificado satisfactoriamente");
 	}
 	
-	public ArrayList<Report> getUserReports(int userId) throws SQLException {
+	public ArrayList<Report> getUserReports(int userId) {
 		ArrayList<Report> reports = new ArrayList<Report>();
-		ResultSet result = connection.getUserReports(userId);
+		ResultSet result = null;
+		try {
+			result = connection.getUserReports(userId);
+		}
+		catch (SQLException e) {
+			
+		}
 		
 		try {
 			while (result.next()) {
@@ -177,6 +183,11 @@ public class Caller {
 		
 		System.out.print(user.getUsername());
 		return user;
+	}
+	
+	public Object getDetailedreport(int reportId) {
+		
+		return new Object();
 	}
 	
 	public void endConnection() throws SQLException {
