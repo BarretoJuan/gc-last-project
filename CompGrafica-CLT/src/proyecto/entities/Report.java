@@ -64,7 +64,14 @@ public class Report {
 	public String getContactPhone() {
 		return contactPhone;
 	}
-
+        
+        public void setStatus(int status ) {
+            this.status = status;
+        }
+        
+        public int getStatus() {
+            return status;
+        }
 	public void setContactPhone(String contactPhone) {
 		this.contactPhone = contactPhone;
 	}

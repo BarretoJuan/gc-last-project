@@ -15,6 +15,7 @@ import proyecto.utils.ShowHint;
 import proyecto.db.*;
 import proyecto.db.Hasher;
 import static proyecto.db.Hasher.hash;
+import proyecto.entities.User;
 import proyecto.utils.Message;
 
 
@@ -220,8 +221,6 @@ public class Login extends javax.swing.JFrame {
         String hashedPassword = hash(password);
         String username = usernameField.getText();
         
-        System.out.println(username);
-        System.out.println(hashedPassword);
         Message response = null;
         try {
             response = new Caller().loginUser(username, hashedPassword, false);
@@ -229,11 +228,25 @@ public class Login extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        User user = null;
         if (response.getStatus() == true) {
+            try {
+                user = new Caller().getUser(username, false);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(user);
             dispose();
             // Implement session
-            ReportList r1 = new ReportList();
-            r1.setVisible(true);
+            ReportList r1;
+            try {
+                r1 = new ReportList(user);
+                r1.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
+            
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
