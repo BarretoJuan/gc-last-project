@@ -200,7 +200,8 @@ public class Caller {
 						result.getString(6),
 						result.getString(7), 
 						result.getString(8),
-						result.getString(9)
+						result.getString(9),
+						result.getString(10)
 				);
 			}
 		}
@@ -208,7 +209,7 @@ public class Caller {
 			System.err.print("ERROR RECUPERANDO LA INFORMACION");
 			e.printStackTrace();
 		}
-		System.out.print(detailedReport.getAnswerBodyText());
+		System.out.print(detailedReport.getReportAuthor());
 		return detailedReport;
 	}
 	

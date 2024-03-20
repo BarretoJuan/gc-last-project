@@ -6,19 +6,21 @@ public class DetailedReport {
 	String contact_phone;
 	String reportTitle;
 	String reportTimestamp;
+	String reportAuthor;
 	String reportBodyText;
 	String answerBodyText;
 	String adminName;
 	String answerTimestamp;
 	
 	public DetailedReport(int reportId, int reportType, String contact_phone, String reportTitle,
-			String reportTimestamp, String reportBodyText, String answerBodyText, String adminName,
+			String reportTimestamp, String reportAuthor, String reportBodyText, String answerBodyText, String adminName,
 			String answerTimestamp) {
 		this.reportId = reportId;
 		this.reportType = reportType;
 		this.contact_phone = contact_phone;
 		this.reportTitle = reportTitle;
 		this.reportTimestamp = reportTimestamp;
+		this.reportAuthor = reportAuthor;
 		this.reportBodyText = reportBodyText;
 		this.answerBodyText = answerBodyText;
 		this.adminName = adminName;
@@ -27,6 +29,14 @@ public class DetailedReport {
 
 	public int getReportId() {
 		return reportId;
+	}
+
+	public String getReportAuthor() {
+		return reportAuthor;
+	}
+
+	public void setReportAuthor(String reportAuthor) {
+		this.reportAuthor = reportAuthor;
 	}
 
 	public void setReportId(int reportId) {
