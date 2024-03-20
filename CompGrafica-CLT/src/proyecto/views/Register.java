@@ -1,9 +1,15 @@
 package proyecto.views;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.db.Caller;
+import static proyecto.db.Hasher.hash;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
@@ -323,7 +329,46 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+       String nombre = nameField.getText();
+       
+       int index = jComboBox1.getSelectedIndex();
+       String tipoId=null;
+       if (index == 0) {
+           tipoId = "V";             
+       }
+       else if (index ==1) {
+           tipoId = "E";
+       }
+       
+       String usuario = usernameField.getText();
+       String rawId = cedulaField.getText();
+       String id = tipoId+cedulaField.getText();
+       String email = emailField.getText();
+       
+       char[] passwordArray = passwordField.getPassword();
+       String password = String.valueOf(passwordArray);
+       char[] confirmPasswordArray = repPasswordField.getPassword();
+       String confirmPassword = String.valueOf(confirmPasswordArray);
+
+       if(rawId.isEmpty() || usuario.isEmpty() || email.isEmpty() || nombre.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+           JOptionPane.showMessageDialog(null, "Rellene todos los campos para registrar a un usuario", "Alerta:", JOptionPane.WARNING_MESSAGE);  
+       }
+       else {
+           if (password.equals(confirmPassword)) {
+           String hashedPassword = hash(password);
+           try {
+               new Caller().insertClient(nombre,id,hashedPassword,usuario,email);
+           } catch (SQLException ex) {
+               Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           dispose();
+           new Login().setVisible(true);
+         }
+       else {
+        JOptionPane.showMessageDialog(null, "Las contraseñas ingresadas no coinciden", "Alerta:", JOptionPane.WARNING_MESSAGE);
+       }
+       }
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
