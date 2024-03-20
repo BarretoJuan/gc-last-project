@@ -138,7 +138,7 @@ public class Connect {
 		return response;
 	}
 	
-	public int insertAnswer(String query, String body, int adminId, int userId) throws SQLException {
+	public int insertAnswer(String query, String body, int adminId, int reportId) throws SQLException {
 		CallableStatement statement;
 		try {
 			 statement = handler.prepareCall(query);
@@ -146,11 +146,12 @@ public class Connect {
 			 statement.registerOutParameter(1, Types.INTEGER);
 			// prepares the parameters
 			 statement.setString(2, body);
-			 statement.setInt(3, adminId);
-			 statement.setInt(4, userId);
+			 statement.setInt(3, reportId);
+			 statement.setInt(4, adminId);
 		} 
 		catch (SQLException e) { 
 			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			e.printStackTrace();
 			return -1;
 		}
 		

@@ -76,8 +76,8 @@ public class Caller {
 		return new Message(true, "El reporte ha sido enviado satisfactoriamente");
 	}
 	
-	public Message insertAnswer(String body, int adminId, int userId) throws SQLException {
-		int response = connection.insertAnswer("{ ? = CALL insert_answer(?, ?, ?)", body, adminId, userId);
+	public Message insertAnswer(String body, int adminId, int reportId) throws SQLException {
+		int response = connection.insertAnswer("{ ? = CALL insert_answer(?, ?, ?) }", body, adminId, reportId);
 		
 		System.out.print("\n" + response);
 		if (response == -1) {
@@ -92,7 +92,7 @@ public class Caller {
 	}
 	
 	public Message deleteReport(int reportId) throws SQLException {
-		int response = connection.deleteReport("{ ? = CALL delete_report(?)", reportId);
+		int response = connection.deleteReport("{ ? = CALL delete_report(?) }", reportId);
 		
 		System.out.print("\n" + response);
 		if (response == -1) {
