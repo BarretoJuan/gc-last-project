@@ -1,6 +1,9 @@
 package proyecto.views;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -10,6 +13,9 @@ import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.db.*;
+import proyecto.db.Hasher;
+import static proyecto.db.Hasher.hash;
+import proyecto.utils.Message;
 
 
 public class Login extends javax.swing.JFrame {
@@ -209,8 +215,26 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        char[] passwordArray = passwordField.getPassword();
+        String password = String.valueOf(passwordArray);
+        String hashedPassword = hash(password);
+        String username = usernameField.getText();
         
-        Caller.loginUser();
+        System.out.println(username);
+        System.out.println(hashedPassword);
+        Message response = null;
+        try {
+            response = new Caller().loginUser(username, hashedPassword, false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (response.getStatus() == true) {
+            dispose();
+            // Implement session
+            ReportList r1 = new ReportList();
+            r1.setVisible(true);
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
   
