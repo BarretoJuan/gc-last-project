@@ -259,7 +259,10 @@ public class Connect {
 		ResultSet result = null;
 		try {
 			statement = handler.prepareStatement(
-				"select * from reports r inner join answers a on r.id = a.report_id inner join admin ad on ad.id = a.admin_id where r.id = ?"
+				"select "
+				+ "r.id, r.type, r.contact_phone, r.title, r.timestamp, r.body_text, a.body_text, ad.name, a.timestamp "
+				+ "from reports r left outer join answers a on r.id = a.report_id left outer join admin ad on ad.id = a.admin_id "
+				+ "where r.id = ?"
 			);
 			statement.setInt(1, reportId);
 		}

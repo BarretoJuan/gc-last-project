@@ -135,8 +135,7 @@ public class Caller {
 			result = connection.getUserReports(userId);
 		}
 		catch (SQLException e) {
-			
-		}
+			e.printStackTrace();		}
 		
 		try {
 			while (result.next()) {
@@ -185,9 +184,32 @@ public class Caller {
 		return user;
 	}
 	
-	public Object getDetailedreport(int reportId) {
+	public DetailedReport getDetailedReport(int reportId) {
+		DetailedReport detailedReport = null;
+		ResultSet result = null;
+		result = connection.getDetailedReport(reportId);
 		
-		return new Object();
+		try {
+			while (result.next()) {
+				detailedReport = new DetailedReport(
+						result.getInt(1), 
+						result.getInt(2), 
+						result.getString(3), 
+						result.getString(4), 
+						result.getString(5),
+						result.getString(6),
+						result.getString(7), 
+						result.getString(8),
+						result.getString(9)
+				);
+			}
+		}
+		catch(SQLException e) {
+			System.err.print("ERROR RECUPERANDO LA INFORMACION");
+			e.printStackTrace();
+		}
+		System.out.print(detailedReport.getAnswerBodyText());
+		return detailedReport;
 	}
 	
 	public void endConnection() throws SQLException {
