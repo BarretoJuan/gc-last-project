@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -84,13 +86,23 @@ public class ReportList extends javax.swing.JFrame {
 
         jTable1.setBackground(Colors.creamWhiteText);
         jTable1.setForeground(Colors.darkBlue);
-        jTable1.setModel(new DefaultTableModel()
+        jTable1.setModel(new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }}
         );
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.addColumn("ID");
         model.addColumn("Fecha de envío");
         model.addColumn("Tipo de reporte");
         model.addColumn("Título del reporte");
         model.addColumn("Estado");
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setWidth(0);
 
         ArrayList<Report> reports = new Caller().getUserReports(user.getId());
         System.out.println(user.getId()+"jojo");
@@ -106,7 +118,7 @@ public class ReportList extends javax.swing.JFrame {
                 else if (report.getStatus() == 0 ){
                     statusStr = "No Respondido";
                 }
-                model.addRow(new Object[] {report.getTimestamp(), report.getType(), report.getTitle(), statusStr});
+                model.addRow(new Object[] {report.getId(),report.getTimestamp(), report.getType(), report.getTitle(), statusStr});
             }
 
         }
@@ -114,6 +126,11 @@ public class ReportList extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.getTableHeader().setForeground(Colors.darkBlue);
         jTable1.getTableHeader().setBackground(Colors.creamWhiteText);
+        jTable1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jScrollPane1.getViewport().setBackground(Colors.creamWhiteText);
@@ -247,6 +264,10 @@ public class ReportList extends javax.swing.JFrame {
     private void uploadReportButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
         System.out.println("");        // TODO add your handling code here:
     }//GEN-LAST:event_uploadReportButtonActionPerformed
+
+    private void jTable1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        System.out.println(jTable1.getValueAt(jTable1.getSelectedRow(),0));
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
