@@ -6,9 +6,13 @@
 package proyecto.views;
 
 import java.awt.Dimension;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
@@ -18,11 +22,12 @@ import proyecto.utils.SetImageLabel;
  * @author juan
  */
 public class ReportGeneration extends javax.swing.JFrame {
-
+private User user;
     /**
      * Creates new form ReportGeneration
      */
-    public ReportGeneration() {
+    public ReportGeneration(User user) throws SQLException {
+        this.user = user;
         initComponents();
     }
 
@@ -57,7 +62,7 @@ public class ReportGeneration extends javax.swing.JFrame {
         BlueBackGround = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Generar Reporte");
+        setTitle("Crear Reporte");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
         setMaximumSize(new java.awt.Dimension(961, 540));
         setMinimumSize(new java.awt.Dimension(961, 540));
@@ -136,10 +141,15 @@ public class ReportGeneration extends javax.swing.JFrame {
         reportTypeCombo.setBackground(Colors.creamWhite);
         reportTypeCombo.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         reportTypeCombo.setForeground(Colors.darkBlue);
-        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo de reporte" }));
+        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo de reporte", "Pérdida de paquete", "Entrega retrasada", "Entrega incorrecta", "Paquete dañado", "Modificación de datos ", "Otros" }));
         reportTypeCombo.setFocusable(false);
         reportTypeCombo.setOpaque(false);
         reportTypeCombo.setPreferredSize(new java.awt.Dimension(169, 23));
+        reportTypeCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportTypeComboActionPerformed(evt);
+            }
+        });
         getContentPane().add(reportTypeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 235, -1, -1));
 
         reportTitleLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -240,15 +250,26 @@ public class ReportGeneration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoPicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
-        System.out.println("Main menu button");
+        dispose();
+    try {
+        new WelcomeView(user).setVisible(true);
+    } catch (SQLException ex) {
+        Logger.getLogger(ReportGeneration.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_logoPicButtonActionPerformed
 
     private void profileIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileIconButtonActionPerformed
-        System.out.println("Edit profile button action");
+           dispose();
+        try {
+            new EditProfile(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_profileIconButtonActionPerformed
 
     private void logOutIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutIconButtonActionPerformed
-        System.out.println("Log Out Button");        // TODO add your handling code here:
+        this.dispose();
+        new Login().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
     private void reportTitleTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportTitleTextfieldActionPerformed
@@ -259,16 +280,9 @@ public class ReportGeneration extends javax.swing.JFrame {
         System.out.println("");        // TODO add your handling code here:
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ReportGeneration().setVisible(true);
-            }
-        });
-    }
+    private void reportTypeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportTypeComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reportTypeComboActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BlueBackGround;

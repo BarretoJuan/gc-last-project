@@ -6,11 +6,15 @@
 package proyecto.views;
 
 import java.awt.Dimension;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import proyecto.db.Caller;
 import proyecto.entities.DetailedReport;
+import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
@@ -19,12 +23,14 @@ import proyecto.utils.SetImageLabel;
  *
  * @author juan
  */
-public class DetailedReport2 extends javax.swing.JFrame {
+public class DetailedReportView extends javax.swing.JFrame {
+    private User user;
     private int id;
     /**
      * Creates new form ReportGeneration
      */
-    public DetailedReport2(int id) {
+    public DetailedReportView(int id, User user) {
+        this.user = user;
         this.id = id;
         DetailedReport report = new Caller().getDetailedReport(id);
         initComponents();
@@ -73,6 +79,8 @@ public class DetailedReport2 extends javax.swing.JFrame {
         reportTypeInfo = new javax.swing.JLabel();
         reportTypeLabel = new javax.swing.JLabel();
         generateReportLabel = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+        backIcon = new javax.swing.JLabel();
         logOutIconButton = new javax.swing.JButton();
         logOutIcon = new javax.swing.JLabel();
         profileIconButton = new javax.swing.JButton();
@@ -227,6 +235,23 @@ public class DetailedReport2 extends javax.swing.JFrame {
         generateReportLabel.setText("Reporte");
         getContentPane().add(generateReportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
 
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setFocusable(false);
+        backButton.setPreferredSize(new java.awt.Dimension(70, 84));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
+        backIcon.setPreferredSize(new java.awt.Dimension(70, 84));
+        backIcon.setSize(70,84);
+        new SetImageLabel().SetImage(backIcon, "/resources/back.png");
+        getContentPane().add(backIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
         logOutIconButton.setBorderPainted(false);
         logOutIconButton.setContentAreaFilled(false);
         logOutIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -254,7 +279,7 @@ public class DetailedReport2 extends javax.swing.JFrame {
                 profileIconButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(profileIconButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        getContentPane().add(profileIconButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 70, -1));
 
         profileIcon.setPreferredSize(new java.awt.Dimension(70, 84));
         profileIcon.setSize(70,84);
@@ -317,20 +342,40 @@ public class DetailedReport2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoPicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
-        System.out.println("Main menu button");
+        dispose();
+        try {
+            new WelcomeView(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_logoPicButtonActionPerformed
 
     private void profileIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileIconButtonActionPerformed
-        System.out.println("Edit profile button action");
+        dispose();
+        try {
+            new EditProfile(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_profileIconButtonActionPerformed
 
     private void logOutIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutIconButtonActionPerformed
-        System.out.println("Log Out Button");        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
     private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
         System.out.println("");        // TODO add your handling code here:
     }//GEN-LAST:event_uploadReportButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        dispose();
+        try {
+            new ReportList(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
 
@@ -338,6 +383,8 @@ public class DetailedReport2 extends javax.swing.JFrame {
     private javax.swing.JPanel BlueBackGround;
     private javax.swing.JLabel answerInfo;
     private javax.swing.JLabel answerReference;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel backIcon;
     private javax.swing.JLabel creamContainer;
     private javax.swing.JLabel creamContainer2;
     private javax.swing.JLabel dateInfo;

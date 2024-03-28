@@ -63,7 +63,6 @@ public class ReportList extends javax.swing.JFrame {
 
         jScrollPane1 = new JScrollPane();
         jTable1 = new JTable();
-        uploadReportButton = new JButton();
         generateReportLabel = new JLabel();
         generateReportLabel2 = new JLabel();
         logOutIconButton = new JButton();
@@ -77,7 +76,7 @@ public class ReportList extends javax.swing.JFrame {
         waveBg = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Generar Reporte");
+        setTitle("Lista de Reportes");
         setIconImage(new ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
         setResizable(false);
         setSize(new Dimension(961, 540));
@@ -139,22 +138,6 @@ public class ReportList extends javax.swing.JFrame {
         jScrollPane1.getViewport().setOpaque(true);
 
         getContentPane().add(jScrollPane1, new AbsoluteConstraints(260, 230, -1, 170));
-
-        uploadReportButton.setBackground(Colors.darkBlue);
-        uploadReportButton.setFont(new Font("Arial", 1, 12)); // NOI18N
-        uploadReportButton.setForeground(Colors.creamWhiteText);
-        uploadReportButton.setText("SUBIR REPORTE");
-        uploadReportButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        uploadReportButton.setFocusable(false);
-        uploadReportButton.setMaximumSize(new Dimension(135, 36));
-        uploadReportButton.setMinimumSize(new Dimension(135, 36));
-        uploadReportButton.setPreferredSize(new Dimension(135, 36));
-        uploadReportButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                uploadReportButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(uploadReportButton, new AbsoluteConstraints(410, 430, -1, -1));
 
         generateReportLabel.setFont(new Font("Arial", 1, 24)); // NOI18N
         generateReportLabel.setForeground(Colors.darkBlue);
@@ -252,27 +235,34 @@ public class ReportList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoPicButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
-        System.out.println("Main menu button");
+        this.dispose();
+        try {
+            new WelcomeView(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportList.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_logoPicButtonActionPerformed
 
     private void profileIconButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_profileIconButtonActionPerformed
-        System.out.println("Edit profile button action");
+        dispose();
+        try {
+            new EditProfile(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_profileIconButtonActionPerformed
 
     private void logOutIconButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_logOutIconButtonActionPerformed
-        System.out.println("Log Out Button");        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logOutIconButtonActionPerformed
-
-    private void uploadReportButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
-        System.out.println("");        // TODO add your handling code here:
-    }//GEN-LAST:event_uploadReportButtonActionPerformed
 
     private void jTable1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         Object id = jTable1.getValueAt(jTable1.getSelectedRow(),0);
         String idStr = id.toString();
         int intId = Integer.parseInt(idStr);
         dispose();
-        new DetailedReport2(intId).setVisible(true);
+        new DetailedReportView(intId, user).setVisible(true);
         
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -294,7 +284,6 @@ public class ReportList extends javax.swing.JFrame {
     public JButton logoPicButton;
     public JLabel profileIcon;
     public JButton profileIconButton;
-    public JButton uploadReportButton;
     public JLabel waveBg;
     // End of variables declaration//GEN-END:variables
 }

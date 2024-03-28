@@ -1,9 +1,13 @@
 package proyecto.views;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
@@ -12,8 +16,9 @@ import proyecto.utils.ShowHint;
 
 
 public class EditProfile extends javax.swing.JFrame {
-    
-    public EditProfile() {
+    private User user;
+    public EditProfile(User user) throws SQLException {
+        this.user = user;
         initComponents();
     }
 
@@ -22,7 +27,7 @@ public class EditProfile extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        loginButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
         nameIcon = new javax.swing.JLabel();
         nameField = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -58,25 +63,29 @@ public class EditProfile extends javax.swing.JFrame {
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
-        jButton1.setOpaque(false);
         jButton1.setPreferredSize(new java.awt.Dimension(397, 132));
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        loginButton.setBackground(Colors.darkBlue);
-        loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        loginButton.setForeground(Colors.creamWhiteText);
-        loginButton.setText("CONFIRMAR CAMBIOS");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        loginButton.setFocusable(false);
-        loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
-        loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
-        loginButton.setPreferredSize(new java.awt.Dimension(135, 36));
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 180, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        editButton.setBackground(Colors.darkBlue);
+        editButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        editButton.setForeground(Colors.creamWhiteText);
+        editButton.setText("CONFIRMAR CAMBIOS");
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.setFocusable(false);
+        editButton.setMaximumSize(new java.awt.Dimension(135, 36));
+        editButton.setMinimumSize(new java.awt.Dimension(135, 36));
+        editButton.setPreferredSize(new java.awt.Dimension(135, 36));
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 180, 40));
 
         nameIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         nameIcon.setMinimumSize(new java.awt.Dimension(34, 36));
@@ -315,9 +324,9 @@ public class EditProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginButtonActionPerformed
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        //to do 
+    }//GEN-LAST:event_editButtonActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
@@ -343,6 +352,15 @@ public class EditProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_newPasswordFieldActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        try {
+            new WelcomeView(user).setVisible(true);        // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
   
 
 
@@ -351,11 +369,11 @@ public class EditProfile extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField cedulaField;
     private javax.swing.JLabel cedulaIcon;
     private javax.swing.JLabel creamContainer;
+    private javax.swing.JButton editButton;
     private javax.swing.JFormattedTextField emailField;
     private javax.swing.JLabel emailIcon;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;
     private javax.swing.JFormattedTextField nameField;
     private javax.swing.JLabel nameIcon;

@@ -49,7 +49,7 @@ public class WelcomeView extends javax.swing.JFrame {
     /**
      * Creates new form ReportGeneration
      */
-    public WelcomeView()  {
+    public WelcomeView(User user) throws SQLException {
         this.user = user;
         initComponents();
 
@@ -272,23 +272,40 @@ public class WelcomeView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void profileIconButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_profileIconButtonActionPerformed
-        System.out.println("Edit profile button action");
+        dispose();
+        try {
+            new EditProfile(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_profileIconButtonActionPerformed
 
     private void logOutIconButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_logOutIconButtonActionPerformed
-        System.out.println("Log Out Button");        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
     private void createReportButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_createReportButtonActionPerformed
-        System.out.println("");        // TODO add your handling code here:
+        dispose();
+        try {
+            new ReportGeneration(user).setVisible(true); // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_createReportButtonActionPerformed
 
     private void closeAppButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_closeAppButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        
     }//GEN-LAST:event_closeAppButtonActionPerformed
 
     private void viewReportsButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_viewReportsButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        try {
+            new ReportList(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_viewReportsButtonActionPerformed
 
     /**
