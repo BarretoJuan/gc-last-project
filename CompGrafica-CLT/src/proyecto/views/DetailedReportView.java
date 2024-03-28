@@ -16,6 +16,7 @@ import proyecto.db.Caller;
 import proyecto.entities.DetailedReport;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.ReportType;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
 
@@ -38,7 +39,7 @@ public class DetailedReportView extends javax.swing.JFrame {
         
         //beware
         int type = report.getReportType();
-        String typeStr = String.valueOf(type);
+        String typeStr = new ReportType().getType(type);       
         
         reportTypeInfo.setText(typeStr);
         reportTitleInfo.setText(report.getReportTitle());
@@ -140,7 +141,7 @@ public class DetailedReportView extends javax.swing.JFrame {
         dateInfo.setForeground(Colors.darkBlue);
         dateInfo.setText("DATE_INFO");
         dateInfo.setPreferredSize(new java.awt.Dimension(500, 23));
-        getContentPane().add(dateInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 210, -1));
+        getContentPane().add(dateInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 140, -1));
 
         reportTitleInfo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         reportTitleInfo.setForeground(Colors.darkBlue);

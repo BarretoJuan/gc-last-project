@@ -103,14 +103,14 @@ public class Caller {
 		return new Message(true, "El reporte ha sido borrado satisfactoriamente");
 	}
 	
-	public Message modifyUser(String name, String passwordHash, String username, String email, boolean admin) throws SQLException {
+	public Message modifyUser(String name, String passwordHash, String username, String email, int uid, boolean admin) throws SQLException {
 		int response = 0;
 		
 		if (admin) {
-			response = connection.modifyUser("{ ? = CALL modify_admin(?, ?, ?) }", name, passwordHash, username, email);
+			response = connection.modifyUser("{ ? = CALL modify_admin(?, ?, ?, ?, ?) }", name, passwordHash, username, email, uid);
 		}
 		else {
-			response = connection.modifyUser("{ ? = CALL modify_user(?, ?, ?) }", name, passwordHash, username, email);
+			response = connection.modifyUser("{ ? = CALL modify_user(?, ?, ?, ?, ?) }", name, passwordHash, username, email, uid);
 		}
 		
 		System.out.print("\n" + response);

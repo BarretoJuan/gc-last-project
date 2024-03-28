@@ -181,7 +181,7 @@ public class Connect {
 		return response;
 	}
 	
-	public int modifyUser(String query, String name, String passwordHash, String username, String email) throws SQLException {
+	public int modifyUser(String query, String name, String passwordHash, String username, String email, int uid) throws SQLException {
 		CallableStatement statement;
 		try {
 			 statement = handler.prepareCall(query);
@@ -189,11 +189,14 @@ public class Connect {
 			 statement.registerOutParameter(1, Types.INTEGER);
 			// prepares the first parameter, specifying that it will be an int and gives 0 as its value
 			 statement.setString(2, name);
-			 statement.setString(3, username);
-			 statement.setString(4, email);
+                         statement.setString(3, passwordHash);
+			 statement.setString(4, username);
+			 statement.setString(5, email);
+                         statement.setInt(6, uid);
 		} 
 		catch (SQLException e) { 
 			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			e.printStackTrace();
 			return -1;
 		}
 		

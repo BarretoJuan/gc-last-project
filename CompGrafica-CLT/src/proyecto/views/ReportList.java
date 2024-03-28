@@ -37,6 +37,7 @@ import javax.swing.WindowConstants;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import proyecto.db.Caller;
+import proyecto.utils.ReportType;
 /**
  *
  * @author juan
@@ -119,7 +120,7 @@ public class ReportList extends javax.swing.JFrame {
                 else if (report.getStatus() == 0 ){
                     statusStr = "No Respondido";
                 }
-                model.addRow(new Object[] {report.getId(),report.getTimestamp(), report.getType(), report.getTitle(), statusStr});
+                model.addRow(new Object[] {report.getId(),report.getTimestamp(), new ReportType().getType(report.getType()), report.getTitle(), statusStr});
             }
 
         }
