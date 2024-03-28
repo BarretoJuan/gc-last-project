@@ -58,6 +58,7 @@ public class ReportGeneration extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generar Reporte");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
         setMaximumSize(new java.awt.Dimension(961, 540));
         setMinimumSize(new java.awt.Dimension(961, 540));
         setResizable(false);

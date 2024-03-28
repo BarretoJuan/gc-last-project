@@ -86,6 +86,7 @@ public class DetailedReport2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista Detallada Reporte");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
         setPreferredSize(new java.awt.Dimension(961, 540));
         setResizable(false);
         setSize(new java.awt.Dimension(961, 540));

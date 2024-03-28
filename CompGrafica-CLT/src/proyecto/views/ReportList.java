@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -77,6 +78,7 @@ public class ReportList extends javax.swing.JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generar Reporte");
+        setIconImage(new ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
         setResizable(false);
         setSize(new Dimension(961, 540));
         getContentPane().setLayout(new AbsoluteLayout());
