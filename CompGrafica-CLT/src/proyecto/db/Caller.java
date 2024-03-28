@@ -131,11 +131,7 @@ public class Caller {
 	public ArrayList<Report> getUserReports(int userId) {
 		ArrayList<Report> reports = new ArrayList<Report>();
 		ResultSet result = null;
-		try {
-			result = connection.getUserReports(userId);
-		}
-		catch (SQLException e) {
-			e.printStackTrace();		}
+		result = connection.getUserReports(userId);
 		
 		try {
 			while (result.next()) {
@@ -155,6 +151,35 @@ public class Caller {
 			System.err.print("ERROR RECUPERANDO LA INFORMACION");
 			e.printStackTrace();
 		}
+		
+		return reports;
+	}
+	
+	
+	public ArrayList<Report> getUserReports() {
+		ArrayList<Report> reports = new ArrayList<Report>();
+		ResultSet result = null;
+		result = connection.getAllReports();
+		
+		try {
+			while (result.next()) {
+				reports.add(new Report(
+					result.getInt(1), 
+					result.getString(2), 
+					result.getInt(3), 
+					result.getString(4), 
+					result.getString(5),
+					result.getString(6),
+					result.getInt(7),
+					result.getInt(8)
+				));
+			}
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR RECUPERANDO LA INFORMACION");
+			e.printStackTrace();
+		}
+		System.out.print(reports);
 		
 		return reports;
 	}

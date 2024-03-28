@@ -203,7 +203,7 @@ public class Connect {
 		return response;
 	}
 	
-	public ResultSet getUserReports(int userId) throws SQLException{
+	public ResultSet getUserReports(int userId) {
 		PreparedStatement statement;
 		ResultSet result = null;
 		try {
@@ -226,7 +226,29 @@ public class Connect {
 		}
 	}
 	
-	public ResultSet getUser(String username, boolean admin) throws SQLException {
+	public ResultSet getAllReports() {
+		PreparedStatement statement;
+		ResultSet result = null;
+		try {
+			statement = handler.prepareStatement("select * from reports where status_rep = 0");
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR PREPARANDO LA SENTENCIA");
+			e.printStackTrace();
+			return result;
+		}
+		
+		try {
+			result = statement.executeQuery();
+			return result;
+		}
+		catch (SQLException e) {
+			System.err.print("ERROR EJECUTANDO LA SENTENCIA");
+			return result;
+		}
+	}
+	
+	public ResultSet getUser(String username, boolean admin) {
 		PreparedStatement statement;
 		ResultSet result = null;
 		try {
