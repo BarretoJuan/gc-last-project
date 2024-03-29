@@ -5,6 +5,9 @@
  */
 package proyecto;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyecto.views.*;
 
 /**
@@ -17,7 +20,7 @@ public class Main {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                   new Login().setVisible(true);
             }
         });
     }

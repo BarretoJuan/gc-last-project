@@ -1,9 +1,16 @@
 package proyecto.views;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.db.Caller;
+import proyecto.db.Hasher;
+import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.Message;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
@@ -169,7 +176,38 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        System.out.println("LoginButton");        // TODO add your handling code here:
+        char[] passwordArray = passwordField.getPassword();
+        String password = String.valueOf(passwordArray);
+        String hashedPassword = Hasher.hash(password);
+        String username = usernameField.getText();
+        
+        Message response = null;
+        try {
+            response = new Caller().loginUser(username, hashedPassword, true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        User user = null;
+        if (response.getStatus() == true) {
+            try {
+                user = new Caller().getUser(username, true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(user);
+            dispose();
+            // Implement session
+            WelcomeView r1;
+            try {
+                r1 = new WelcomeView(user);
+                r1.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
+            
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonActionPerformed
 
   

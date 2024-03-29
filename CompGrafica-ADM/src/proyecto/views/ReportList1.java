@@ -6,10 +6,14 @@
 package proyecto.views;
 
 import java.awt.Dimension;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
@@ -19,12 +23,15 @@ import proyecto.utils.SetImageLabel;
  * @author juan
  */
 public class ReportList1 extends javax.swing.JFrame {
+    private User user;
 
     /**
      * Creates new form ReportGeneration
      */
-    public ReportList1() {
+    public ReportList1(User user) {
+        this.user = user;
         initComponents();
+        
     }
 
     /**
@@ -185,30 +192,27 @@ public class ReportList1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoPicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
-        System.out.println("Main menu button");
+        dispose();
+        try {
+            new WelcomeView(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportList1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_logoPicButtonActionPerformed
 
     private void profileIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileIconButtonActionPerformed
-        System.out.println("Edit profile button action");
+        dispose();
+        try {
+            new EditProfile(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportList1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_profileIconButtonActionPerformed
 
     private void logOutIconButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutIconButtonActionPerformed
-        System.out.println("Log Out Button");        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_logOutIconButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-       
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ReportList1().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BlueBackGround;

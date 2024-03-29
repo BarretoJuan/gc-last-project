@@ -1,9 +1,13 @@
 package proyecto.views;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
@@ -12,8 +16,9 @@ import proyecto.utils.ShowHint;
 
 
 public class EditProfile extends javax.swing.JFrame {
-    
-    public EditProfile() {
+    private User user;
+    public EditProfile(User user) throws SQLException{
+        this.user = user;
         initComponents();
     }
 
@@ -25,7 +30,6 @@ public class EditProfile extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         nameIcon = new javax.swing.JLabel();
         nameField = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         cedulaIcon = new javax.swing.JLabel();
         cedulaField = new javax.swing.JFormattedTextField();
         usernameIcon = new javax.swing.JLabel();
@@ -86,7 +90,7 @@ public class EditProfile extends javax.swing.JFrame {
         nameIcon.setPreferredSize(new java.awt.Dimension(34, 36));
         nameIcon.setSize(34,36);
         new SetImageLabel().SetImage(nameIcon,"/resources/ProfileIcon.png");
-        getContentPane().add(nameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
+        getContentPane().add(nameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 220, -1, -1));
 
         nameField.setBackground(Colors.creamWhite);
         Border line = javax.swing.BorderFactory.createLineBorder(Colors.darkBlue);
@@ -97,36 +101,21 @@ public class EditProfile extends javax.swing.JFrame {
         nameField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         nameField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         nameField.setOpaque(false);
-        nameField.setPreferredSize(new java.awt.Dimension(152, 36));
+        nameField.setPreferredSize(new java.awt.Dimension(200, 36));
         nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameFieldActionPerformed(evt);
             }
         });
         ShowHint.setHint("NOMBRE", nameField);
-        getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
-
-        jComboBox1.setBackground(Colors.creamWhite);
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBox1.setForeground(Colors.darkBlue);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " V", " E" }));
-        jComboBox1.setFocusable(false);
-        jComboBox1.setLightWeightPopupEnabled(false);
-        jComboBox1.setOpaque(false);
-        jComboBox1.setPreferredSize(new java.awt.Dimension(33, 36));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 250, 50, -1));
+        getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
 
         cedulaIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         cedulaIcon.setMinimumSize(new java.awt.Dimension(34, 36));
         cedulaIcon.setPreferredSize(new java.awt.Dimension(34, 36));
         cedulaIcon.setSize(34,36);
         new SetImageLabel().SetImage(cedulaIcon,"/resources/IdIcon.png");
-        getContentPane().add(cedulaIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
+        getContentPane().add(cedulaIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 260, -1, -1));
 
         cedulaField.setBackground(Colors.creamWhite);
         cedulaField.setBorder(border);
@@ -134,21 +123,21 @@ public class EditProfile extends javax.swing.JFrame {
         cedulaField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         cedulaField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cedulaField.setOpaque(false);
-        cedulaField.setPreferredSize(new java.awt.Dimension(102, 36));
+        cedulaField.setPreferredSize(new java.awt.Dimension(200, 36));
         cedulaField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulaFieldActionPerformed(evt);
             }
         });
         ShowHint.setHint("CÉDULA", cedulaField);
-        getContentPane().add(cedulaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 250, 100, -1));
+        getContentPane().add(cedulaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 200, -1));
 
         usernameIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         usernameIcon.setMinimumSize(new java.awt.Dimension(34, 36));
         usernameIcon.setPreferredSize(new java.awt.Dimension(34, 36));
         usernameIcon.setSize(34,36);
         new SetImageLabel().SetImage(usernameIcon,"/resources/ProfileIcon.png");
-        getContentPane().add(usernameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
+        getContentPane().add(usernameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 300, -1, -1));
 
         usernameField.setBackground(Colors.creamWhite);
         usernameField.setBorder(border);
@@ -156,21 +145,21 @@ public class EditProfile extends javax.swing.JFrame {
         usernameField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         usernameField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         usernameField.setOpaque(false);
-        usernameField.setPreferredSize(new java.awt.Dimension(152, 36));
+        usernameField.setPreferredSize(new java.awt.Dimension(200, 36));
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameFieldActionPerformed(evt);
             }
         });
         ShowHint.setHint("USUARIO", usernameField);
-        getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
 
         emailIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         emailIcon.setMinimumSize(new java.awt.Dimension(34, 36));
         emailIcon.setPreferredSize(new java.awt.Dimension(34, 36));
         emailIcon.setSize(34,36);
         new SetImageLabel().SetImage(emailIcon,"/resources/MailIcon.png");
-        getContentPane().add(emailIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
+        getContentPane().add(emailIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 340, -1, -1));
 
         emailField.setBackground(Colors.creamWhite);
         emailField.setBorder(border);
@@ -178,21 +167,21 @@ public class EditProfile extends javax.swing.JFrame {
         emailField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         emailField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailField.setOpaque(false);
-        emailField.setPreferredSize(new java.awt.Dimension(152, 36));
+        emailField.setPreferredSize(new java.awt.Dimension(200, 36));
         emailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailFieldActionPerformed(evt);
             }
         });
         ShowHint.setHint("EMAIL", emailField);
-        getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+        getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
 
         passwordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         passwordIcon.setMinimumSize(new java.awt.Dimension(34, 36));
         passwordIcon.setPreferredSize(new java.awt.Dimension(34, 36));
         passwordIcon.setSize(34,36);
         new SetImageLabel().SetImage(passwordIcon,"/resources/PasswordIcon.png");
-        getContentPane().add(passwordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
+        getContentPane().add(passwordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 380, -1, -1));
 
         passwordField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         passwordField.setForeground(Colors.darkBlue);
@@ -202,23 +191,23 @@ public class EditProfile extends javax.swing.JFrame {
         passwordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         passwordField.setMaximumSize(new java.awt.Dimension(152, 36));
         passwordField.setMinimumSize(new java.awt.Dimension(152, 36));
-        passwordField.setPreferredSize(new java.awt.Dimension(152, 36));
+        passwordField.setPreferredSize(new java.awt.Dimension(200, 36));
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
             }
         });
         ShowHint.setHint("CONTRASEÑA", passwordField);
-        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
+        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
 
         newPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         newPasswordIcon.setMinimumSize(new java.awt.Dimension(34, 36));
         newPasswordIcon.setPreferredSize(new java.awt.Dimension(34, 36));
         newPasswordIcon.setSize(34,36);
         new SetImageLabel().SetImage(newPasswordIcon,"/resources/PasswordIcon.png");
-        getContentPane().add(newPasswordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, -1, -1));
+        getContentPane().add(newPasswordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 420, -1, -1));
 
-        newPasswordField.setFont(new java.awt.Font("Arial", 1, 10));
+        newPasswordField.setFont(new java.awt.Font("Arial", 1, 14));
         newPasswordField.setForeground(Colors.darkBlue);
         newPasswordField.setBackground(Colors.creamWhite);
         newPasswordField.setBorder(border);
@@ -226,23 +215,23 @@ public class EditProfile extends javax.swing.JFrame {
         newPasswordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         newPasswordField.setMaximumSize(new java.awt.Dimension(152, 36));
         newPasswordField.setMinimumSize(new java.awt.Dimension(152, 36));
-        newPasswordField.setPreferredSize(new java.awt.Dimension(152, 36));
+        newPasswordField.setPreferredSize(new java.awt.Dimension(200, 36));
         newPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newPasswordFieldActionPerformed(evt);
             }
         });
         ShowHint.setHint("NUEVA CONTRASEÑA", newPasswordField);
-        getContentPane().add(newPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, -1, -1));
+        getContentPane().add(newPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
 
         repPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
         repPasswordIcon.setMinimumSize(new java.awt.Dimension(34, 36));
         repPasswordIcon.setPreferredSize(new java.awt.Dimension(34, 36));
         repPasswordIcon.setSize(34,36);
         new SetImageLabel().SetImage(repPasswordIcon,"/resources/RepPasswordIcon.png");
-        getContentPane().add(repPasswordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, -1, -1));
+        getContentPane().add(repPasswordIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 460, -1, -1));
 
-        repPasswordField.setFont(new java.awt.Font("Arial", 1, 10));
+        repPasswordField.setFont(new java.awt.Font("Arial", 1, 14));
         repPasswordField.setForeground(Colors.darkBlue);
         repPasswordField.setBackground(Colors.creamWhite);
         repPasswordField.setBorder(border);
@@ -250,14 +239,14 @@ public class EditProfile extends javax.swing.JFrame {
         repPasswordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         repPasswordField.setMaximumSize(new java.awt.Dimension(152, 36));
         repPasswordField.setMinimumSize(new java.awt.Dimension(152, 36));
-        repPasswordField.setPreferredSize(new java.awt.Dimension(152, 36));
+        repPasswordField.setPreferredSize(new java.awt.Dimension(200, 36));
         repPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 repPasswordFieldActionPerformed(evt);
             }
         });
         ShowHint.setHint("REPETIR CONTRASEÑA", repPasswordField);
-        getContentPane().add(repPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, -1, -1));
+        getContentPane().add(repPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
 
         bienvenidoLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         bienvenidoLabel.setForeground(Colors.darkBlue);
@@ -334,10 +323,6 @@ public class EditProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cedulaFieldActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void repPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repPasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_repPasswordFieldActionPerformed
@@ -347,7 +332,12 @@ public class EditProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_newPasswordFieldActionPerformed
 
     private void logoPicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
-        System.out.println("LogoPicButton Action");
+        dispose();
+        try {
+            new WelcomeView(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_logoPicButtonActionPerformed
 
   
@@ -360,7 +350,6 @@ public class EditProfile extends javax.swing.JFrame {
     private javax.swing.JLabel creamContainer;
     private javax.swing.JFormattedTextField emailField;
     private javax.swing.JLabel emailIcon;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;
     private javax.swing.JButton logoPicButton;
