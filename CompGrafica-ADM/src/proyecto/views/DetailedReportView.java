@@ -12,8 +12,12 @@ import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.db.Caller;
+import proyecto.entities.DetailedReport;
+import proyecto.entities.Report;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.ReportType;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
 
@@ -28,7 +32,16 @@ public class DetailedReportView extends javax.swing.JFrame {
     public DetailedReportView(int id, User user) {
         this.user=user;
         this.id=id;
+        DetailedReport report = new Caller().getDetailedReport(id);
         initComponents();
+        reportTitleInfo.setText(report.getReportTitle());
+        reportTypeInfo.setText(new ReportType().getType(report.getReportType()));
+        reporterInfo.setText(report.getReportAuthor());
+        dateInfo.setText(report.getReportTimestamp());
+        telephoneInfo.setText(report.getContact_phone());
+        jTextArea3.setText(report.getAnswerBodyText());
+        jTextArea2.setText(report.getReportBodyText());
+        
     }
 
     @SuppressWarnings("unchecked")
