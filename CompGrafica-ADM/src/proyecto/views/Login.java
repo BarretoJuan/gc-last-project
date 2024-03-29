@@ -28,6 +28,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         logoPic = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         passwordIcon = new javax.swing.JLabel();
@@ -60,6 +61,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, -1, -1));
+
+        jLabel1.setText("jLabel1");
+        jLabel1.setPreferredSize(new java.awt.Dimension(60, 60));
+        jLabel1.setSize(new java.awt.Dimension(60,60));
+
+        new SetImageLabel().SetImage(jLabel1, "/resources/powBtn.png");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, -1, -1));
 
         logoPic.setText("jLabel1");
         logoPic.setMaximumSize(new java.awt.Dimension(249, 167));
@@ -207,6 +215,7 @@ public class Login extends javax.swing.JFrame {
         if (response.getStatus() == true) {
             try {
                 user = new Caller().getUser(username, true);
+                System.out.println(user.getCi()+user.getEmail()+user.getId()+ user.getName()+user.getPasswordHash());
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -237,6 +246,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel creamContainer;
     private javax.swing.JLabel inicioClienteLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;
     private javax.swing.JPanel panelFondoAzul;

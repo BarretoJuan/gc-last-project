@@ -333,6 +333,7 @@ public class EditProfile extends javax.swing.JFrame {
 
     private void logoPicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoPicButtonActionPerformed
         dispose();
+        System.out.println(user.getCi()+user.getEmail()+user.getId()+ user.getName()+user.getPasswordHash());
         try {
             new WelcomeView(user).setVisible(true);
         } catch (SQLException ex) {

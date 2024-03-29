@@ -256,7 +256,7 @@ public class Connect {
 		ResultSet result = null;
 		try {
 			if (admin) {
-				statement = handler.prepareStatement("select * from admin where username = ?");
+				statement = handler.prepareStatement("select id, name, ci, password_hash, username, email from admin where username = ?");
 			}
 			else {
 				statement = handler.prepareStatement("select * from users where username = ?");

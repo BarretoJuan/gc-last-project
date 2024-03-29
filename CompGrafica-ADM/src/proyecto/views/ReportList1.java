@@ -107,11 +107,9 @@ public class ReportList1 extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(0).setWidth(0);
 
         ArrayList<Report> reports = new Caller().getUserReports();
-        System.out.println(user.getId()+"jojo");
         for (Report report : reports) {
             String statusStr = null;
-            System.out.println("JAJA"+report);
-            System.out.println("JUJU"+model);
+
             if (report.getStatus() == 1 || report.getStatus() == 0) {
 
                 if(report.getStatus() == 1) {

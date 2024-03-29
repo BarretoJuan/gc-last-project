@@ -200,12 +200,14 @@ public class Caller {
 				);
 			}
 		}
+                
 		catch(SQLException e) {
 			System.err.print("ERROR RECUPERANDO LA INFORMACION");
 			e.printStackTrace();
 		}
-		
-		System.out.print(user.getUsername());
+		          System.out.println("jojo " +user.getEmail());
+		System.out.print("jiji"+ user.getUsername()+" se acaba el jiji");
+                
 		return user;
 	}
 	
