@@ -49,6 +49,7 @@ public class ReportList1 extends javax.swing.JFrame {
      */
     public ReportList1(User user) throws SQLException {
         this.user = user;
+
         initComponents();
 
     }

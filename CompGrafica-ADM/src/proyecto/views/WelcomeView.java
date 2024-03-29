@@ -252,7 +252,6 @@ public class WelcomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_closeAppButtonActionPerformed
 
     private void viewReportsButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_viewReportsButtonActionPerformed
-        System.out.println(user.getCi()+user.getEmail()+user.getId()+ user.getName()+user.getPasswordHash());
         dispose();
         try {
             new ReportList1(user).setVisible(true);

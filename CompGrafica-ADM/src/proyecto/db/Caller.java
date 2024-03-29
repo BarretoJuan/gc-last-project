@@ -205,7 +205,7 @@ public class Caller {
 			System.err.print("ERROR RECUPERANDO LA INFORMACION");
 			e.printStackTrace();
 		}
-		          System.out.println("jojo " +user.getEmail());
+
 		System.out.print("jiji"+ user.getUsername()+" se acaba el jiji");
                 
 		return user;

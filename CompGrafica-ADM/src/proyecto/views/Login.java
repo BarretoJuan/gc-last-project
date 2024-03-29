@@ -215,11 +215,11 @@ public class Login extends javax.swing.JFrame {
         if (response.getStatus() == true) {
             try {
                 user = new Caller().getUser(username, true);
-                System.out.println(user.getCi()+user.getEmail()+user.getId()+ user.getName()+user.getPasswordHash());
+   
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(user);
+
             dispose();
             // Implement session
             WelcomeView r1;

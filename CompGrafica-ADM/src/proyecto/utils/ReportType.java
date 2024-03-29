@@ -17,8 +17,7 @@ public class ReportType {
     }
     
     public static String getType(int id) {
-        System.out.println(id);
-        System.out.println("Vamoos");
+
         return types.get(id);
     }
 }

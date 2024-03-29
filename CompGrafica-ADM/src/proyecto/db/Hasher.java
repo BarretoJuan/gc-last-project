@@ -27,7 +27,7 @@ public static String hash(String passwordToHash){
     } catch (NoSuchAlgorithmException e) {
         e.printStackTrace();
     }
-    System.out.println(generatedPassword);
+
     return generatedPassword;
     
 }
