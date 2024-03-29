@@ -27,6 +27,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         logoPic = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         passwordIcon = new javax.swing.JLabel();
@@ -45,6 +46,20 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(400, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
+        jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, -1, -1));
 
         logoPic.setText("jLabel1");
         logoPic.setMaximumSize(new java.awt.Dimension(249, 167));
@@ -210,6 +225,10 @@ public class Login extends javax.swing.JFrame {
         }       // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
   
 
 
@@ -217,6 +236,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JLabel creamContainer;
     private javax.swing.JLabel inicioClienteLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoPic;
     private javax.swing.JPanel panelFondoAzul;

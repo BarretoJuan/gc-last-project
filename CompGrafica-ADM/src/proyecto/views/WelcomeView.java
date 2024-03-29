@@ -253,7 +253,11 @@ public class WelcomeView extends javax.swing.JFrame {
 
     private void viewReportsButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_viewReportsButtonActionPerformed
         dispose();
-        new ReportList1(user).setVisible(true);
+        try {
+            new ReportList1(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_viewReportsButtonActionPerformed
 
 

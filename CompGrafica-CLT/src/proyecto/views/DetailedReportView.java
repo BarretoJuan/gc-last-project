@@ -16,6 +16,7 @@ import proyecto.db.Caller;
 import proyecto.entities.DetailedReport;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.Message;
 import proyecto.utils.ReportType;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
@@ -366,7 +367,22 @@ public class DetailedReportView extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
     private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
-        System.out.println("");        // TODO add your handling code here:
+        Message message = null;
+        try {
+            message = new Caller().deleteReport(id);      // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(message.getStatus()) {
+            dispose();
+            try {
+                new ReportList(user).setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
