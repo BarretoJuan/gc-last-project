@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import proyecto.db.Caller;
+import proyecto.db.Hasher;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
@@ -20,6 +23,17 @@ public class EditProfile extends javax.swing.JFrame {
     public EditProfile(User user) throws SQLException{
         this.user = user;
         initComponents();
+        nameField.setText(user.getName());
+        nameField.setCaretPosition(0);
+        
+        cedulaField.setText(user.getCi());
+        cedulaField.setCaretPosition(0);
+        
+        usernameField.setText(user.getUsername());
+        usernameField.setCaretPosition(0);
+        
+        emailField.setText(user.getEmail());
+        emailField.setCaretPosition(0);  
     }
 
     @SuppressWarnings("unchecked")
@@ -121,6 +135,8 @@ public class EditProfile extends javax.swing.JFrame {
         cedulaField.setBorder(border);
         cedulaField.setForeground(Colors.darkBlue);
         cedulaField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        cedulaField.setEnabled(false);
+        cedulaField.setFocusable(false);
         cedulaField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cedulaField.setOpaque(false);
         cedulaField.setPreferredSize(new java.awt.Dimension(200, 36));
@@ -308,7 +324,96 @@ public class EditProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        System.out.println("editProfileButtonActionPerformed");        // TODO add your handling code here:
+         String name = nameField.getText();
+        String username = usernameField.getText();
+        String email = emailField.getText();
+        String currentPassword = user.getPasswordHash();
+        String enteredPassword = String.valueOf(passwordField.getPassword()); 
+        String verifyPassword = Hasher.hash(enteredPassword);
+        
+        String newPassword = String.valueOf(newPasswordField.getPassword());
+        String repNewPassword = String.valueOf(repPasswordField.getPassword());
+        
+        String hashedNewPassword = Hasher.hash(newPassword);
+        int currentUid = user.getId(); 
+        
+        
+        
+        //name password username email false
+        
+
+        if (name.isEmpty() || username.isEmpty() || email.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Asegúrese de llenar los campos de nombre, nombre de usuario e email", "Alerta:", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+        System.out.println("Contrasenai ingresada" + enteredPassword);
+        System.out.println("CONTRASEÑA ACTUAL: "+currentPassword);
+        System.out.println("CONTRASE;A INGRESADA: "+verifyPassword);
+        
+        if(currentPassword.equals(verifyPassword)) {
+            if(newPassword.isEmpty() && repNewPassword.isEmpty()) {
+                //modify with current password
+                try {
+                    new Caller().modifyUser(name, currentPassword, username, email, currentUid, true);
+                    user.setName(name);
+                    user.setUsername(username);
+                    user.setEmail(email);
+                    dispose();
+                    new EditProfile(user).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+              
+            }
+            else {
+                if(newPassword.equals(repNewPassword)) {
+                    try {
+                    new Caller().modifyUser(name, hashedNewPassword, username, email, currentUid, true);
+                    user.setName(name);
+                    user.setPasswordHash(hashedNewPassword);
+                    user.setUsername(username);
+                    user.setEmail(email);
+                    dispose();
+                    new EditProfile(user).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, null, ex);
+                   
+                }
+                }
+                else {
+                JOptionPane.showMessageDialog(null, "La nueva contraseña y su verificación no coinciden", "Alerta:", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        
+        }
+        else {
+            if(enteredPassword.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Introduzca su contraseña para modificar el perfil", "Alerta:", JOptionPane.WARNING_MESSAGE);       
+            }
+            else{
+                System.out.println(enteredPassword);
+                JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Alerta:", JOptionPane.WARNING_MESSAGE);
+            }
+            
+
+        }
+
+   
+        
+        nameField.setText(user.getName());
+        nameField.setCaretPosition(0);
+        
+        cedulaField.setText(user.getCi());
+        cedulaField.setCaretPosition(0);
+        
+        usernameField.setText(user.getUsername());
+        usernameField.setCaretPosition(0);
+        
+        emailField.setText(user.getEmail());
+        emailField.setCaretPosition(0);     
+        
+        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed

@@ -179,6 +179,8 @@
           <Connection code="Colors.darkBlue" type="code"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
         </Property>
