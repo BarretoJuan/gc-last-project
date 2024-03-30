@@ -23,6 +23,7 @@ import proyecto.utils.Message;
 import proyecto.utils.ReportType;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
+import proyecto.utils.Verify;
 
 /**
  *
@@ -189,6 +190,7 @@ public class DetailedReportView extends javax.swing.JFrame {
         jTextArea3.setWrapStyleWord(true);
         jTextArea3.setDisabledTextColor(Colors.darkBlue);
         jTextArea3.setMargin(new java.awt.Insets(2, 10, 2, 2));
+        jTextArea3.setInputVerifier(new Verify.ReportBodyVerifier());
         jScrollPane3.setViewportView(jTextArea3);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 200, 220, 190));

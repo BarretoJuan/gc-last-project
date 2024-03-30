@@ -17,6 +17,7 @@ import proyecto.db.Hasher;
 import static proyecto.db.Hasher.hash;
 import proyecto.entities.User;
 import proyecto.utils.Message;
+import proyecto.utils.Verify;
 
 
 public class Login extends javax.swing.JFrame {
@@ -155,6 +156,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("USUARIO", usernameField);
+        usernameField.setInputVerifier(new Verify.UsernameVerifier());
         getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         passwordField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -172,6 +174,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CONTRASEÑA", passwordField);
+        passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
         inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N

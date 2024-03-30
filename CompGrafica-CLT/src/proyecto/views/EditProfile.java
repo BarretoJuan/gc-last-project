@@ -17,6 +17,7 @@ import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
+import proyecto.utils.Verify;
 
 
 public class EditProfile extends javax.swing.JFrame {
@@ -124,7 +125,13 @@ public class EditProfile extends javax.swing.JFrame {
                 nameFieldActionPerformed(evt);
             }
         });
+        nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nameFieldKeyTyped(evt);
+            }
+        });
         ShowHint.setHint("NOMBRE", nameField);
+        nameField.setInputVerifier(new Verify.NameVerifier());
         getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         cedulaIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -148,6 +155,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CÉDULA", cedulaField);
+        cedulaField.setInputVerifier(new Verify.CedulaVerifier());
         getContentPane().add(cedulaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 200, -1));
 
         usernameIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -170,6 +178,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("USUARIO", usernameField);
+        usernameField.setInputVerifier(new Verify.UsernameVerifier());
         getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         emailIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -192,6 +201,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("EMAIL", emailField);
+        emailField.setInputVerifier(new Verify.EmailVerifier());
         getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         passwordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -216,6 +226,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CONTRASEÑA", passwordField);
+        passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
 
         newPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -240,6 +251,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("NUEVA CONTRASEÑA", newPasswordField);
+        newPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(newPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         repPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -264,6 +276,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("REPETIR CONTRASEÑA", repPasswordField);
+        repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(repPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, -1, -1));
 
         bienvenidoLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -448,6 +461,10 @@ public class EditProfile extends javax.swing.JFrame {
             Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nameFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameFieldKeyTyped
 
   
 

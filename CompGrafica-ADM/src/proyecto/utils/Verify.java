@@ -189,7 +189,7 @@ public class Verify {
     }
 }   
 
-   // Verificador de telefono   
+   // Verificador de telefono
    public static class TelefonoVerifier extends InputVerifier {
     @Override
     public boolean verify(JComponent input) {
@@ -202,7 +202,7 @@ public class Verify {
         if (telefono.matches(telefonoRegex)) {
             return true;
         } else {
-            JOptionPane.showMessageDialog(null, "Ingrese un teléfono válido\n Ejemplo: 04146558914, +58-4146558914, +584146558914", "Alerta: Dato Incorrecto", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ingrese un teléfono válido\n Ejemplo: 04146568915, +58-4146568915, +584146568915", "Alerta: Dato Incorrecto", JOptionPane.WARNING_MESSAGE);
             textField.setText("");
             return false;
         }
