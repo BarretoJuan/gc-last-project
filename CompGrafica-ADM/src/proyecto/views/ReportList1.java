@@ -87,6 +87,7 @@ public class ReportList1 extends javax.swing.JFrame {
         jScrollPane1.setBackground(Colors.creamWhiteText);
         jScrollPane1.setForeground(Colors.darkBlue);
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setBackground(Colors.creamWhiteText);
         jTable1.setForeground(Colors.darkBlue);
         jTable1.setModel(new DefaultTableModel() {
