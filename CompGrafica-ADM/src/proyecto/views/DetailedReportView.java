@@ -17,6 +17,7 @@ import proyecto.entities.DetailedReport;
 import proyecto.entities.Report;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.JFrameSaver;
 import proyecto.utils.ReportType;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
@@ -49,6 +50,7 @@ public class DetailedReportView extends javax.swing.JFrame {
     private void initComponents() {
 
         generateReportLabel1 = new javax.swing.JLabel();
+        exportReportButton = new javax.swing.JButton();
         reporterInfo = new javax.swing.JLabel();
         reporterReference = new javax.swing.JLabel();
         dateInfo = new javax.swing.JLabel();
@@ -86,6 +88,22 @@ public class DetailedReportView extends javax.swing.JFrame {
         generateReportLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         generateReportLabel1.setText("Respuesta del Reporte");
         getContentPane().add(generateReportLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 155, -1, -1));
+
+        exportReportButton.setBackground(Colors.darkBlue);
+        exportReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        exportReportButton.setForeground(Colors.creamWhiteText);
+        exportReportButton.setText("EXPORTAR REPORTE");
+        exportReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exportReportButton.setFocusable(false);
+        exportReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
+        exportReportButton.setMinimumSize(new java.awt.Dimension(135, 36));
+        exportReportButton.setPreferredSize(new java.awt.Dimension(135, 36));
+        exportReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportReportButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(exportReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 170, -1));
 
         reporterInfo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         reporterInfo.setForeground(Colors.darkBlue);
@@ -312,12 +330,17 @@ public class DetailedReportView extends javax.swing.JFrame {
         System.out.println("");        // TODO add your handling code here:
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
+    private void exportReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportReportButtonActionPerformed
+        new JFrameSaver().saveJFrameAsPNG(this); // TODO add your handling code here:
+    }//GEN-LAST:event_exportReportButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BlueBackGround;
     private javax.swing.JLabel creamContainer;
     private javax.swing.JLabel creamContainer2;
     private javax.swing.JLabel dateInfo;
+    private javax.swing.JButton exportReportButton;
     private javax.swing.JLabel generateReportLabel;
     private javax.swing.JLabel generateReportLabel1;
     private javax.swing.JScrollPane jScrollPane2;
