@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2024 at 07:34 PM
+-- Generation Time: Mar 30, 2024 at 10:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -284,7 +284,8 @@ INSERT INTO `answers` (`id`, `timestamp`, `body_text`, `report_id`, `admin_id`) 
 (17, '2024-03-30 18:11:47', 'Respuesta de prueba', 22, 3),
 (18, '2024-03-30 18:22:47', 'frgr', 23, 3),
 (19, '2024-03-30 18:30:00', 'htyrfg', 24, 3),
-(20, '2024-03-30 18:32:05', 'dfvbgt', 25, 3);
+(20, '2024-03-30 18:32:05', 'dfvbgt', 25, 3),
+(21, '2024-03-30 19:40:25', 'fvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\nv\nv\nv\nv\nv\nv\n\nv\nv\n\nv\nv\n\nv\nv\nv\n\nv\nv\n\nv\nv\nv\n\nv\nv\nv\nv\nv\nv\n\nv\nv\nv\nv\nv\n\nv\nv		\nv\nv\nv\n\nv\nv\n\n', 16, 3);
 
 -- --------------------------------------------------------
 
@@ -298,7 +299,7 @@ CREATE TABLE `reports` (
   `type` int(1) NOT NULL,
   `title` varchar(50) NOT NULL,
   `body_text` text NOT NULL,
-  `contact_phone` varchar(12) NOT NULL,
+  `contact_phone` varchar(15) NOT NULL,
   `status_rep` int(1) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -322,7 +323,7 @@ INSERT INTO `reports` (`id`, `timestamp`, `type`, `title`, `body_text`, `contact
 (13, '2024-03-30 04:54:31', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
 (14, '2024-03-30 04:08:21', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
 (15, '2024-03-30 04:16:12', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
-(16, '2024-03-29 22:42:28', 5, 'grfrgth', 'thhthy\n', 'gthght', 0, 3),
+(16, '2024-03-29 22:42:28', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
 (17, '2024-03-29 22:42:32', 5, 'AaAA', 'thhthy\n', 'gthght', 0, 3),
 (18, '2024-03-29 22:42:37', 4, 'BBBB', 'thhthy\n', 'gthght', 0, 3),
 (19, '2024-03-30 04:04:54', 1, 'hth', 'efrgr', 'hyyh', 1, 3),
@@ -414,7 +415,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `reports`
