@@ -24,6 +24,7 @@ import proyecto.utils.Colors;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.GroupLayout;
@@ -117,7 +118,7 @@ public class ReportList1 extends javax.swing.JFrame {
                 if(report.getStatus() == 1) {
                     statusStr = "Respondido";
                 }
-                else if (report.getStatus() == 0 ){
+                else if (report.getStatus() == 0){
                     statusStr = "No Respondido";
                 }
                 model.addRow(new Object[] {report.getId(),report.getTimestamp(), new ReportType().getType(report.getType()), report.getTitle(), statusStr});

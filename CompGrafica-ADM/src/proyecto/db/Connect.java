@@ -233,7 +233,7 @@ public class Connect {
 		PreparedStatement statement;
 		ResultSet result = null;
 		try {
-			statement = handler.prepareStatement("select * from reports");
+			statement = handler.prepareStatement("select * from reports where status_rep = 0 or status_rep = 1");
 		}
 		catch (SQLException e) {
 			System.err.print("ERROR PREPARANDO LA SENTENCIA");
