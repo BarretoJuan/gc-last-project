@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +19,7 @@ import proyecto.entities.Report;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
 import proyecto.utils.JFrameSaver;
+import proyecto.utils.Message;
 import proyecto.utils.ReportType;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
@@ -327,7 +329,30 @@ public class DetailedReportView extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
     private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
-        System.out.println("");        // TODO add your handling code here:
+        if (!jTextArea3.getText().isEmpty()) { // if the answer's textArea is not empty, proceed with uploading the answer
+            String body = jTextArea3.getText();
+            Message message = null;
+            
+            try {
+                message = new Caller().insertAnswer(body,user.getId(), id);
+            } catch (SQLException ex) {
+                Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (message.getStatus()) {
+            dispose();
+                try {
+                    new ReportList1(user).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }   
+        
+        else { //If jTextArea is empty, warn the user
+            JOptionPane.showMessageDialog(null, "Asegúrese de escribir una respuesta", "Alerta:", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
     private void exportReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportReportButtonActionPerformed
