@@ -51,6 +51,8 @@ public class DetailedReportView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backButton = new javax.swing.JButton();
+        backIcon = new javax.swing.JLabel();
         generateReportLabel1 = new javax.swing.JLabel();
         exportReportButton = new javax.swing.JButton();
         reporterInfo = new javax.swing.JLabel();
@@ -85,6 +87,23 @@ public class DetailedReportView extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(961, 540));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setFocusable(false);
+        backButton.setPreferredSize(new java.awt.Dimension(70, 84));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
+        backIcon.setPreferredSize(new java.awt.Dimension(70, 84));
+        backIcon.setSize(70,84);
+        new SetImageLabel().SetImage(backIcon, "/resources/back.png");
+        getContentPane().add(backIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
         generateReportLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         generateReportLabel1.setForeground(Colors.darkBlue);
         generateReportLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,7 +124,7 @@ public class DetailedReportView extends javax.swing.JFrame {
                 exportReportButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(exportReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 170, -1));
+        getContentPane().add(exportReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 170, -1));
 
         reporterInfo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         reporterInfo.setForeground(Colors.darkBlue);
@@ -145,7 +164,7 @@ public class DetailedReportView extends javax.swing.JFrame {
                 uploadReportButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, 170, -1));
+        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 426, 170, 60));
 
         jScrollPane3.setBackground(Colors.creamWhiteText);
         jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(Colors.darkBlue));
@@ -270,13 +289,13 @@ public class DetailedReportView extends javax.swing.JFrame {
         creamContainer2.setBorder(new RoundedLineBorder(Colors.creamWhite, 1, 50, true));
         creamContainer2.setPreferredSize(new java.awt.Dimension(249, 346));
         creamContainer2.setRequestFocusEnabled(false);
-        getContentPane().add(creamContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 135, -1, -1));
+        getContentPane().add(creamContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 135, -1, 380));
 
         creamContainer.setBackground(Colors.creamWhite);
         creamContainer.setBorder(new RoundedLineBorder(Colors.creamWhite, 1, 50, true));
         creamContainer.setPreferredSize(new java.awt.Dimension(625, 346));
         creamContainer.setRequestFocusEnabled(false);
-        getContentPane().add(creamContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 135, -1, -1));
+        getContentPane().add(creamContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 135, -1, 380));
 
         waveBg.setPreferredSize(new java.awt.Dimension(961, 540));
         waveBg.setSize(new Dimension(961,540));
@@ -359,9 +378,20 @@ public class DetailedReportView extends javax.swing.JFrame {
         new JFrameSaver().saveJFrameAsPNG(this); // TODO add your handling code here:
     }//GEN-LAST:event_exportReportButtonActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        dispose();
+        try {
+            new ReportList1(user).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BlueBackGround;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel backIcon;
     private javax.swing.JLabel creamContainer;
     private javax.swing.JLabel creamContainer2;
     private javax.swing.JLabel dateInfo;
