@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import proyecto.db.Caller;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.Message;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
 
@@ -106,7 +107,6 @@ private User user;
         jTextArea2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jTextArea2.setForeground(Colors.darkBlue);
         jTextArea2.setRows(5);
-        jTextArea2.setCaretPosition(0);
         jTextArea2.setMargin(new java.awt.Insets(2, 10, 2, 2));
         jScrollPane2.setViewportView(jTextArea2);
 
@@ -285,19 +285,26 @@ private User user;
         String reportBody = jTextArea2.getText();
         String reportPhone = telephoneField.getText();      
         int uid = user.getId();
-        
+        Message message = null;
         if(reportType==0 || reportTitle.isEmpty() || reportBody.isEmpty() || reportPhone.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Rellene todos los campos para crear el reporte", "Alerta:", JOptionPane.WARNING_MESSAGE); 
         } //if
         else {
             
             try {
-                new Caller().insertReport(reportType, reportTitle, reportBody, reportPhone, uid);
+                message = new Caller().insertReport(reportType, reportTitle, reportBody, reportPhone, uid);
             } //try
             catch (SQLException ex) {
                 Logger.getLogger(ReportGeneration.class.getName()).log(Level.SEVERE, null, ex);
             } //catch
-            
+            if (message.getStatus()) {
+                dispose();
+                try {
+                    new WelcomeView(user).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ReportGeneration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         } //else
         
         
