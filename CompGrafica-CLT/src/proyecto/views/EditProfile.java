@@ -390,7 +390,14 @@ public class EditProfile extends javax.swing.JFrame {
         
         }
         else {
-            JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Alerta:", JOptionPane.WARNING_MESSAGE);
+            if(enteredPassword.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Introduzca su contraseña para modificar el perfil", "Alerta:", JOptionPane.WARNING_MESSAGE);       
+            }
+            else{
+                System.out.println(enteredPassword);
+                JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Alerta:", JOptionPane.WARNING_MESSAGE);
+            }
+            
 
         }
 
