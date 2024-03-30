@@ -45,6 +45,14 @@ public class DetailedReportView extends javax.swing.JFrame {
         jTextArea3.setText(report.getAnswerBodyText());
         jTextArea2.setText(report.getReportBodyText());
         
+        if(!jTextArea3.getText().isEmpty()) { // if textarea 3 is not empty, then disable both the text area and the button
+            jTextArea3.setDisabledTextColor(Colors.darkBlue);
+            jTextArea3.setEnabled(false);
+            uploadReportButton.setText("");
+            uploadReportButton.setOpaque(false);
+            uploadReportButton.setEnabled(false);
+        }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -154,6 +162,7 @@ public class DetailedReportView extends javax.swing.JFrame {
         uploadReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         uploadReportButton.setForeground(Colors.creamWhiteText);
         uploadReportButton.setText("RESPONDER REPORTE");
+        uploadReportButton.setBorder(null);
         uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadReportButton.setFocusable(false);
         uploadReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
@@ -164,7 +173,7 @@ public class DetailedReportView extends javax.swing.JFrame {
                 uploadReportButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 426, 170, 60));
+        getContentPane().add(uploadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 170, 30));
 
         jScrollPane3.setBackground(Colors.creamWhiteText);
         jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(Colors.darkBlue));
