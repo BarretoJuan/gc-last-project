@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2024 at 06:56 AM
+-- Generation Time: Mar 30, 2024 at 07:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -280,7 +280,11 @@ INSERT INTO `answers` (`id`, `timestamp`, `body_text`, `report_id`, `admin_id`) 
 (13, '2024-03-30 04:08:29', 'egr', 9, 3),
 (14, '2024-03-30 04:16:12', 'frggr', 15, 3),
 (15, '2024-03-30 04:54:31', 'fegrg', 13, 3),
-(16, '2024-03-30 04:54:40', 'efffr', 21, 3);
+(16, '2024-03-30 04:54:40', 'efffr', 21, 3),
+(17, '2024-03-30 18:11:47', 'Respuesta de prueba', 22, 3),
+(18, '2024-03-30 18:22:47', 'frgr', 23, 3),
+(19, '2024-03-30 18:30:00', 'htyrfg', 24, 3),
+(20, '2024-03-30 18:32:05', 'dfvbgt', 25, 3);
 
 -- --------------------------------------------------------
 
@@ -290,7 +294,7 @@ INSERT INTO `answers` (`id`, `timestamp`, `body_text`, `report_id`, `admin_id`) 
 
 CREATE TABLE `reports` (
   `id` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `type` int(1) NOT NULL,
   `title` varchar(50) NOT NULL,
   `body_text` text NOT NULL,
@@ -323,7 +327,13 @@ INSERT INTO `reports` (`id`, `timestamp`, `type`, `title`, `body_text`, `contact
 (18, '2024-03-29 22:42:37', 4, 'BBBB', 'thhthy\n', 'gthght', 0, 3),
 (19, '2024-03-30 04:04:54', 1, 'hth', 'efrgr', 'hyyh', 1, 3),
 (20, '2024-03-30 02:42:35', 1, 'rnybgf', 'brnsgnt', 'nhhnbg', 0, 3),
-(21, '2024-03-30 04:54:40', 2, 'Prueba', 'Hehe', '04146758375', 1, 3);
+(21, '2024-03-30 04:54:40', 2, 'Prueba', 'Hehe', '04146758375', 1, 3),
+(22, '2024-03-30 18:11:47', 5, 'Titulo de prueba', 'cuerpo de prueba', '04146568915', 1, 7),
+(23, '2024-03-30 18:22:47', 2, 'arroz', 'frgrr', '04146568914', 1, 7),
+(24, '2024-03-30 18:29:36', 4, 'prueba2', '2342tgb', '21432545', 1, 7),
+(25, '2024-03-30 18:31:21', 4, 'ergetwbr', 'defwagretwh', 'efwrgetreyn', 1, 7),
+(26, '2024-03-30 18:31:28', 6, 'ntyryh', 'wtyn', 'nytyenr', 0, 7),
+(27, '2024-03-30 18:31:35', 4, 'wdaefrgtdn', 'wdeafsddbgfnhg', 'defrdbtgfnh', 0, 7);
 
 -- --------------------------------------------------------
 
@@ -350,7 +360,8 @@ INSERT INTO `users` (`id`, `name`, `ci`, `password_hash`, `username`, `email`) V
 (3, 'juanmbarreto', '31106376', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0408', 'juan2.manuelbarreto@gmail.com'),
 (4, 'Juan Barreto', 'V31106376', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'juan0405', 'juanmanuelbarreto@gmail.com'),
 (5, '', 'V', '1498e85600493c77f84167289050ce86ab10d0694552ebc9d737b5dee8b30f77598ad81d51254c72ab1147e791d7f92e4d7c68a224f8051421a079bceeb7d271', '', ''),
-(6, 'luis', 'E12121212', 'eabe3446c44495c9d8a108158e735eb8c0eefe7003f0beef02936065e0b900a9d7222b7266b5c49a6ad471287b42eb095ebbfd4110d5291b839c49b5be2c0c6b', 'luribe28', 'luribe28@googlemail.com');
+(6, 'luis', 'E12121212', 'eabe3446c44495c9d8a108158e735eb8c0eefe7003f0beef02936065e0b900a9d7222b7266b5c49a6ad471287b42eb095ebbfd4110d5291b839c49b5be2c0c6b', 'luribe28', 'luribe28@googlemail.com'),
+(7, 'Prueba2', 'V555555', 'a6f1dec5f135dca35478dd3088277897bc3272b09475c205c76ae4c4f793b9c9fc27edc5ebcf4b45e076bef87f434c4f870e6dc93245a87caf7e3428ca354fec', 'prueba2', 'prueba@mail.com');
 
 --
 -- Indexes for dumped tables
@@ -403,19 +414,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
