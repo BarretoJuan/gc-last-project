@@ -16,12 +16,15 @@ import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.utils.Verify;
+import proyecto.verifications.KeyVerifications;
 
 
 public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
+        KeyVerifications kVerificator = new KeyVerifications();
+        kVerificator.verifyUsermane(usernameField);
     }
 
     @SuppressWarnings("unchecked")
