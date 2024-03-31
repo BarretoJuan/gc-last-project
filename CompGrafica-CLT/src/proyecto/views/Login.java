@@ -18,12 +18,16 @@ import static proyecto.db.Hasher.hash;
 import proyecto.entities.User;
 import proyecto.utils.Message;
 import proyecto.utils.Verify;
+import proyecto.verifications.KeyVerifications;
 
 
 public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
+        
+        KeyVerifications kVerificator = new KeyVerifications();
+        kVerificator.verifyUsermane(usernameField);
     }
 
     @SuppressWarnings("unchecked")

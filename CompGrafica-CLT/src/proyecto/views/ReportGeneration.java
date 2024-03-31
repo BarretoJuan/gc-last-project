@@ -20,6 +20,7 @@ import proyecto.utils.Message;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.Verify;
+import proyecto.verifications.KeyVerifications;
 
 /**
  *
@@ -33,6 +34,8 @@ private User user;
     public ReportGeneration(User user) throws SQLException {
         this.user = user;
         initComponents();
+        KeyVerifications kVerificator = new KeyVerifications();
+        kVerificator.verifyTelefono(telephoneField);
     }
 
     /**
@@ -84,7 +87,7 @@ private User user;
         uploadReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         uploadReportButton.setForeground(Colors.creamWhiteText);
         uploadReportButton.setText("SUBIR REPORTE");
-        uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         uploadReportButton.setFocusable(false);
         uploadReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
         uploadReportButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -149,7 +152,6 @@ private User user;
         reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo de reporte", "Pérdida de paquete", "Entrega retrasada", "Entrega incorrecta", "Paquete dañado", "Modificación de datos ", "Otros" }));
         reportTypeCombo.setFocusable(false);
         reportTypeCombo.setOpaque(false);
-        reportTypeCombo.setPreferredSize(new java.awt.Dimension(169, 23));
         reportTypeCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportTypeComboActionPerformed(evt);
@@ -174,7 +176,7 @@ private User user;
 
         logOutIconButton.setBorderPainted(false);
         logOutIconButton.setContentAreaFilled(false);
-        logOutIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logOutIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logOutIconButton.setFocusable(false);
         logOutIconButton.setPreferredSize(new java.awt.Dimension(70, 84));
         logOutIconButton.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +193,7 @@ private User user;
 
         profileIconButton.setBorderPainted(false);
         profileIconButton.setContentAreaFilled(false);
-        profileIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        profileIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         profileIconButton.setFocusable(false);
         profileIconButton.setPreferredSize(new java.awt.Dimension(70, 84));
         profileIconButton.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +211,7 @@ private User user;
         logoPicButton.setBackground(new java.awt.Color(255, 153, 0, 0));
         logoPicButton.setBorderPainted(false);
         logoPicButton.setContentAreaFilled(false);
-        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logoPicButton.setFocusable(false);
         logoPicButton.setPreferredSize(new java.awt.Dimension(375, 130));
         logoPicButton.addActionListener(new java.awt.event.ActionListener() {

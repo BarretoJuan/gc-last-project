@@ -16,12 +16,17 @@ import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.utils.Verify;
-
+import proyecto.verifications.KeyVerifications;
 
 public class Register extends javax.swing.JFrame {
     
     public Register() {
         initComponents();
+        KeyVerifications kVerificator = new KeyVerifications();
+        kVerificator.verifyUsermane(usernameField);
+        kVerificator.verifyName(nameField);
+        kVerificator.verifyCedula(cedulaField);
+        kVerificator.verifyEmail(emailField);
     }
 
     @SuppressWarnings("unchecked")

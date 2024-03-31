@@ -18,6 +18,7 @@ import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.utils.Verify;
+import proyecto.verifications.KeyVerifications;
 
 
 public class EditProfile extends javax.swing.JFrame {
@@ -35,7 +36,12 @@ public class EditProfile extends javax.swing.JFrame {
         usernameField.setCaretPosition(0);
         
         emailField.setText(user.getEmail());
-        emailField.setCaretPosition(0);      
+        emailField.setCaretPosition(0);    
+        
+        KeyVerifications kVerificator = new KeyVerifications();
+        kVerificator.verifyUsermane(usernameField);
+        kVerificator.verifyName(nameField);
+        kVerificator.verifyEmail(emailField);
         
     }
 
