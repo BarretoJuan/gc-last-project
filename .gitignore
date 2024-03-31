@@ -29,3 +29,7 @@ replay_pid*
 /CompGrafica-CLT/manifest.mf
 /CompGrafica-ADM/build.xml
 /CompGrafica-ADM/manifest.mf
+/CompGrafica-ADM/nbproject/private/
+/CompGrafica-CLT/nbproject/private/
+/CompGrafica-ADM/nbproject/private
+/CompGrafica-CLT/nbproject/private
