@@ -22,5 +22,10 @@
 hs_err_pid*
 replay_pid*
 /CompGrafica-CLT/dist/
+/CompGrafica-CLT/build/
 /CompGrafica-ADM/build/
 /CompGrafica-ADM/dist/
+/CompGrafica-CLT/build.xml
+/CompGrafica-CLT/manifest.mf
+/CompGrafica-ADM/build.xml
+/CompGrafica-ADM/manifest.mf
