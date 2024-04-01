@@ -13,12 +13,14 @@ import proyecto.db.Caller;
 import proyecto.db.Hasher;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.Message;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.utils.Verify;
 import proyecto.verifications.KeyVerifications;
+import proyecto.verifications.ContentVerifications;
 
 
 public class EditProfile extends javax.swing.JFrame {
@@ -367,27 +369,42 @@ public class EditProfile extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Asegúrese de llenar los campos de nombre, nombre de usuario e email", "Alerta:", JOptionPane.WARNING_MESSAGE);
         return;
         }
-        System.out.println("Contrasenai ingresada" + enteredPassword);
-        System.out.println("CONTRASEÑA ACTUAL: "+currentPassword);
-        System.out.println("CONTRASE;A INGRESADA: "+verifyPassword);
+        boolean verifyName = ContentVerifications.verifyName(name);
+        boolean verifyUsername = ContentVerifications.verifyUsername(username);
+        boolean verifyEmail = ContentVerifications.verifyEmail(email);
+        boolean verifyEnteredPassword = ContentVerifications.verifyPassword(enteredPassword);
+        
+        if (!verifyName || !verifyUsername || !verifyEmail || !verifyEnteredPassword) {
+        return;
+        }
         
         if(currentPassword.equals(verifyPassword)) {
             if(newPassword.isEmpty() && repNewPassword.isEmpty()) {
                 //modify with current password
                 try {
-                    new Caller().modifyUser(name, currentPassword, username, email, currentUid, false);
-                    user.setName(name);
-                    user.setUsername(username);
-                    user.setEmail(email);
-                    dispose();
-                    new EditProfile(user).setVisible(true);
+                    Message message = new Caller().modifyUser(name, currentPassword, username, email, currentUid, false);
+                    if (message.getStatus()) {
+                        user.setName(name);
+                        user.setUsername(username);
+                        user.setEmail(email);
+                        dispose();
+                        new EditProfile(user).setVisible(true);
+                    }
+
                 } catch (SQLException ex) {
                     Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
               
             }
-            else {
+            else { // modify with new password
+                boolean verifyNewPassword = ContentVerifications.verifyPassword(newPassword);
+                boolean verifyRepNewPassword = ContentVerifications.verifyPassword(repNewPassword);
+                
+                if(!verifyNewPassword || !verifyRepNewPassword) {
+                    return;
+                }
+                
                 if(newPassword.equals(repNewPassword)) {
                     try {
                     new Caller().modifyUser(name, hashedNewPassword, username, email, currentUid, false);
