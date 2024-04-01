@@ -260,7 +260,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFieldActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="ShowHint.setHint(&quot;USUARIO&quot;, usernameField);&#xa;usernameField.setInputVerifier(new Verify.UsernameVerifier());"/>
+        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="ShowHint.setHint(&quot;USUARIO&quot;, usernameField);&#xa;// usernameField.setInputVerifier(new Verify.UsernameVerifier());"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -288,7 +288,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordFieldActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="ShowHint.setHint(&quot;CONTRASE&#xd1;A&quot;, passwordField);&#xa;passwordField.setInputVerifier(new Verify.PasswordVerifier());"/>
+        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="ShowHint.setHint(&quot;CONTRASE&#xd1;A&quot;, passwordField);&#xa;// passwordField.setInputVerifier(new Verify.PasswordVerifier());"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

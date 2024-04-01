@@ -16,6 +16,7 @@ import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.utils.Verify;
+import proyecto.verifications.ContentVerifications;
 import proyecto.verifications.KeyVerifications;
 
 public class Register extends javax.swing.JFrame {
@@ -67,7 +68,7 @@ public class Register extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("REGISTRAR");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -84,7 +85,7 @@ public class Register extends javax.swing.JFrame {
         registerButton.setForeground(Colors.darkBlue);
         registerButton.setText("¡Inicia sesión aquí!");
         registerButton.setBorder(new RoundedLineBorderVoid(Colors.darkBlue, 1, 25, true));
-        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registerButton.setFocusable(false);
         registerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerButton.setIconTextGap(1);
@@ -129,7 +130,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("NOMBRE", nameField);
-        nameField.setInputVerifier(new Verify.NameVerifier());
+        //nameField.setInputVerifier(new Verify.NameVerifier());
         getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         jComboBox1.setBackground(Colors.creamWhite);
@@ -167,7 +168,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CÉDULA", cedulaField);
-        cedulaField.setInputVerifier(new Verify.CedulaVerifier());
+        //cedulaField.setInputVerifier(new Verify.CedulaVerifier());
         getContentPane().add(cedulaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 150, -1));
 
         usernameIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -190,7 +191,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("USUARIO", usernameField);
-        usernameField.setInputVerifier(new Verify.UsernameVerifier());
+        // usernameField.setInputVerifier(new Verify.UsernameVerifier());
         getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         emailIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -213,7 +214,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("EMAIL", emailField);
-        emailField.setInputVerifier(new Verify.EmailVerifier());
+        // emailField.setInputVerifier(new Verify.EmailVerifier());
         getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         passwordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -238,7 +239,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CONTRASEÑA", passwordField);
-        passwordField.setInputVerifier(new Verify.PasswordVerifier());
+        // passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
 
         repPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -263,7 +264,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("REPETIR CONTRASEÑA", repPasswordField);
-        repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
+        // repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(repPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -342,7 +343,6 @@ public class Register extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
        String nombre = nameField.getText();
-       
        int index = jComboBox1.getSelectedIndex();
        String tipoId=null;
        if (index == 0) {
@@ -361,26 +361,31 @@ public class Register extends javax.swing.JFrame {
        String password = String.valueOf(passwordArray);
        char[] confirmPasswordArray = repPasswordField.getPassword();
        String confirmPassword = String.valueOf(confirmPasswordArray);
+       
+       boolean verifyName = ContentVerifications.verifyName(nombre);
+       boolean verifyUser = ContentVerifications.verifyUsername(usuario);
+       boolean verifyCi = ContentVerifications.verifyCedula(rawId);
+       boolean verifyEmail = ContentVerifications.verifyEmail(email);
+       boolean verifyPassword = ContentVerifications.verifyPassword(password);
+       boolean verifyPassword2 = ContentVerifications.verifyPassword(confirmPassword);
 
-       if(rawId.isEmpty() || usuario.isEmpty() || email.isEmpty() || nombre.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-           JOptionPane.showMessageDialog(null, "Rellene todos los campos para registrar a un usuario", "Alerta:", JOptionPane.WARNING_MESSAGE);  
-       }
-       else {
-           if (password.equals(confirmPassword)) {
-           String hashedPassword = hash(password);
-           try {
-               new Caller().insertClient(nombre,id,hashedPassword,usuario,email);
-           } catch (SQLException ex) {
-               Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           dispose();
-           new Login().setVisible(true);
+
+           
+        if (verifyName && verifyUser && verifyCi && verifyEmail && verifyPassword && verifyPassword2) {
+         if (password.equals(confirmPassword)) {
+         String hashedPassword = hash(password);
+         try {
+             new Caller().insertClient(nombre,id,hashedPassword,usuario,email);
+         } catch (SQLException ex) {
+             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
          }
-       else {
-        JOptionPane.showMessageDialog(null, "Las contraseñas ingresadas no coinciden", "Alerta:", JOptionPane.WARNING_MESSAGE);
-       }
-       }
-
+         dispose();
+         new Login().setVisible(true);
+         }
+         else {
+           JOptionPane.showMessageDialog(null, "Las contraseñas ingresadas no coinciden", "Alerta:", JOptionPane.WARNING_MESSAGE);
+         }           
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
