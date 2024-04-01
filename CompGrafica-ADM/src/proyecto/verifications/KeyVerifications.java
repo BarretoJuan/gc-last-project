@@ -72,7 +72,7 @@ public class KeyVerifications {
            @Override
            public void keyTyped(KeyEvent e) {
                char k = e.getKeyChar();
-               if (!String.valueOf(k).matches("[0-9+- ]+")) {
+               if (!String.valueOf(k).matches("[0-9-+ ]+")) {
                     e.consume();
                }
            }    
