@@ -20,6 +20,7 @@ import proyecto.utils.Message;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.Verify;
+import proyecto.verifications.ContentVerifications;
 import proyecto.verifications.KeyVerifications;
 
 /**
@@ -112,7 +113,7 @@ private User user;
         jTextArea2.setForeground(Colors.darkBlue);
         jTextArea2.setRows(5);
         jTextArea2.setMargin(new java.awt.Insets(2, 10, 2, 2));
-        jTextArea2.setInputVerifier(new Verify.ReportBodyVerifier());
+        //jTextArea2.setInputVerifier(new Verify.ReportBodyVerifier());
         jScrollPane2.setViewportView(jTextArea2);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
@@ -130,7 +131,7 @@ private User user;
                 reportTitleTextfieldActionPerformed(evt);
             }
         });
-        reportTitleTextfield.setInputVerifier(new Verify.TitleVerifier());
+        //reportTitleTextfield.setInputVerifier(new Verify.TitleVerifier());
         getContentPane().add(reportTitleTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 235, 390, -1));
 
         telephoneField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -138,7 +139,7 @@ private User user;
         telephoneField.setBorder(border);
         telephoneField.setOpaque(false);
         telephoneField.setPreferredSize(new java.awt.Dimension(250, 23));
-        telephoneField.setInputVerifier(new Verify.TelefonoVerifier());
+        //telephoneField.setInputVerifier(new Verify.TelefonoVerifier());
         getContentPane().add(telephoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 235, 160, -1));
 
         telephoneLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -291,12 +292,15 @@ private User user;
         String reportBody = jTextArea2.getText();
         String reportPhone = telephoneField.getText();      
         int uid = user.getId();
+        
+        boolean verifyReportTitle = ContentVerifications.verifyTitle(reportTitle);
+        boolean verifyReportPhone = ContentVerifications.verifyTelephone(reportPhone);
+        boolean verifyReportBody = ContentVerifications.verifyBodyAndAnswer(reportBody);
+        
+        
         Message message = null;
-        if(reportType==0 || reportTitle.isEmpty() || reportBody.isEmpty() || reportPhone.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Rellene todos los campos para crear el reporte", "Alerta:", JOptionPane.WARNING_MESSAGE); 
-        } //if
-        else {
-            
+        
+        if (reportType!=0 && verifyReportTitle && verifyReportPhone && verifyReportBody) {
             try {
                 message = new Caller().insertReport(reportType, reportTitle, reportBody, reportPhone, uid);
             } //try
@@ -311,8 +315,10 @@ private User user;
                     Logger.getLogger(ReportGeneration.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        } //else
-        
+        }
+        if(reportType==0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de reporte", "Alerta:", JOptionPane.WARNING_MESSAGE); 
+        }
         
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 

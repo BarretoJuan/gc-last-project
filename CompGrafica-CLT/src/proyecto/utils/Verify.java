@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-
+//DEPRECATED
 
 public class Verify {
 

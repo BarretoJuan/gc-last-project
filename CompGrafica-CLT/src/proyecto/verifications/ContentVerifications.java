@@ -79,9 +79,9 @@ public class ContentVerifications {
                     JOptionPane.showMessageDialog(null, "El número de teléfono no puede estar vacío", "Alerta:", JOptionPane.WARNING_MESSAGE); 
                     return false;  
                 }
-		String telefonoRegex = "^(\\+[0-9]{1,3})?-?([0-9]{10,11})$";
+		String telefonoRegex = "^(\\+[0-9]{1,3})? ?-?([0-9]{10,11})$";
 		if (!telephone.matches(telefonoRegex)) {
-                    JOptionPane.showMessageDialog(null, "El número de teléfono ingresado es inválido", "Alerta:", JOptionPane.WARNING_MESSAGE); 
+                    JOptionPane.showMessageDialog(null, "\"Ingrese un teléfono válido\n Ejemplo: 04146558914, +58-4146558914, +584146558914\"", "Alerta:", JOptionPane.WARNING_MESSAGE); 
                     return false;                         
 		}
 		return true;
