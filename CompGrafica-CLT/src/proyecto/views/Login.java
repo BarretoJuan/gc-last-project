@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +19,7 @@ import static proyecto.db.Hasher.hash;
 import proyecto.entities.User;
 import proyecto.utils.Message;
 import proyecto.utils.Verify;
+import proyecto.verifications.ContentVerifications;
 import proyecto.verifications.KeyVerifications;
 
 
@@ -250,33 +252,48 @@ public class Login extends javax.swing.JFrame {
         String hashedPassword = hash(password);
         String username = usernameField.getText();
         
-        Message response = null;
-        try {
-            response = new Caller().loginUser(username, hashedPassword, false);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        boolean verifyPassword = ContentVerifications.verifyPassword(password);
+        boolean verifyUsername = ContentVerifications.verifyUsername(username);
+        
+        if (verifyPassword && verifyUsername) {
+                Message response = null;
+            try {
+                response = new Caller().loginUser(username, hashedPassword, false);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            User user = null;
+            if (response.getStatus() == true) {
+                try {
+                    user = new Caller().getUser(username, false);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(user);
+                dispose();
+                // Implement session
+                WelcomeView r1;
+                try {
+                    r1 = new WelcomeView(user);
+                    r1.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         
-        User user = null;
-        if (response.getStatus() == true) {
-            try {
-                user = new Caller().getUser(username, false);
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        else {
+
+            if (!verifyUsername) {
+            JOptionPane.showMessageDialog(null, "La longitud del nombre de usuario no puede ser mayor de 30 caracteres, ni estar vacío", "Alerta:", JOptionPane.WARNING_MESSAGE);
             }
-            System.out.println(user);
-            dispose();
-            // Implement session
-            WelcomeView r1;
-            try {
-                r1 = new WelcomeView(user);
-                r1.setVisible(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            if (!verifyPassword) {
+            JOptionPane.showMessageDialog(null, "La longitud de la contraseña no puede ser mayor de 50 caracteres, ni estar vacío", "Alerta:", JOptionPane.WARNING_MESSAGE);
             }
-          
-            
+        
         }
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -2,7 +2,7 @@ package proyecto.verifications;
 
 public class ContentVerifications {
 	
-	public boolean verifyUsername(String username) {
+	public static boolean verifyUsername(String username) {
 		if (username.length() > 30 || username.length() < 1) {
 			return false;
 		}
@@ -10,7 +10,7 @@ public class ContentVerifications {
 		return true;
 	}
 
-	public boolean verifyPassword(String password) {
+	public static boolean verifyPassword(String password) {
 		if (password.length() > 50 || password.length() < 1) {
 			return false;
 		}
@@ -18,7 +18,7 @@ public class ContentVerifications {
 		return true;
 	}
 	
-	public boolean verifyName(String name) {
+	public static boolean verifyName(String name) {
 		if (name.length() > 50 || name.length() < 1) {
 			return false;
 		}
@@ -26,7 +26,7 @@ public class ContentVerifications {
 		return true;
 	}
 	
-	public boolean verifyCedula(String cedula) {
+	public static boolean verifyCedula(String cedula) {
 		if (cedula.length() > 9 || cedula.length() < 1) {
 			return false;
 		}
@@ -34,7 +34,7 @@ public class ContentVerifications {
 		return true;
 	}
 	
-	public boolean verifyEmail(String email) {
+	public static boolean verifyEmail(String email) {
 		if (email.length() > 50 || email.length() < 1) {
 			return false;
 		}
@@ -47,7 +47,7 @@ public class ContentVerifications {
 		return true;
 	}
 	
-	public boolean verifyTelephone(String telephone) {
+	public static boolean verifyTelephone(String telephone) {
 		String telefonoRegex = "^(\\+[0-9]{1,3})?-?([0-9]{10,11})$";
 		if (!telephone.matches(telefonoRegex)) {
 			return false;
@@ -56,7 +56,7 @@ public class ContentVerifications {
 		return true;
 	}
 	
-	public boolean verifyTitle(String title) {
+	public static boolean verifyTitle(String title) {
 		if (title.length() > 50 || title.length() < 1) {
 			return false;
 		}
@@ -64,7 +64,7 @@ public class ContentVerifications {
 		return true;
 	}
 	
-	public boolean verifyBodyAndAnswer(String body) {
+	public static boolean verifyBodyAndAnswer(String body) {
 		if (body.length() > 500 || body.length() < 1) {
 			return false;
 		}
