@@ -12,11 +12,13 @@ import proyecto.db.Caller;
 import proyecto.db.Hasher;
 import proyecto.entities.User;
 import proyecto.utils.Colors;
+import proyecto.utils.Message;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.utils.Verify;
+import proyecto.verifications.ContentVerifications;
 import proyecto.verifications.KeyVerifications;
 
 
@@ -79,7 +81,7 @@ public class EditProfile extends javax.swing.JFrame {
 
         logoPicButton.setBorderPainted(false);
         logoPicButton.setContentAreaFilled(false);
-        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logoPicButton.setFocusPainted(false);
         logoPicButton.setFocusable(false);
         logoPicButton.setPreferredSize(new java.awt.Dimension(397, 132));
@@ -94,7 +96,7 @@ public class EditProfile extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("CONFIRMAR CAMBIOS");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -129,7 +131,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("NOMBRE", nameField);
-        nameField.setInputVerifier(new Verify.NameVerifier());
+        // nameField.setInputVerifier(new Verify.NameVerifier());
         getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
 
         cedulaIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -154,7 +156,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CÉDULA", cedulaField);
-        cedulaField.setInputVerifier(new Verify.CedulaVerifier());
+        // cedulaField.setInputVerifier(new Verify.CedulaVerifier());
         getContentPane().add(cedulaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 200, -1));
 
         usernameIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -177,7 +179,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("USUARIO", usernameField);
-        usernameField.setInputVerifier(new Verify.UsernameVerifier());
+        // usernameField.setInputVerifier(new Verify.UsernameVerifier());
         getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
 
         emailIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -200,7 +202,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("EMAIL", emailField);
-        emailField.setInputVerifier(new Verify.EmailVerifier());
+        // emailField.setInputVerifier(new Verify.EmailVerifier());
         getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
 
         passwordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -225,7 +227,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CONTRASEÑA", passwordField);
-        passwordField.setInputVerifier(new Verify.PasswordVerifier());
+        // passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
 
         newPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -250,7 +252,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("NUEVA CONTRASEÑA", newPasswordField);
-        newPasswordField.setInputVerifier(new Verify.PasswordVerifier());
+        // newPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(newPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
 
         repPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -275,7 +277,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("REPETIR CONTRASEÑA", repPasswordField);
-        repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
+        // repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(repPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
 
         bienvenidoLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -338,7 +340,7 @@ public class EditProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-         String name = nameField.getText();
+        String name = nameField.getText();
         String username = usernameField.getText();
         String email = emailField.getText();
         String currentPassword = user.getPasswordHash();
@@ -360,27 +362,42 @@ public class EditProfile extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Asegúrese de llenar los campos de nombre, nombre de usuario e email", "Alerta:", JOptionPane.WARNING_MESSAGE);
         return;
         }
-        System.out.println("Contrasenai ingresada" + enteredPassword);
-        System.out.println("CONTRASEÑA ACTUAL: "+currentPassword);
-        System.out.println("CONTRASE;A INGRESADA: "+verifyPassword);
+        boolean verifyName = ContentVerifications.verifyName(name);
+        boolean verifyUsername = ContentVerifications.verifyUsername(username);
+        boolean verifyEmail = ContentVerifications.verifyEmail(email);
+        boolean verifyEnteredPassword = ContentVerifications.verifyPassword(enteredPassword);
+        
+        if (!verifyName || !verifyUsername || !verifyEmail || !verifyEnteredPassword) {
+        return;
+        }
         
         if(currentPassword.equals(verifyPassword)) {
             if(newPassword.isEmpty() && repNewPassword.isEmpty()) {
                 //modify with current password
                 try {
-                    new Caller().modifyUser(name, currentPassword, username, email, currentUid, true);
-                    user.setName(name);
-                    user.setUsername(username);
-                    user.setEmail(email);
-                    dispose();
-                    new EditProfile(user).setVisible(true);
+                    Message message = new Caller().modifyUser(name, currentPassword, username, email, currentUid, true);
+                    if (message.getStatus()) {
+                        user.setName(name);
+                        user.setUsername(username);
+                        user.setEmail(email);
+                        dispose();
+                        new EditProfile(user).setVisible(true);
+                    }
+
                 } catch (SQLException ex) {
                     Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
               
             }
-            else {
+            else { // modify with new password
+                boolean verifyNewPassword = ContentVerifications.verifyPassword(newPassword);
+                boolean verifyRepNewPassword = ContentVerifications.verifyPassword(repNewPassword);
+                
+                if(!verifyNewPassword || !verifyRepNewPassword) {
+                    return;
+                }
+                
                 if(newPassword.equals(repNewPassword)) {
                     try {
                     new Caller().modifyUser(name, hashedNewPassword, username, email, currentUid, true);
@@ -427,6 +444,8 @@ public class EditProfile extends javax.swing.JFrame {
         emailField.setText(user.getEmail());
         emailField.setCaretPosition(0);     
         
+        
+
         
     }//GEN-LAST:event_loginButtonActionPerformed
 
