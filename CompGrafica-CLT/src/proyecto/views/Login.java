@@ -183,7 +183,7 @@ public class Login extends javax.swing.JFrame {
         // passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
-        inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         inicioClienteLabel.setForeground(Colors.darkBlue);
         inicioClienteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inicioClienteLabel.setText("Inicio de Cliente");

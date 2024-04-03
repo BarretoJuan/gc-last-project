@@ -90,9 +90,11 @@ public class ReportList1 extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(Colors.creamWhiteText);
         jScrollPane1.setForeground(Colors.darkBlue);
+        jScrollPane1.setPreferredSize(new Dimension(600, 800));
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setBackground(Colors.creamWhiteText);
+        jTable1.setFont(new Font("Tahoma", 0, 16)); // NOI18N
         jTable1.setForeground(Colors.darkBlue);
         jTable1.setModel(new DefaultTableModel() {
 
@@ -133,8 +135,10 @@ public class ReportList1 extends javax.swing.JFrame {
         targetColumn.setCellRenderer(new CellColorRenderer(4));
         jTable1.setGridColor(Colors.darkBlue);
         jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.setUpdateSelectionOnSort(false);
         jTable1.getTableHeader().setForeground(Colors.darkBlue);
         jTable1.getTableHeader().setBackground(Colors.creamWhiteText);
+        jTable1.getTableHeader().setFont(new Font("Tahoma", 0, 16));
         jTable1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -145,7 +149,7 @@ public class ReportList1 extends javax.swing.JFrame {
         jScrollPane1.getViewport().setBackground(Colors.creamWhiteText);
         jScrollPane1.getViewport().setOpaque(true);
 
-        getContentPane().add(jScrollPane1, new AbsoluteConstraints(260, 230, -1, 170));
+        getContentPane().add(jScrollPane1, new AbsoluteConstraints(70, 220, 820, 230));
 
         generateReportLabel.setFont(new Font("Arial", 1, 24)); // NOI18N
         generateReportLabel.setForeground(Colors.darkBlue);

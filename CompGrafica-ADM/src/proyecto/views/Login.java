@@ -55,7 +55,7 @@ public class Login extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
         jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
@@ -85,7 +85,7 @@ public class Login extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("INICIAR SESION");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -148,7 +148,7 @@ public class Login extends javax.swing.JFrame {
         passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
-        inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         inicioClienteLabel.setForeground(Colors.darkBlue);
         inicioClienteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inicioClienteLabel.setText("Inicio de Administrador");

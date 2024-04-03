@@ -267,7 +267,7 @@ public class Register extends javax.swing.JFrame {
         // repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(repPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
-        inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         inicioClienteLabel.setForeground(Colors.darkBlue);
         inicioClienteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inicioClienteLabel.setText("Registro de cliente");
