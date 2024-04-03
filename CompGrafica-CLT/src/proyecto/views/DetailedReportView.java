@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -385,21 +386,27 @@ public class DetailedReportView extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
     private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
-        Message message = null;
-        try {
-            message = new Caller().deleteReport(id);      // TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        int result = JOptionPane.showConfirmDialog(null, "¿Está seguro de querer eliminar este reporte?", "Eliminar Reporte", JOptionPane.YES_NO_OPTION);
+
+        if (result == JOptionPane.YES_OPTION) {
         
-        if(message.getStatus()) {
-            dispose();
+            Message message = null;
             try {
-                new ReportList(user).setVisible(true);
+                message = new Caller().deleteReport(id);      // TODO add your handling code here:
             } catch (SQLException ex) {
                 Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+
+            if(message.getStatus()) {
+                dispose();
+                try {
+                    new ReportList(user).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(DetailedReportView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } 
+
         
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
