@@ -88,7 +88,8 @@ private User user;
         uploadReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         uploadReportButton.setForeground(Colors.creamWhiteText);
         uploadReportButton.setText("SUBIR REPORTE");
-        uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        uploadReportButton.setContentAreaFilled(false);
+        uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadReportButton.setFocusable(false);
         uploadReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
         uploadReportButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -177,7 +178,7 @@ private User user;
 
         logOutIconButton.setBorderPainted(false);
         logOutIconButton.setContentAreaFilled(false);
-        logOutIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logOutIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logOutIconButton.setFocusable(false);
         logOutIconButton.setPreferredSize(new java.awt.Dimension(70, 84));
         logOutIconButton.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +195,7 @@ private User user;
 
         profileIconButton.setBorderPainted(false);
         profileIconButton.setContentAreaFilled(false);
-        profileIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        profileIconButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         profileIconButton.setFocusable(false);
         profileIconButton.setPreferredSize(new java.awt.Dimension(70, 84));
         profileIconButton.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +213,7 @@ private User user;
         logoPicButton.setBackground(new java.awt.Color(255, 153, 0, 0));
         logoPicButton.setBorderPainted(false);
         logoPicButton.setContentAreaFilled(false);
-        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoPicButton.setFocusable(false);
         logoPicButton.setPreferredSize(new java.awt.Dimension(375, 130));
         logoPicButton.addActionListener(new java.awt.event.ActionListener() {

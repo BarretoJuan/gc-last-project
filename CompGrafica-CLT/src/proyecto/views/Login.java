@@ -62,7 +62,7 @@ public class Login extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
         jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
@@ -91,7 +91,7 @@ public class Login extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("Iniciar Sesión");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         loginButton.setIconTextGap(1);
@@ -110,7 +110,7 @@ public class Login extends javax.swing.JFrame {
         registerButton.setForeground(Colors.darkBlue);
         registerButton.setText("¡Regístrate Aquí!");
         registerButton.setBorder(new RoundedLineBorderVoid(Colors.darkBlue, 1, 25, true));
-        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerButton.setFocusable(false);
         registerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerButton.setIconTextGap(1);

@@ -84,7 +84,7 @@ public class EditProfile extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
         jButton1.setPreferredSize(new java.awt.Dimension(397, 132));
@@ -99,7 +99,7 @@ public class EditProfile extends javax.swing.JFrame {
         editButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         editButton.setForeground(Colors.creamWhiteText);
         editButton.setText("CONFIRMAR CAMBIOS");
-        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editButton.setFocusable(false);
         editButton.setMaximumSize(new java.awt.Dimension(135, 36));
         editButton.setMinimumSize(new java.awt.Dimension(135, 36));
