@@ -24,6 +24,7 @@ import proyecto.utils.ReportType;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.Verify;
+import proyecto.verifications.ContentVerifications;
 
 /**
  *
@@ -359,7 +360,12 @@ public class DetailedReportView extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutIconButtonActionPerformed
 
     private void uploadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadReportButtonActionPerformed
-        if (!jTextArea3.getText().isEmpty()) { // if the answer's textArea is not empty, proceed with uploading the answer
+        String text = jTextArea3.getText();
+        boolean verifyText = new ContentVerifications().verifyBodyAndAnswer(text);
+        
+        
+        
+        if (verifyText) { 
             String body = jTextArea3.getText();
             Message message = null;
             
@@ -379,10 +385,7 @@ public class DetailedReportView extends javax.swing.JFrame {
             }
             
         }   
-        
-        else { //If jTextArea is empty, warn the user
-            JOptionPane.showMessageDialog(null, "Asegúrese de escribir una respuesta", "Alerta:", JOptionPane.WARNING_MESSAGE);
-        }
+       
     }//GEN-LAST:event_uploadReportButtonActionPerformed
 
     private void exportReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportReportButtonActionPerformed
