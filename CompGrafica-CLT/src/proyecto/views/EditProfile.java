@@ -84,7 +84,7 @@ public class EditProfile extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
         jButton1.setPreferredSize(new java.awt.Dimension(397, 132));
@@ -99,7 +99,7 @@ public class EditProfile extends javax.swing.JFrame {
         editButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         editButton.setForeground(Colors.creamWhiteText);
         editButton.setText("CONFIRMAR CAMBIOS");
-        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         editButton.setFocusable(false);
         editButton.setMaximumSize(new java.awt.Dimension(135, 36));
         editButton.setMinimumSize(new java.awt.Dimension(135, 36));
@@ -139,7 +139,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("NOMBRE", nameField);
-        nameField.setInputVerifier(new Verify.NameVerifier());
+        // nameField.setInputVerifier(new Verify.NameVerifier());
         getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         cedulaIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -163,7 +163,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CÉDULA", cedulaField);
-        cedulaField.setInputVerifier(new Verify.CedulaVerifier());
+        // cedulaField.setInputVerifier(new Verify.CedulaVerifier());
         getContentPane().add(cedulaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 200, -1));
 
         usernameIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -186,7 +186,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("USUARIO", usernameField);
-        usernameField.setInputVerifier(new Verify.UsernameVerifier());
+        // usernameField.setInputVerifier(new Verify.UsernameVerifier());
         getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         emailIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -209,7 +209,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("EMAIL", emailField);
-        emailField.setInputVerifier(new Verify.EmailVerifier());
+        // emailField.setInputVerifier(new Verify.EmailVerifier());
         getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         passwordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -234,7 +234,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CONTRASEÑA", passwordField);
-        passwordField.setInputVerifier(new Verify.PasswordVerifier());
+        // passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
 
         newPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -259,7 +259,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("NUEVA CONTRASEÑA", newPasswordField);
-        newPasswordField.setInputVerifier(new Verify.PasswordVerifier());
+        // newPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(newPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         repPasswordIcon.setMaximumSize(new java.awt.Dimension(34, 36));
@@ -284,7 +284,7 @@ public class EditProfile extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("REPETIR CONTRASEÑA", repPasswordField);
-        repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
+        // repPasswordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(repPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, -1, -1));
 
         bienvenidoLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N

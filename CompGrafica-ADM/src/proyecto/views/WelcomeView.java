@@ -57,6 +57,7 @@ public class WelcomeView extends javax.swing.JFrame {
 
         closeAppButton = new JButton();
         viewReportsButton = new JButton();
+        userLabel = new JLabel();
         viewReportsLabel = new JLabel();
         closeAppLabel = new JLabel();
         logoLabel = new JLabel();
@@ -119,6 +120,12 @@ public class WelcomeView extends javax.swing.JFrame {
         });
         getContentPane().add(viewReportsButton, new AbsoluteConstraints(520, 230, -1, -1));
 
+        userLabel.setFont(new Font("Arial", 1, 18)); // NOI18N
+        userLabel.setForeground(Colors.darkBlue);
+        userLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        userLabel.setText("Bienvenido "+user.getName());
+        getContentPane().add(userLabel, new AbsoluteConstraints(465, 150, 440, -1));
+
         viewReportsLabel.setFont(new Font("Arial", 1, 25)); // NOI18N
         viewReportsLabel.setForeground(Colors.darkBlue);
         viewReportsLabel.setOpaque(true);
@@ -141,10 +148,11 @@ public class WelcomeView extends javax.swing.JFrame {
         new SetImageLabel().SetImage(logoLabel,"/resources/nobgicon.png");
         getContentPane().add(logoLabel, new AbsoluteConstraints(30, 200, -1, -1));
 
-        generateReportLabel2.setFont(new Font("Arial", 1, 25)); // NOI18N
+        generateReportLabel2.setFont(new Font("Arial", 1, 18)); // NOI18N
         generateReportLabel2.setForeground(Colors.darkBlue);
+        generateReportLabel2.setHorizontalAlignment(SwingConstants.CENTER);
         generateReportLabel2.setText("¿Qué desea hacer?");
-        getContentPane().add(generateReportLabel2, new AbsoluteConstraints(580, 150, -1, -1));
+        getContentPane().add(generateReportLabel2, new AbsoluteConstraints(450, 180, 470, -1));
 
         generateReportLabel3.setFont(new Font("Arial", 1, 30)); // NOI18N
         generateReportLabel3.setForeground(Colors.creamWhiteText);
@@ -276,6 +284,7 @@ public class WelcomeView extends javax.swing.JFrame {
     public JLabel logoLabel;
     public JLabel profileIcon;
     public JButton profileIconButton;
+    public JLabel userLabel;
     public JButton viewReportsButton;
     public JLabel viewReportsLabel;
     public JLabel waveBg;
