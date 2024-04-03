@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 03, 2024 at 09:05 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-04-2024 a las 21:44:12
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,14 +18,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cargomara`
+-- Base de datos: `cargomara`
 --
 CREATE DATABASE IF NOT EXISTS `cargomara` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `cargomara`;
 
 DELIMITER $$
 --
--- Functions
+-- Funciones
 --
 CREATE DEFINER=`root`@`localhost` FUNCTION `delete_report` (`preport_id` INT(11)) RETURNS INT(1)  BEGIN
 
@@ -232,7 +232,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Estructura de tabla para la tabla `admin`
 --
 
 CREATE TABLE `admin` (
@@ -245,16 +245,17 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin`
+-- Volcado de datos para la tabla `admin`
 --
 
 INSERT INTO `admin` (`id`, `name`, `ci`, `email`, `password_hash`, `username`) VALUES
-(3, 'Juan', 'V31106376', 'juan@gmail.com', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0407');
+(3, 'Juan', 'V31106376', 'juan@gmail.com', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0407'),
+(4, 'Gianella Faria', '30643008', 'gianella@gmail.com', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'giadmin');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `answers`
+-- Estructura de tabla para la tabla `answers`
 --
 
 CREATE TABLE `answers` (
@@ -265,10 +266,17 @@ CREATE TABLE `answers` (
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `answers`
+--
+
+INSERT INTO `answers` (`id`, `timestamp`, `body_text`, `report_id`, `admin_id`) VALUES
+(28, '2024-04-03 19:43:20', 'Buenos dias Luis, nos pondremos en contacto con usted en las proximas 24 horas por medio del numero telefonico provisto para solventar la situacion. Gracias por su paciencia y disculpe los inconvenientes.', 34, 4);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Estructura de tabla para la tabla `reports`
 --
 
 CREATE TABLE `reports` (
@@ -282,10 +290,19 @@ CREATE TABLE `reports` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `reports`
+--
+
+INSERT INTO `reports` (`id`, `timestamp`, `type`, `title`, `body_text`, `contact_phone`, `status_rep`, `user_id`) VALUES
+(34, '2024-04-03 19:29:38', 4, 'Uno de mis audifonos llegaron averiados', 'El día de ayer, 2 de abril del 2024 llego un envió de unos audífonos marca Aaron plateados; sin embargo, el audífono derecho no emite sonido. Me gustaría pedir un reembolso de los audífonos.', '04246246432', 1, 11),
+(35, '2024-04-03 19:32:40', 2, 'CUANDO VA A LLEGAR MI PAQUETE', 'Hace TRES SEMANAS que hice un pedido de la versión coleccionista del videojuego: Persona 3 Reload, para la PlayStation 5. QUIERO JUGAR MI JUEGO Y NO PUEDO.', '+58 04160708091', 0, 4),
+(36, '2024-04-03 19:38:36', 5, 'Confundieron un paquete', 'Acabo de recibir un envío que traía una edición coleccionista del videojuego Persona 3 Reload para la Playstation 5; pero no era para mi, era para un tal Juan Barreto. Quisiera saber que procede hacer para que le den su juego al payaso de Juan que gasto 200 dólares en la edición especial de un juego malo, gracias.', '04246246432', 0, 11);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -298,24 +315,19 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `ci`, `password_hash`, `username`, `email`) VALUES
-(3, 'juanmbarretowwwwww', '31106376', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0400', 'juan2.manuelbarreto@gmail.com'),
 (4, 'Juan Barreto', 'V31106376', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'juan0405', 'juanmanuelbarreto@gmail.com'),
-(5, '', 'V', '1498e85600493c77f84167289050ce86ab10d0694552ebc9d737b5dee8b30f77598ad81d51254c72ab1147e791d7f92e4d7c68a224f8051421a079bceeb7d271', '', ''),
-(6, 'luis', 'E12121212', 'eabe3446c44495c9d8a108158e735eb8c0eefe7003f0beef02936065e0b900a9d7222b7266b5c49a6ad471287b42eb095ebbfd4110d5291b839c49b5be2c0c6b', 'luribe28', 'luribe28@googlemail.com'),
-(7, 'Prueba2', 'V555555', 'a6f1dec5f135dca35478dd3088277897bc3272b09475c205c76ae4c4f793b9c9fc27edc5ebcf4b45e076bef87f434c4f870e6dc93245a87caf7e3428ca354fec', 'prueba2', 'prueba@mail.com'),
-(8, 'grrggrrggrgrgrgrrggrrggrgrgrgrrggrrggrgrgr', 'V3453', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'gr', 'juan24@gmail.com'),
-(9, 'fe', 'V12345', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'few', 'juan@gmail.com');
+(11, 'Luis Garrillo', '30605166', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'lggu', 'garrillofeeling@gmail.com');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `admin`
+-- Indices de la tabla `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`),
@@ -324,7 +336,7 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `answers`
+-- Indices de la tabla `answers`
 --
 ALTER TABLE `answers`
   ADD PRIMARY KEY (`id`),
@@ -332,14 +344,14 @@ ALTER TABLE `answers`
   ADD KEY `admin_id` (`admin_id`);
 
 --
--- Indexes for table `reports`
+-- Indices de la tabla `reports`
 --
 ALTER TABLE `reports`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -348,46 +360,46 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `answers`
+-- AUTO_INCREMENT de la tabla `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `reports`
+-- AUTO_INCREMENT de la tabla `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `answers`
+-- Filtros para la tabla `answers`
 --
 ALTER TABLE `answers`
   ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`),
   ADD CONSTRAINT `answers_ibfk_2` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`);
 
 --
--- Constraints for table `reports`
+-- Filtros para la tabla `reports`
 --
 ALTER TABLE `reports`
   ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
