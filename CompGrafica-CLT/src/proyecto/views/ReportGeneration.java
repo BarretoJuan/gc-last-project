@@ -88,7 +88,6 @@ private User user;
         uploadReportButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         uploadReportButton.setForeground(Colors.creamWhiteText);
         uploadReportButton.setText("SUBIR REPORTE");
-        uploadReportButton.setContentAreaFilled(false);
         uploadReportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadReportButton.setFocusable(false);
         uploadReportButton.setMaximumSize(new java.awt.Dimension(135, 36));
