@@ -35,9 +35,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import proyecto.db.Caller;
+import proyecto.utils.CellColorRenderer;
 import proyecto.utils.ReportType;
 /**
  *
@@ -125,6 +128,9 @@ public class ReportList1 extends javax.swing.JFrame {
             }
 
         }
+        TableColumnModel columnModel = jTable1.getColumnModel();
+        TableColumn targetColumn = columnModel.getColumn(4);
+        targetColumn.setCellRenderer(new CellColorRenderer(4));
         jTable1.setGridColor(Colors.darkBlue);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.getTableHeader().setForeground(Colors.darkBlue);

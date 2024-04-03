@@ -34,9 +34,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import proyecto.db.Caller;
+import proyecto.utils.CellColorRenderer;
 import proyecto.utils.ReportType;
 /**
  *
@@ -73,8 +76,8 @@ public class ReportList extends javax.swing.JFrame {
         logoPicButton = new JButton();
         logoPic = new JLabel();
         creamContainer = new JLabel();
-        BlueBackGround = new JPanel();
         waveBg = new JLabel();
+        BlueBackGround = new JPanel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lista de Reportes");
@@ -125,6 +128,10 @@ public class ReportList extends javax.swing.JFrame {
             }
 
         }
+
+        TableColumnModel columnModel = jTable1.getColumnModel();
+        TableColumn targetColumn = columnModel.getColumn(4);
+        targetColumn.setCellRenderer(new CellColorRenderer(4));
         jTable1.setGridColor(Colors.darkBlue);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.getTableHeader().setForeground(Colors.darkBlue);
@@ -208,26 +215,21 @@ public class ReportList extends javax.swing.JFrame {
         creamContainer.setPreferredSize(new Dimension(884, 346));
         getContentPane().add(creamContainer, new AbsoluteConstraints(37, 135, -1, -1));
 
-        BlueBackGround.setBackground(Colors.darkBlue);
-        BlueBackGround.setPreferredSize(new Dimension(961, 540));
-
         waveBg.setPreferredSize(new Dimension(961, 540));
         waveBg.setSize(new Dimension(961,540));
         new SetImageLabel().SetImage(waveBg, "/resources/BgBig.png");
+        getContentPane().add(waveBg, new AbsoluteConstraints(0, 0, -1, -1));
+
+        BlueBackGround.setBackground(Colors.darkBlue);
+        BlueBackGround.setPreferredSize(new Dimension(961, 540));
 
         GroupLayout BlueBackGroundLayout = new GroupLayout(BlueBackGround);
         BlueBackGround.setLayout(BlueBackGroundLayout);
         BlueBackGroundLayout.setHorizontalGroup(BlueBackGroundLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(BlueBackGroundLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(waveBg, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 961, Short.MAX_VALUE)
         );
         BlueBackGroundLayout.setVerticalGroup(BlueBackGroundLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(BlueBackGroundLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(waveBg, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 540, Short.MAX_VALUE)
         );
 
         getContentPane().add(BlueBackGround, new AbsoluteConstraints(0, 0, -1, -1));
