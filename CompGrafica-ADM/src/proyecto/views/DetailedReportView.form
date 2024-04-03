@@ -286,7 +286,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextArea3.setInputVerifier(new Verify.ReportBodyVerifier());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="// jTextArea3.setInputVerifier(new Verify.ReportBodyVerifier());"/>
           </AuxValues>
         </Component>
       </SubComponents>
