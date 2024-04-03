@@ -81,7 +81,7 @@ public class EditProfile extends javax.swing.JFrame {
 
         logoPicButton.setBorderPainted(false);
         logoPicButton.setContentAreaFilled(false);
-        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoPicButton.setFocusPainted(false);
         logoPicButton.setFocusable(false);
         logoPicButton.setPreferredSize(new java.awt.Dimension(397, 132));
@@ -96,7 +96,7 @@ public class EditProfile extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
         loginButton.setText("CONFIRMAR CAMBIOS");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
         loginButton.setMinimumSize(new java.awt.Dimension(135, 36));
