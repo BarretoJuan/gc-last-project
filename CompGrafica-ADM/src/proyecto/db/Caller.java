@@ -30,11 +30,11 @@ public class Caller {
 			return new Message(false, "ERROR INTERNO");
 		}
 		else if (response == 1 || response == 2) {
-			return new Message(false, "El nombre de usuario o la contrasena son incorrectos");
+			return new Message(false, "El nombre de usuario o la contraseña son incorrectos");
 		}
 		
-		System.out.print("\nExito en la transaccion");
-		return new Message(true, "Inicio de sesion satisfactorio");
+		System.out.print("\nÉxito en la transacción");
+		return new Message(true, "Inicio de sesión satisfactorio");
 	}
 	
 	public Message insertClient(String name, String ci, String passwordHash, String username, String email) throws SQLException {
@@ -45,13 +45,13 @@ public class Caller {
 			return new Message(false, "ERROR INTERNO");
 		}
 		else if (response == 1) {
-			return new Message(false, "Otro usuario tiene esa misma cedula");
+			return new Message(false, "Otro usuario tiene esa misma cédula");
 		}
 		else if (response == 2) {
 			return new Message(false, "Otro usuario tiene ese mismo correo");
 		}
 		else if (response == 3) {
-			return new Message(false, "Ese nombre de usuario ya esta en uso");
+			return new Message(false, "Ese nombre de usuario ya está en uso");
 		}
 		
 		System.out.print("\nExito en la transaccion");
@@ -66,7 +66,7 @@ public class Caller {
 			return new Message(false, "ERROR INTERNO");
 		}
 		else if (response == 1) {
-			return new Message(false, "El cuerpo del reporte no debe estar vacio");
+			return new Message(false, "El cuerpo del reporte no debe estar vacío");
 		}
 		
 		System.out.print("\nExito en la transaccion");
@@ -81,7 +81,7 @@ public class Caller {
 			return new Message(false, "ERROR INTERNO");
 		}
 		else if (response == 1) {
-			return new Message(false, "El cuerpo de la respouesta no debe estar vacio");
+			return new Message(false, "El cuerpo de la respuesta no debe estar vacío");
 		}
 		
 		System.out.print("\nExito en la transaccion");
@@ -121,7 +121,7 @@ public class Caller {
 			return new Message(false, "Otro usuario tiene ese mismo correo");
 		}
 		else if (response == 2) {
-			return new Message(false, "Ese nombre de usuario ya esta en uso");
+			return new Message(false, "Ese nombre de usuario ya está en uso");
 		}
 		
 		System.out.print("\nExito en la transaccion");

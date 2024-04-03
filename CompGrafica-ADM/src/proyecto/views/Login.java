@@ -85,7 +85,7 @@ public class Login extends javax.swing.JFrame {
         loginButton.setBackground(Colors.darkBlue);
         loginButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginButton.setForeground(Colors.creamWhiteText);
-        loginButton.setText("INICIAR SESION");
+        loginButton.setText("INICIAR SESIÓN");
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         loginButton.setMaximumSize(new java.awt.Dimension(135, 36));
