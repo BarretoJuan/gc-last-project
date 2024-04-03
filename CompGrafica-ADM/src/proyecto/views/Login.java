@@ -16,6 +16,7 @@ import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
 import proyecto.utils.ShowHint;
 import proyecto.utils.Verify;
+import proyecto.verifications.ContentVerifications;
 import proyecto.verifications.KeyVerifications;
 
 
@@ -127,7 +128,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("USUARIO", usernameField);
-        usernameField.setInputVerifier(new Verify.UsernameVerifier());
+        // usernameField.setInputVerifier(new Verify.UsernameVerifier());
         getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         passwordField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -145,7 +146,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         ShowHint.setHint("CONTRASEÑA", passwordField);
-        passwordField.setInputVerifier(new Verify.PasswordVerifier());
+        // passwordField.setInputVerifier(new Verify.PasswordVerifier());
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
         inicioClienteLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -210,31 +211,37 @@ public class Login extends javax.swing.JFrame {
         String hashedPassword = Hasher.hash(password);
         String username = usernameField.getText();
         
-        Message response = null;
-        try {
-            response = new Caller().loginUser(username, hashedPassword, true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        boolean verifyUsername = new ContentVerifications().verifyUsername(username);
+        boolean verifyPassword = new ContentVerifications().verifyPassword(password);
         
-        User user = null;
-        if (response.getStatus() == true) {
+        if(verifyUsername && verifyPassword) {
+            Message response = null;
             try {
-                user = new Caller().getUser(username, true);
-   
+                response = new Caller().loginUser(username, hashedPassword, true);
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            dispose();
-            // Implement session
-            WelcomeView r1;
-            try {
-                r1 = new WelcomeView(user);
-                r1.setVisible(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            User user = null;
+            if (response.getStatus() == true) {
+                try {
+                    user = new Caller().getUser(username, true);
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                dispose();
+                // Implement session
+                WelcomeView r1;
+                try {
+                    r1 = new WelcomeView(user);
+                    r1.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+
           
             
         }       // TODO add your handling code here:
