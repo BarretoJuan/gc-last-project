@@ -41,6 +41,7 @@ public class Connect {
 		} 
 		catch (SQLException e) {
 			System.err.print("ERROR EJECUTANDO EL PROCEDIMIENTO");
+                        e.printStackTrace();
 			return -1;
 		}
 		

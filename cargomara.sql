@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2024 at 10:06 PM
+-- Generation Time: Apr 03, 2024 at 09:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -98,7 +98,7 @@ DECLARE not_empty INT DEFAULT 0;
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `insert_report` (`ptype` INT(1), `ptitle` VARCHAR(50), `pbody_text` TEXT, `pcontact_phone` VARCHAR(12), `puser_id` INT(11)) RETURNS INT(1)  BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `insert_report` (`ptype` INT(1), `ptitle` VARCHAR(50), `pbody_text` TEXT, `pcontact_phone` VARCHAR(15), `puser_id` INT(11)) RETURNS INT(1)  BEGIN
 
 DECLARE not_empty INT DEFAULT 0;
 
@@ -249,8 +249,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `ci`, `email`, `password_hash`, `username`) VALUES
-(2, 'Gianellaadm', '30643008', 'fariamendivil@gmail.com', '555666777', 'AdmG'),
-(3, 'Juan BarretoADM', 'V31106376', 'juan2@gmail.com', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0407');
+(3, 'Juan', 'V31106376', 'juan@gmail.com', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0407');
 
 -- --------------------------------------------------------
 
@@ -265,27 +264,6 @@ CREATE TABLE `answers` (
   `report_id` int(11) NOT NULL,
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `answers`
---
-
-INSERT INTO `answers` (`id`, `timestamp`, `body_text`, `report_id`, `admin_id`) VALUES
-(5, '2024-03-18 02:32:03', 'HOLA ESTA ES TU RESPUESTA CON ESTATUS', 2, 2),
-(6, '2024-03-20 03:57:07', 'ta malo', 6, 2),
-(9, '2024-03-30 04:04:34', 'grgtht', 10, 3),
-(10, '2024-03-30 04:04:54', 'rgthbtg', 19, 3),
-(11, '2024-03-30 04:08:21', 'dfegrr', 14, 3),
-(12, '2024-03-30 04:08:25', 'dferg', 12, 3),
-(13, '2024-03-30 04:08:29', 'egr', 9, 3),
-(14, '2024-03-30 04:16:12', 'frggr', 15, 3),
-(15, '2024-03-30 04:54:31', 'fegrg', 13, 3),
-(16, '2024-03-30 04:54:40', 'efffr', 21, 3),
-(17, '2024-03-30 18:11:47', 'Respuesta de prueba', 22, 3),
-(18, '2024-03-30 18:22:47', 'frgr', 23, 3),
-(19, '2024-03-30 18:30:00', 'htyrfg', 24, 3),
-(20, '2024-03-30 18:32:05', 'dfvbgt', 25, 3),
-(21, '2024-03-30 19:40:25', 'fvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\nv\nv\nv\nv\nv\nv\n\nv\nv\n\nv\nv\n\nv\nv\nv\n\nv\nv\n\nv\nv\nv\n\nv\nv\nv\nv\nv\nv\n\nv\nv\nv\nv\nv\n\nv\nv		\nv\nv\nv\n\nv\nv\n\n', 16, 3);
 
 -- --------------------------------------------------------
 
@@ -303,38 +281,6 @@ CREATE TABLE `reports` (
   `status_rep` int(1) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `reports`
---
-
-INSERT INTO `reports` (`id`, `timestamp`, `type`, `title`, `body_text`, `contact_phone`, `status_rep`, `user_id`) VALUES
-(2, '2024-03-18 02:32:03', 1, 'Reporte', 'REPORTE PQ SI', '4246277852', 1, 1),
-(3, '2024-03-18 02:47:38', 1, 'Funa', 'Voy a funar toda la empresa', '4246246432', 2, 1),
-(4, '2024-03-29 01:16:16', 1, 'JUJU', 'ugrjinegtieun', '04146568915', 2, 3),
-(5, '2024-03-29 01:16:06', 2, 'IUNORIN', 'ignietqnibn', '04146568915', 2, 3),
-(6, '2024-03-20 03:57:07', 3, 'jaja', 'girnin', '04146552054', 1, 3),
-(7, '2024-03-30 02:20:57', 2, 'FHTFN', 'dONDE ESTÁ MI PAQUETE', '04146758947', 2, 3),
-(8, '2024-03-30 03:47:15', 5, 'gr', 'th', 'gth', 2, 3),
-(9, '2024-03-30 04:08:29', 5, 'grfrgth', 'thhthy', 'gthght', 1, 3),
-(10, '2024-03-30 04:04:34', 5, 'grfrgth', 'thhthy', 'gthght', 1, 3),
-(11, '2024-03-30 03:39:16', 5, 'grfrgth', 'thhthy', 'gthght', 2, 3),
-(12, '2024-03-30 04:08:25', 5, 'grfrgth', 'thhthy', 'gthght', 1, 3),
-(13, '2024-03-30 04:54:31', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
-(14, '2024-03-30 04:08:21', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
-(15, '2024-03-30 04:16:12', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
-(16, '2024-03-29 22:42:28', 5, 'grfrgth', 'thhthy\n', 'gthght', 1, 3),
-(17, '2024-03-29 22:42:32', 5, 'AaAA', 'thhthy\n', 'gthght', 0, 3),
-(18, '2024-03-29 22:42:37', 4, 'BBBB', 'thhthy\n', 'gthght', 0, 3),
-(19, '2024-03-30 04:04:54', 1, 'hth', 'efrgr', 'hyyh', 1, 3),
-(20, '2024-03-30 02:42:35', 1, 'rnybgf', 'brnsgnt', 'nhhnbg', 0, 3),
-(21, '2024-03-30 04:54:40', 2, 'Prueba', 'Hehe', '04146758375', 1, 3),
-(22, '2024-03-30 18:11:47', 5, 'Titulo de prueba', 'cuerpo de prueba', '04146568915', 1, 7),
-(23, '2024-03-30 18:22:47', 2, 'arroz', 'frgrr', '04146568914', 1, 7),
-(24, '2024-03-30 18:29:36', 4, 'prueba2', '2342tgb', '21432545', 1, 7),
-(25, '2024-03-30 18:31:21', 4, 'ergetwbr', 'defwagretwh', 'efwrgetreyn', 1, 7),
-(26, '2024-03-30 18:31:28', 6, 'ntyryh', 'wtyn', 'nytyenr', 0, 7),
-(27, '2024-03-30 18:31:35', 4, 'wdaefrgtdn', 'wdeafsddbgfnhg', 'defrdbtgfnh', 0, 7);
 
 -- --------------------------------------------------------
 
@@ -356,13 +302,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `ci`, `password_hash`, `username`, `email`) VALUES
-(1, 'Luis', '30605166', '19190608', 'Mel', 'garrillofeeling@gmail.com'),
-(2, 'Gianella', '30643008', '1234567g', 'TheService', 'fariamendivil@gmail.com'),
-(3, 'juanmbarreto', '31106376', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0408', 'juan2.manuelbarreto@gmail.com'),
+(3, 'juanmbarretowwwwww', '31106376', '071f1c8f342d65d84e12d1948b6dfa19a0f943bbbb5a9176cabe26ab772d806e5fa003660a18082347a97e4aa4ee940f9b7a9a4ae82ab265dedc3bcc5a2fb8bb', 'juan0400', 'juan2.manuelbarreto@gmail.com'),
 (4, 'Juan Barreto', 'V31106376', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'juan0405', 'juanmanuelbarreto@gmail.com'),
 (5, '', 'V', '1498e85600493c77f84167289050ce86ab10d0694552ebc9d737b5dee8b30f77598ad81d51254c72ab1147e791d7f92e4d7c68a224f8051421a079bceeb7d271', '', ''),
 (6, 'luis', 'E12121212', 'eabe3446c44495c9d8a108158e735eb8c0eefe7003f0beef02936065e0b900a9d7222b7266b5c49a6ad471287b42eb095ebbfd4110d5291b839c49b5be2c0c6b', 'luribe28', 'luribe28@googlemail.com'),
-(7, 'Prueba2', 'V555555', 'a6f1dec5f135dca35478dd3088277897bc3272b09475c205c76ae4c4f793b9c9fc27edc5ebcf4b45e076bef87f434c4f870e6dc93245a87caf7e3428ca354fec', 'prueba2', 'prueba@mail.com');
+(7, 'Prueba2', 'V555555', 'a6f1dec5f135dca35478dd3088277897bc3272b09475c205c76ae4c4f793b9c9fc27edc5ebcf4b45e076bef87f434c4f870e6dc93245a87caf7e3428ca354fec', 'prueba2', 'prueba@mail.com'),
+(8, 'grrggrrggrgrgrgrrggrrggrgrgrgrrggrrggrgrgr', 'V3453', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'gr', 'juan24@gmail.com'),
+(9, 'fe', 'V12345', 'ed6c33753d1f9510e1bc5b16f91dd704024c4ca6262b4ded4487765dd760038a6e4e6e741febd9884e52c67bc3ed3df513cfbb119b931a10d1e7d49bbe8ad046', 'few', 'juan@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -415,19 +361,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
