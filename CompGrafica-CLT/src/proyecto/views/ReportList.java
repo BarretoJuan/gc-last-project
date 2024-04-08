@@ -67,6 +67,8 @@ public class ReportList extends javax.swing.JFrame {
 
         jScrollPane1 = new JScrollPane();
         jTable1 = new JTable();
+        reloadButton = new JButton();
+        reloadIcon = new JLabel();
         generateReportLabel = new JLabel();
         generateReportLabel2 = new JLabel();
         logOutIconButton = new JButton();
@@ -150,6 +152,23 @@ public class ReportList extends javax.swing.JFrame {
         jScrollPane1.getViewport().setOpaque(true);
 
         getContentPane().add(jScrollPane1, new AbsoluteConstraints(70, 230, 820, 220));
+
+        reloadButton.setBorderPainted(false);
+        reloadButton.setContentAreaFilled(false);
+        reloadButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        reloadButton.setFocusable(false);
+        reloadButton.setPreferredSize(new Dimension(70, 84));
+        reloadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                reloadButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(reloadButton, new AbsoluteConstraints(630, 20, -1, -1));
+
+        reloadIcon.setPreferredSize(new Dimension(70, 84));
+        reloadIcon.setSize(70,84);
+        new SetImageLabel().SetImage(reloadIcon, "/resources/reload.png");
+        getContentPane().add(reloadIcon, new AbsoluteConstraints(630, 20, -1, -1));
 
         generateReportLabel.setFont(new Font("Arial", 1, 24)); // NOI18N
         generateReportLabel.setForeground(Colors.darkBlue);
@@ -273,6 +292,15 @@ public class ReportList extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void reloadButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_reloadButtonActionPerformed
+        dispose();
+        try {
+            new ReportList(user).setVisible(true);        // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_reloadButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +319,8 @@ public class ReportList extends javax.swing.JFrame {
     public JButton logoPicButton;
     public JLabel profileIcon;
     public JButton profileIconButton;
+    public JButton reloadButton;
+    public JLabel reloadIcon;
     public JLabel waveBg;
     // End of variables declaration//GEN-END:variables
 }
