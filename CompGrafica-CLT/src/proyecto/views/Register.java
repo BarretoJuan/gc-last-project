@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import proyecto.db.Caller;
 import static proyecto.db.Hasher.hash;
 import proyecto.utils.Colors;
+import proyecto.utils.Message;
 import proyecto.utils.RoundedLineBorder;
 import proyecto.utils.RoundedLineBorderVoid;
 import proyecto.utils.SetImageLabel;
@@ -374,13 +375,17 @@ public class Register extends javax.swing.JFrame {
         if (verifyName && verifyUser && verifyCi && verifyEmail && verifyPassword && verifyPassword2) {
          if (password.equals(confirmPassword)) {
          String hashedPassword = hash(password);
+         Message register = null;
          try {
-             new Caller().insertClient(nombre,id,hashedPassword,usuario,email);
+            register  = new Caller().insertClient(nombre,id,hashedPassword,usuario,email);
          } catch (SQLException ex) {
              Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
          }
-         dispose();
-         new Login().setVisible(true);
+         if(register.getStatus()) {
+                  dispose();
+                    new Login().setVisible(true);
+         }
+
          }
          else {
            JOptionPane.showMessageDialog(null, "Las contraseñas ingresadas no coinciden", "Alerta:", JOptionPane.WARNING_MESSAGE);
